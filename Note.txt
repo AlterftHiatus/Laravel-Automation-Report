@@ -46,3 +46,9 @@
             index++;
         }
     </script>
+
+========================================================================
+pesan error:
+SQLSTATE[HY000]: General error: 1364 Field 'nama_perusahaan' doesn't have a default value (Connection: mysql, SQL: insert into `laporans` (`nomor_laporan`, `tanggal_pemeriksaan`, `jenis_laporan`, `jenis_pemeriksaan`, `status_laporan`, `perusahaan_pemilik`, `alamat_pemilik`, `perusahaan_pemakai`, `alamat_pemakai`, `penanggung_jawab`, `lokasi_unit`, `nama_operator`, `nomor_izin_pemakai`, `sertifikasi_standar`, `no_skp_pjk3`, `no_skp_ak3`, `sertifikat_juru_las`, `riwayat_pemeriksaan`, `updated_at`, `created_at`) values (tes, 2026-01-02, Concrete Mixer, Berkala, draft, PT testing, jl testing, PT testing, jl testing, Bapak Leo, Area Ruang Workshop CV Akhadi Adi Putra, - Nama Operator, - Nomor Izin Pemakai, Permenaker Nomor: 38/MEN/2016, 5/521/AS.01.02/IV/2025, 5/24797/AS.01.04/XII/2024, - Nama / No. Sertifikat Juru Las, Pemeriksaan dan Pengujian Berkala Pemeriksaan Sebelumnya : 02-05-2023, 2026-01-01 06:17:10, 2026-01-01 06:17:10))
+
+========================================================================

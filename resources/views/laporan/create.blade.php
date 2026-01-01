@@ -23,6 +23,26 @@
     <form action="/laporan" method="POST" enctype="multipart/form-data">
         @csrf
 
+        <h3>DATA LAPORAN</h3>
+
+        <label>Nomor Laporan</label><br>
+        <input type="text" name="nomor_laporan" placeholder="contoh: 013/CTS/LHPP/X/2025"><br><br>
+
+        <label>Tanggal Pemeriksaan</label><br>
+        <input type="date" name="tanggal_pemeriksaan"><br><br>
+
+        <label>Jenis Pemeriksaan</label><br>
+        <select name="jenis_pemeriksaan">
+            <option value="">-- pilih jenis pemeriksaan --</option>
+            <option value="Pertama">Pertama</option>
+            <option value="Berkala">Berkala</option>
+            <option value="Ulang">Ulang</option>
+            <option value="Khusus">Khusus</option>
+        </select><br><br>
+
+        <hr>
+
+
         <h3>I. Data Umum</h3>
 
         <label>Perusahaan Pemilik</label><br>
@@ -196,8 +216,7 @@
                     <strong>{{ $item->nama_item }}</strong><br>
 
                     <label>Hasil</label><br>
-                    <input type="text" name="checklist[{{ $item->id }}][hasil]"
-                        placeholder="contoh: 1500 Rpm / 92 dB / Baik"><br><br>
+                    <input type="text" name="checklist[{{ $item->id }}][hasil]"><br><br>
 
                     <label>Keterangan</label><br>
                     <input type="text" name="checklist[{{ $item->id }}][keterangan]"
@@ -228,8 +247,7 @@
                     </select><br><br>
 
                     <label>Keterangan</label><br>
-                    <input type="text" name="checklist[{{ $item->id }}][keterangan]"
-                        placeholder="contoh: Tidak terdapat emergency stop">
+                    <input type="text" name="checklist[{{ $item->id }}][keterangan]">
 
                     <hr>
                 </p>
@@ -237,7 +255,6 @@
         @endforeach
 
 
-        <hr>
         <hr>
         <h3>Dokumentasi Foto</h3>
 
