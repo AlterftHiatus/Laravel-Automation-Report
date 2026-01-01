@@ -137,9 +137,20 @@
 
         @php
             $currentKategori = null;
+
+            $visualCategories = [
+                'Konstruksi Dasar',
+                'Struktur Konstruksi',
+                'Safety Device',
+                'Transmisi dan Bagian-Bagian Unit Mesin',
+            ];
         @endphp
 
         @foreach ($checklists as $item)
+            @if (!in_array($item->kategori, $visualCategories))
+                @continue
+            @endif
+
             @if ($currentKategori !== $item->kategori)
                 <h4>{{ $item->kategori }}</h4>
                 @php $currentKategori = $item->kategori; @endphp
@@ -173,7 +184,6 @@
                 <hr>
             </p>
         @endforeach
-
 
         <hr>
         <hr>
