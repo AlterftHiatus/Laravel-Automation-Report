@@ -1,0 +1,48 @@
+# ini form input dokumentasi yang kayaknya cocok  
+
+        <h3>Dokumentasi Foto</h3>
+
+        <div id="dokumentasi-wrapper">
+
+            <div class="dokumentasi-item">
+                <label>Foto</label><br>
+                <input type="file" name="dokumentasi[0][foto]" required><br><br>
+
+                <label>Keterangan</label><br>
+                <input type="text" name="dokumentasi[0][keterangan]"><br><br>
+
+                <hr>
+            </div>
+
+        </div>
+
+        <button type="button" onclick="tambahDokumentasi()">+ Tambah Dokumentasi</button>
+
+
+
+        <button type="submit">Simpan Laporan</button>
+
+    </form>
+
+    <script>
+        let index = 1;
+
+        function tambahDokumentasi() {
+            const wrapper = document.getElementById('dokumentasi-wrapper');
+
+            const html = `
+            <div class="dokumentasi-item">
+                <label>Foto</label><br>
+                <input type="file" name="dokumentasi[${index}][foto]" required><br><br>
+
+                <label>Keterangan</label><br>
+                <input type="text" name="dokumentasi[${index}][keterangan]"><br><br>
+
+                <hr>
+            </div>
+        `;
+
+            wrapper.insertAdjacentHTML('beforeend', html);
+            index++;
+        }
+    </script>

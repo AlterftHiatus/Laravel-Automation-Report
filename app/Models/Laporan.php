@@ -10,28 +10,39 @@ class Laporan extends Model
         'nomor_laporan',
         'tanggal_pemeriksaan',
         'jenis_laporan',
-        'nama_perusahaan',
-        'alamat_lokasi',
         'jenis_pemeriksaan',
-        'nama_pemeriksa',
+        'status_laporan',
+
+        // DATA UMUM
+        'perusahaan_pemilik',
+        'alamat_pemilik',
+        'perusahaan_pemakai',
+        'alamat_pemakai',
+        'penanggung_jawab',
+        'lokasi_unit',
+        'nama_operator',
+        'nomor_izin_pemakai',
+        'sertifikasi_standar',
+        'no_skp_pjk3',
+        'no_skp_ak3',
+        'sertifikat_juru_las',
+        'riwayat_pemeriksaan',
+
+        // OPSIONAL (nanti)
         'kesimpulan',
         'rekomendasi',
-        'status_laporan',
     ];
 
-    // 1 laporan punya 1 data teknis
     public function dataTeknis()
     {
         return $this->hasOne(LaporanDataTeknis::class);
     }
 
-    // 1 laporan punya banyak hasil checklist
     public function checklistResults()
     {
         return $this->hasMany(ChecklistResult::class);
     }
 
-    // 1 laporan punya banyak foto
     public function fotos()
     {
         return $this->hasMany(DokumentasiFoto::class);

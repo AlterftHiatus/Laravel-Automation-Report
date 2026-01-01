@@ -13,7 +13,6 @@ class ChecklistItem extends Model
         'urutan',
     ];
 
-    // 1 checklist item bisa muncul di banyak laporan
     public function results()
     {
         return $this->hasMany(ChecklistResult::class);

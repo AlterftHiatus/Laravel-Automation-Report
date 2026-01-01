@@ -1,63 +1,295 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Buat Laporan Concrete Mixer</title>
 </head>
+
 <body>
 
-<h2>Buat Laporan Concrete Mixer</h2>
+    <h2>Buat Laporan Concrete Mixer</h2>
 
-<form action="/laporan" method="POST">
-    @csrf
+    @if ($errors->any())
+        <div style="color:red;">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
-    <h3>Data Laporan</h3>
 
-    <label>Nomor Laporan</label><br>
-    <input type="text" name="nomor_laporan"><br><br>
+    <form action="/laporan" method="POST" enctype="multipart/form-data">
+        @csrf
 
-    <label>Tanggal Pemeriksaan</label><br>
-    <input type="date" name="tanggal_pemeriksaan"><br><br>
+        <h3>I. Data Umum</h3>
 
-    <label>Nama Perusahaan</label><br>
-    <input type="text" name="nama_perusahaan"><br><br>
+        <label>Perusahaan Pemilik</label><br>
+        <input type="text" name="perusahaan_pemilik"><br><br>
 
-    <label>Alamat Lokasi</label><br>
-    <textarea name="alamat_lokasi"></textarea><br><br>
+        <label>Alamat Pemilik</label><br>
+        <textarea name="alamat_pemilik"></textarea><br><br>
 
-    <label>Jenis Pemeriksaan</label><br>
-    <select name="jenis_pemeriksaan">
-        <option value="Pertama">Pertama</option>
-        <option value="Berkala">Berkala</option>
-    </select><br><br>
+        <label>Perusahaan Pemakai</label><br>
+        <input type="text" name="perusahaan_pemakai"><br><br>
 
-    <label>Nama Pemeriksa</label><br>
-    <input type="text" name="nama_pemeriksa"><br><br>
+        <label>Alamat Pemakai</label><br>
+        <textarea name="alamat_pemakai"></textarea><br><br>
 
-    <hr>
+        <label>Pengurus / Penanggung Jawab</label><br>
+        <input type="text" name="penanggung_jawab"><br><br>
 
-    <h3>Data Teknis Concrete Mixer</h3>
+        <label>Lokasi Unit</label><br>
+        <input type="text" name="lokasi_unit"><br><br>
 
-    <label>Merk / Tipe</label><br>
-    <input type="text" name="merk_tipe"><br><br>
+        <label>Jenis Pesawat / Tipe</label><br>
+        <input type="text" name="jenis_pesawat" value="Concrete Mixer" readonly><br><br>
 
-    <label>Nomor Seri</label><br>
-    <input type="text" name="nomor_seri"><br><br>
+        <label>Merk / Tipe</label><br>
+        <input type="text" name="merk_tipe"><br><br>
 
-    <label>Tahun Pembuatan</label><br>
-    <input type="number" name="tahun_pembuatan"><br><br>
+        <label>No. Seri / No. Unit</label><br>
+        <input type="text" name="nomor_seri"><br><br>
 
-    <label>Kapasitas</label><br>
-    <input type="text" name="kapasitas"><br><br>
+        <label>Perusahaan Pembuat / Pemasang</label><br>
+        <input type="text" name="pembuat_pemasang"><br><br>
 
-    <label>Dimensi</label><br>
-    <input type="text" name="dimensi"><br><br>
+        <label>Tahun Pembuatan</label><br>
+        <input type="number" name="tahun_pembuatan"><br><br>
 
-    <label>Power</label><br>
-    <input type="text" name="power"><br><br>
+        <label>Kapasitas</label><br>
+        <input type="text" name="kapasitas" placeholder="contoh: 350 Liter"><br><br>
 
-    <button type="submit">Simpan Laporan</button>
+        <label>Digunakan Untuk</label><br>
+        <input type="text" name="digunakan_untuk"><br><br>
 
-</form>
+        <label>Nama / No. Sertifikat Juru Las</label><br>
+        <input type="text" name="sertifikat_juru_las"><br><br>
+
+        <label>No. SKP / Bidang PJK3</label><br>
+        <input type="text" name="no_skp_pjk3"><br><br>
+
+        <label>No. SKP / Bidang AK3</label><br>
+        <input type="text" name="no_skp_ak3"><br><br>
+
+        <label>Sertifikasi Standar</label><br>
+        <input type="text" name="sertifikasi_standar"><br><br>
+
+        <label>Klasifikasi</label><br>
+        <input type="text" name="klasifikasi"><br><br>
+
+        <label>Nomor Izin Pemakai</label><br>
+        <input type="text" name="nomor_izin_pemakai"><br><br>
+
+        <label>Nama Operator</label><br>
+        <input type="text" name="nama_operator"><br><br>
+
+        <label>Data Riwayat Motor Diesel</label><br>
+        <textarea name="riwayat_pemeriksaan"></textarea><br><br>
+
+        <hr>
+
+        <hr>
+
+        <h3>II. DATA TEKNIK</h3>
+
+        <label>Merk / Tipe</label><br>
+        <input type="text" name="merk_tipe"><br><br>
+
+        <label>Pabrik Pembuat / Negara</label><br>
+        <input type="text" name="pembuat_pemasang"><br><br>
+
+        <label>Tahun Pembuatan</label><br>
+        <input type="number" name="tahun_pembuatan"><br><br>
+
+        <label>Klasifikasi</label><br>
+        <input type="text" name="klasifikasi"><br><br>
+
+        <label>Nomor Seri</label><br>
+        <input type="text" name="nomor_seri"><br><br>
+
+        <label>Kapasitas</label><br>
+        <input type="text" name="kapasitas" placeholder="contoh: 350 Liter"><br><br>
+
+        <hr>
+
+        <label><strong>Dimensi Mesin</strong></label><br><br>
+
+        <label>Diameter (mm)</label><br>
+        <input type="number" name="diameter_mm"><br><br>
+
+        <label>Panjang (mm)</label><br>
+        <input type="number" name="panjang_mm"><br><br>
+
+        <label>Tinggi (mm)</label><br>
+        <input type="number" name="tinggi_mm"><br><br>
+
+        <hr>
+
+        <label>Power</label><br>
+        <input type="text" name="power" placeholder="contoh: 10 PK"><br><br>
+
+        <hr>
+
+        <hr>
+        <h3>III. PEMERIKSAAN VISUAL</h3>
+
+        @php
+            $currentKategori = null;
+        @endphp
+
+        @foreach ($checklists as $item)
+            @if ($currentKategori !== $item->kategori)
+                <h4>{{ $item->kategori }}</h4>
+                @php $currentKategori = $item->kategori; @endphp
+            @endif
+
+            <p>
+                <strong>{{ $item->nama_item }}</strong><br>
+
+                <!-- KONDISI -->
+                <label>Kondisi</label><br>
+                <select name="checklist[{{ $item->id }}][hasil]" required>
+                    <option value="">-- pilih kondisi --</option>
+                    <option value="Baik">Baik</option>
+                    <option value="Buruk">Buruk</option>
+                    <option value="-">-</option>
+                </select><br><br>
+
+                <!-- KETERANGAN -->
+                <label>Keterangan</label><br>
+                <select name="checklist[{{ $item->id }}][keterangan]">
+                    <option value="">-- pilih keterangan --</option>
+                    <option value="Kondisi Baik">Kondisi Baik</option>
+                    <option value="Kondisi Kuat">Kondisi Kuat</option>
+                    <option value="Terpasang dengan baik">Terpasang dengan baik</option>
+                    <option value="Terpasang, Kuat">Terpasang, Kuat</option>
+                    <option value="Belum terpasang">Belum terpasang</option>
+                    <option value="Tidak ada">Tidak ada</option>
+                    <option value="N/A">N/A</option>
+                </select>
+
+                <hr>
+            </p>
+        @endforeach
+
+
+        <hr>
+        <hr>
+
+        <h3>IV. PENGUJIAN NDT</h3>
+
+        @foreach ($checklists as $item)
+            @if ($item->kategori === 'Pengujian NDT')
+                <p>
+                    <strong>{{ $item->nama_item }}</strong><br>
+
+                    <label>Hasil</label><br>
+                    <input type="text" name="checklist[{{ $item->id }}][hasil]"
+                        placeholder="contoh: 1500 Rpm / 92 dB / Baik"><br><br>
+
+                    <label>Keterangan</label><br>
+                    <input type="text" name="checklist[{{ $item->id }}][keterangan]"
+                        placeholder="contoh: Memenuhi / Tidak dilakukan / Tidak memenuhi > 85">
+
+                    <hr>
+                </p>
+            @endif
+        @endforeach
+
+
+        <hr>
+        <hr>
+
+        <h3>V. PENGUKURAN DAN PENGUJIAN SAFETY DEVICE</h3>
+
+        @foreach ($checklists as $item)
+            @if ($item->kategori === 'Pengukuran dan Pengujian Safety Device')
+                <p>
+                    <strong>{{ $item->nama_item }}</strong><br>
+
+                    <label>Hasil</label><br>
+                    <select name="checklist[{{ $item->id }}][hasil]" required>
+                        <option value="">-- pilih hasil --</option>
+                        <option value="Baik">Baik</option>
+                        <option value="Buruk">Buruk</option>
+                        <option value="N/A">N/A</option>
+                    </select><br><br>
+
+                    <label>Keterangan</label><br>
+                    <input type="text" name="checklist[{{ $item->id }}][keterangan]"
+                        placeholder="contoh: Tidak terdapat emergency stop">
+
+                    <hr>
+                </p>
+            @endif
+        @endforeach
+
+
+        <hr>
+        <hr>
+        <h3>Dokumentasi Foto</h3>
+
+        <div id="dokumentasi-wrapper">
+
+            <!-- Dokumentasi pertama (wajib) -->
+            <div class="dokumentasi-item">
+                <h4>Dokumentasi #1</h4>
+
+                <label>Foto</label><br>
+                <input type="file" name="dokumentasi[0][foto]" accept="image/*" required><br><br>
+
+                <label>Keterangan</label><br>
+                <input type="text" name="dokumentasi[0][keterangan]" placeholder="contoh: Kondisi mesin"><br><br>
+
+                <hr>
+            </div>
+
+        </div>
+
+        <button type="button" onclick="tambahDokumentasi()">+ Tambah Dokumentasi</button>
+
+        <br><br>
+
+        <button type="submit">Simpan Laporan</button>
+
+
+    </form>
+
+    <script>
+        let index = 1;
+
+        function tambahDokumentasi() {
+            const wrapper = document.getElementById('dokumentasi-wrapper');
+
+            const html = `
+            <div class="dokumentasi-item">
+                <h4>Dokumentasi #${index + 1}</h4>
+
+                <label>Foto</label><br>
+                <input type="file"
+                        name="dokumentasi[${index}][foto]"
+                        accept="image/*"><br><br>
+
+                <label>Keterangan</label><br>
+                <input type="text"
+                        name="dokumentasi[${index}][keterangan]"
+                        placeholder="contoh: Detail bagian mesin"><br><br>
+
+                <hr>
+            </div>
+        `;
+
+            wrapper.insertAdjacentHTML('beforeend', html);
+            index++;
+        }
+    </script>
+
+
+
+
 
 </body>
+
 </html>

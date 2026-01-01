@@ -12,14 +12,20 @@ class LaporanDataTeknis extends Model
         'laporan_id',
         'jenis_pesawat',
         'merk_tipe',
-        'nomor_seri',
+        'pembuat_pemasang',
         'tahun_pembuatan',
+        'klasifikasi',
+        'nomor_seri',
         'kapasitas',
-        'dimensi',
+
+        // DIMENSI
+        'diameter_mm',
+        'panjang_mm',
+        'tinggi_mm',
+
         'power',
     ];
 
-    // data teknis milik 1 laporan
     public function laporan()
     {
         return $this->belongsTo(Laporan::class);
