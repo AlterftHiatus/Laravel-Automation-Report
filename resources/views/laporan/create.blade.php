@@ -10,13 +10,13 @@
     <h2>Buat Laporan Concrete Mixer</h2>
 
     @if ($errors->any())
-        <div style="color:red;">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
+    <div style="color:red;">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
     @endif
 
 
@@ -156,53 +156,53 @@
         <h3>III. PEMERIKSAAN VISUAL</h3>
 
         @php
-            $currentKategori = null;
+        $currentKategori = null;
 
-            $visualCategories = [
-                'Konstruksi Dasar',
-                'Struktur Konstruksi',
-                'Safety Device',
-                'Transmisi dan Bagian-Bagian Unit Mesin',
-            ];
+        $visualCategories = [
+        'Konstruksi Dasar',
+        'Struktur Konstruksi',
+        'Safety Device',
+        'Transmisi dan Bagian-Bagian Unit Mesin',
+        ];
         @endphp
 
         @foreach ($checklists as $item)
-            @if (!in_array($item->kategori, $visualCategories))
-                @continue
-            @endif
+        @if (!in_array($item->kategori, $visualCategories))
+        @continue
+        @endif
 
-            @if ($currentKategori !== $item->kategori)
-                <h4>{{ $item->kategori }}</h4>
-                @php $currentKategori = $item->kategori; @endphp
-            @endif
+        @if ($currentKategori !== $item->kategori)
+        <h4>{{ $item->kategori }}</h4>
+        @php $currentKategori = $item->kategori; @endphp
+        @endif
 
-            <p>
-                <strong>{{ $item->nama_item }}</strong><br>
+        <p>
+            <strong>{{ $item->nama_item }}</strong><br>
 
-                <!-- KONDISI -->
-                <label>Kondisi</label><br>
-                <select name="checklist[{{ $item->id }}][hasil]" required>
-                    <option value="">-- pilih kondisi --</option>
-                    <option value="Baik">Baik</option>
-                    <option value="Buruk">Buruk</option>
-                    <option value="-">-</option>
-                </select><br><br>
+            <!-- KONDISI -->
+            <label>Kondisi</label><br>
+            <select name="checklist[{{ $item->id }}][hasil]" required>
+                <option value="">-- pilih kondisi --</option>
+                <option value="Baik">Baik</option>
+                <option value="Buruk">Buruk</option>
+                <option value="-">-</option>
+            </select><br><br>
 
-                <!-- KETERANGAN -->
-                <label>Keterangan</label><br>
-                <select name="checklist[{{ $item->id }}][keterangan]">
-                    <option value="">-- pilih keterangan --</option>
-                    <option value="Kondisi Baik">Kondisi Baik</option>
-                    <option value="Kondisi Kuat">Kondisi Kuat</option>
-                    <option value="Terpasang dengan baik">Terpasang dengan baik</option>
-                    <option value="Terpasang, Kuat">Terpasang, Kuat</option>
-                    <option value="Belum terpasang">Belum terpasang</option>
-                    <option value="Tidak ada">Tidak ada</option>
-                    <option value="N/A">N/A</option>
-                </select>
+            <!-- KETERANGAN -->
+            <label>Keterangan</label><br>
+            <select name="checklist[{{ $item->id }}][keterangan]">
+                <option value="">-- pilih keterangan --</option>
+                <option value="Kondisi Baik">Kondisi Baik</option>
+                <option value="Kondisi Kuat">Kondisi Kuat</option>
+                <option value="Terpasang dengan baik">Terpasang dengan baik</option>
+                <option value="Terpasang, Kuat">Terpasang, Kuat</option>
+                <option value="Belum terpasang">Belum terpasang</option>
+                <option value="Tidak ada">Tidak ada</option>
+                <option value="N/A">N/A</option>
+            </select>
 
-                <hr>
-            </p>
+            <hr>
+        </p>
         @endforeach
 
         <hr>
@@ -211,20 +211,20 @@
         <h3>IV. PENGUJIAN NDT</h3>
 
         @foreach ($checklists as $item)
-            @if ($item->kategori === 'Pengujian NDT')
-                <p>
-                    <strong>{{ $item->nama_item }}</strong><br>
+        @if ($item->kategori === 'Pengujian NDT')
+        <p>
+            <strong>{{ $item->nama_item }}</strong><br>
 
-                    <label>Hasil</label><br>
-                    <input type="text" name="checklist[{{ $item->id }}][hasil]"><br><br>
+            <label>Hasil</label><br>
+            <input type="text" name="checklist[{{ $item->id }}][hasil]"><br><br>
 
-                    <label>Keterangan</label><br>
-                    <input type="text" name="checklist[{{ $item->id }}][keterangan]"
-                        placeholder="contoh: Memenuhi / Tidak dilakukan / Tidak memenuhi > 85">
+            <label>Keterangan</label><br>
+            <input type="text" name="checklist[{{ $item->id }}][keterangan]"
+                placeholder="contoh: Memenuhi / Tidak dilakukan / Tidak memenuhi > 85">
 
-                    <hr>
-                </p>
-            @endif
+            <hr>
+        </p>
+        @endif
         @endforeach
 
 
@@ -234,24 +234,24 @@
         <h3>V. PENGUKURAN DAN PENGUJIAN SAFETY DEVICE</h3>
 
         @foreach ($checklists as $item)
-            @if ($item->kategori === 'Pengukuran dan Pengujian Safety Device')
-                <p>
-                    <strong>{{ $item->nama_item }}</strong><br>
+        @if ($item->kategori === 'Pengukuran dan Pengujian Safety Device')
+        <p>
+            <strong>{{ $item->nama_item }}</strong><br>
 
-                    <label>Hasil</label><br>
-                    <select name="checklist[{{ $item->id }}][hasil]" required>
-                        <option value="">-- pilih hasil --</option>
-                        <option value="Baik">Baik</option>
-                        <option value="Buruk">Buruk</option>
-                        <option value="N/A">N/A</option>
-                    </select><br><br>
+            <label>Hasil</label><br>
+            <select name="checklist[{{ $item->id }}][hasil]" required>
+                <option value="">-- pilih hasil --</option>
+                <option value="Baik">Baik</option>
+                <option value="Buruk">Buruk</option>
+                <option value="N/A">N/A</option>
+            </select><br><br>
 
-                    <label>Keterangan</label><br>
-                    <input type="text" name="checklist[{{ $item->id }}][keterangan]">
+            <label>Keterangan</label><br>
+            <input type="text" name="checklist[{{ $item->id }}][keterangan]">
 
-                    <hr>
-                </p>
-            @endif
+            <hr>
+        </p>
+        @endif
         @endforeach
 
 

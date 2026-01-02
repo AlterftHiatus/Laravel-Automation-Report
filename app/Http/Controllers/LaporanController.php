@@ -123,6 +123,17 @@ class LaporanController extends Controller
             ->with('success', 'Laporan berhasil disimpan');
     }
 
+    public function preview($id)
+    {
+        $laporan = Laporan::with([
+            'dataTeknis',
+            'checklistResults.checklistItem',
+            'fotos'
+        ])->findOrFail($id);
+
+        // view khusus preview
+        return view('laporan.preview', compact('laporan'));
+    }
 
     public function generatePdf($id)
     {
