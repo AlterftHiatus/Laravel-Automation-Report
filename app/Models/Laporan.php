@@ -40,11 +40,14 @@ class Laporan extends Model
 
     public function checklistResults()
     {
-        return $this->hasMany(ChecklistResult::class);
+        return $this->hasMany(ChecklistResult::class)
+            ->with('checklistItem')
+            ->orderBy('checklist_item_id');
     }
+
 
     public function fotos()
     {
-        return $this->hasMany(DokumentasiFoto::class);
+        return $this->hasMany(DokumentasiFoto::class)->orderBy('urutan');
     }
 }
