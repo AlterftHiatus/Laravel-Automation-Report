@@ -3,34 +3,108 @@
 
 <head>
     <style>
-        @page {
-            margin: 120px 40px 100px 40px;
-        }
-
         body {
-            font-family: DejaVu Sans;
+            font-family: Arial, sans-serif;
             font-size: 11px;
         }
 
-        header {
-            position: fixed;
-            top: -100px;
-            left: 0;
-            right: 0;
-            height: 90px;
+        /* Kontainer Header */
+        .header-container {
+            width: 100%;
+            position: relative;
+        }
+
+        /* Garis Kuning Atas */
+        .yellow-bar {
+            background-color: #d4c017;
+            /* Warna emas/kuning sesuai gambar */
+            height: 40px;
+            width: 100%;
+        }
+
+        /* Area Konten Utama */
+        .content-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .logo-section {
+            width: 40%;
+            padding-left: 40px;
+            vertical-align: middle;
+        }
+
+        .info-section {
+            width: 50%;
+            text-align: right;
+
+            vertical-align: middle;
+            padding-right: 60px;
+        }
+
+        /* Ikon dan Bar Hijau */
+        .green-bar-section {
+            position: absolute;
+            width: 3%;
+            background-color: #0b7d3f;
+            /* Warna hijau sesuai gambar */
+            height: 150px;
+            top: 0;
+            right: 120px;
             text-align: center;
-            border-bottom: 2px solid #000;
+            vertical-align: top;
+            padding-top: 15px;
+            padding-bottom: 25px;
+        }
+
+        /* Styling Teks */
+        .company-name {
+            color: #0b7d3f;
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 10px;
+            letter-spacing: 1px;
+        }
+
+        .info-text {
+            font-size: 12px;
+            color: #333;
+            margin-bottom: 8px;
+            border-bottom: 2px solid #999;
+            border-width: 50%;
+            display: inline-block;
+            width: 100%;
+            padding-bottom: 5px;
+        }
+
+        .address-text {
+            font-size: 12px;
+            color: #333;
+            margin-top: 5px;
+            line-height: 1.4;
+        }
+
+        /* Simpul Ikon (Menggunakan teks karena domPDF kadang sulit memuat font icon lokal) */
+        .icon-box {
+            color: white;
+            font-size: 20px;
+            margin-bottom: 25px;
         }
 
         footer {
-            position: fixed;
-            bottom: -80px;
-            left: 0;
-            right: 0;
-            height: 60px;
             border-top: 2px solid #000;
-            text-align: center;
+            margin-top: 40px;
             font-size: 10px;
+            text-align: center;
+            color: #666;
+        }
+
+        .watermark {
+            position: fixed;
+            top: 20%;
+            left: 35%;
+            opacity: 0.08;
+            z-index: -1;
         }
 
         table {
@@ -47,181 +121,79 @@
 
         th,
         td {
-            padding: 5px;
+            padding: 8px;
             vertical-align: top;
         }
 
-        h3 {
-            margin-top: 20px;
-            margin-bottom: 8px;
-        }
-
-        h4 {
-            margin-top: 15px;
-            margin-bottom: 5px;
-        }
+        /* Styling footer */
+        
     </style>
 </head>
 
 <body>
 
-    <header>
-        <strong>PT CAKRA TEKNIKA SOLUSI</strong><br>
-        FORMULIR / CHECKLIST PEMERIKSAAN DAN PENGUJIAN MOTOR DIESEL<br>
-        (PEMERIKSAAN {{ strtoupper($laporan->jenis_pemeriksaan) }})
-    </header>
+    <header class="header-container">
+        <div class="yellow-bar"></div>
 
-    <footer>
-        Halaman <span class="pageNumber"></span>
-    </footer>
+        <table class="content-table">
+            <tr>
+                <td class="logo-section">
+                    <img src="{{ asset('storage/images/logo_cakra.png') }}" alt="Logo" style="width: 150px;">
+                </td>
 
-    <main>
+                <td class="info-section">
+                    <div class="info-text">+62 856 4042 4888</div>
+                    <div class="info-text">info@cakrateknika.com</div>
+                    <div class="address-text">
+                        Jalan Bukit Wato-Wato VII Blok B2A/14<br>
+                        Permata Puri, Beringin, Ngaliyan, Semarang
+                    </div>
+                </td>
 
-        {{-- ================= DATA LAPORAN ================= --}}
-        <h3>DATA LAPORAN</h3>
-        <table>
-            <tr>
-                <td width="30%">Nomor Laporan</td>
-                <td>{{ $laporan->nomor_laporan }}</td>
-            </tr>
-            <tr>
-                <td>Tanggal Pemeriksaan</td>
-                <td>{{ $laporan->tanggal_pemeriksaan }}</td>
-            </tr>
-            <tr>
-                <td>Jenis Pemeriksaan</td>
-                <td>{{ $laporan->jenis_pemeriksaan }}</td>
-            </tr>
-        </table>
-
-        {{-- ================= I. DATA UMUM ================= --}}
-        <h3>I. DATA UMUM</h3>
-        <table>
-            <tr>
-                <td>Perusahaan Pemilik</td>
-                <td>{{ $laporan->perusahaan_pemilik }}</td>
-            </tr>
-            <tr>
-                <td>Alamat Pemilik</td>
-                <td>{{ $laporan->alamat_pemilik }}</td>
-            </tr>
-            <tr>
-                <td>Perusahaan Pemakai</td>
-                <td>{{ $laporan->perusahaan_pemakai }}</td>
-            </tr>
-            <tr>
-                <td>Alamat Pemakai</td>
-                <td>{{ $laporan->alamat_pemakai }}</td>
-            </tr>
-            <tr>
-                <td>Pengurus / Penanggung Jawab</td>
-                <td>{{ $laporan->penanggung_jawab }}</td>
-            </tr>
-            <tr>
-                <td>Lokasi Unit</td>
-                <td>{{ $laporan->lokasi_unit }}</td>
-            </tr>
-            <tr>
-                <td>Nama Operator</td>
-                <td>{{ $laporan->nama_operator ?? '-' }}</td>
-            </tr>
-            <tr>
-                <td>Nomor Izin Pemakai</td>
-                <td>{{ $laporan->nomor_izin_pemakai ?? '-' }}</td>
-            </tr>
-            <tr>
-                <td>Sertifikasi Standar</td>
-                <td>{{ $laporan->sertifikasi_standar ?? '-' }}</td>
-            </tr>
-            <tr>
-                <td>Data Riwayat Motor Diesel</td>
-                <td>{{ $laporan->riwayat_pemeriksaan ?? '-' }}</td>
-            </tr>
-        </table>
-
-        {{-- ================= II. DATA TEKNIK ================= --}}
-        <h3>II. DATA TEKNIK</h3>
-        <table>
-            <tr>
-                <td>Merk / Tipe</td>
-                <td>{{ $laporan->dataTeknis->merk_tipe }}</td>
-            </tr>
-            <tr>
-                <td>Pabrik Pembuat / Negara</td>
-                <td>{{ $laporan->dataTeknis->pembuat_pemasang }}</td>
-            </tr>
-            <tr>
-                <td>Tahun Pembuatan</td>
-                <td>{{ $laporan->dataTeknis->tahun_pembuatan }}</td>
-            </tr>
-            <tr>
-                <td>Klasifikasi</td>
-                <td>{{ $laporan->dataTeknis->klasifikasi }}</td>
-            </tr>
-            <tr>
-                <td>Nomor Seri</td>
-                <td>{{ $laporan->dataTeknis->nomor_seri }}</td>
-            </tr>
-            <tr>
-                <td>Kapasitas</td>
-                <td>{{ $laporan->dataTeknis->kapasitas }}</td>
-            </tr>
-            <tr>
-                <td>Dimensi Mesin</td>
-                <td>
-                    Diameter: {{ $laporan->dataTeknis->diameter_mm }} mm<br>
-                    Panjang: {{ $laporan->dataTeknis->panjang_mm }} mm<br>
-                    Tinggi: {{ $laporan->dataTeknis->tinggi_mm }} mm
+                <td class="green-bar-section">
+                    <div class="icon-box"></div>
+                    <div class="icon-box">☏</div>
+                    <div class="icon-box">☏</div>
+                    <div class="icon-box">☏</div>
                 </td>
             </tr>
-            <tr>
-                <td>Power</td>
-                <td>{{ $laporan->dataTeknis->power }}</td>
-            </tr>
         </table>
+    </header>
 
-        {{-- ================= III–V CHECKLIST ================= --}}
-        <h3>HASIL PEMERIKSAAN & PENGUJIAN</h3>
 
-        @php
-        $currentKategori = null;
-        @endphp
 
-        <table>
-            <tr>
-                <th width="5%">No</th>
-                <th>Komponen</th>
-                <th width="15%">Hasil</th>
-                <th width="25%">Keterangan</th>
-            </tr>
+    <div class="watermark">
+        <img src="{{ asset('storage/images/logo_cakra.png') }}" width="400">
+    </div>
 
-            @foreach ($laporan->checklistResults as $index => $result)
-            @if ($currentKategori !== $result->checklistItem->kategori)
-            <tr>
-                <td colspan="4"><strong>{{ $result->checklistItem->kategori }}</strong></td>
-            </tr>
-            @php $currentKategori = $result->checklistItem->kategori; @endphp
-            @endif
+    @include('laporan._content')
 
-            <tr>
-                <td>{{ $index + 1 }}</td>
-                <td>{{ $result->checklistItem->nama_item }}</td>
-                <td>{{ $result->hasil }}</td>
-                <td>{{ $result->keterangan }}</td>
-            </tr>
-            @endforeach
-        </table>
+    <footer>
+        Ini hanya preview — bukan dokumen resmi
+    </footer>
+    <div class="footer-container">
+    <div class="top-green-line"></div>
 
-        {{-- ================= DOKUMENTASI ================= --}}
-        <h3>DOKUMENTASI FOTO</h3>
+    <table class="footer-table">
+        <tr>
+            <td style="width: 70%; vertical-align: top; padding: 0;">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tr>
+                        <td class="grey-bar"></td>
+                        <td class="slant-grey" style="width: 20px;"></td>
+                        <td></td> </tr>
+                    <tr>
+                        <td class="yellow-bar-footer" colspan="2"></td>
+                        <td class="slant-yellow" style="width: 30px;"></td>
+                    </tr>
+                </table>
+            </td>
 
-        @foreach ($laporan->fotos as $foto)
-        <p>{{ $foto->keterangan }}</p>
-        <img src="{{ asset('storage/'.$foto->file_path) }}" width="300">
-        @endforeach
-
-    </main>
-
+            <td class="slant-green-edge"></td>
+            <td class="green-block-right"></td>
+        </tr>
+    </table>
+</div>
 </body>
 
 </html>
