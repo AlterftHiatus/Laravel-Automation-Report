@@ -6,51 +6,85 @@ use Illuminate\Http\Request;
 use App\Models\Laporan;
 use App\Models\LaporanDataTeknis;
 use App\Models\DokumentasiFoto;
-use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\ChecklistItem;
 use App\Models\ChecklistResult;
-
-
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class LaporanController extends Controller
 {
-    public function create()
+    /**
+     * Halaman Utama (Home) untuk memilih kategori
+     */
+    public function index()
     {
-        $checklists = ChecklistItem::where('jenis_laporan', 'Concrete Mixer')
+        $categories = [
+            'Listrik' => [
+                'icon' => 'bolt',
+                'subs' => ['Instalasi Listrik', 'Penyalur Petir']
+            ],
+            'Pesawat Angkat dan Angkut' => [
+                'icon' => 'truck',
+                'subs' => ['Excavator', 'Forklift', 'Gondola', 'Konveyor', 'Loader', 'Over Head Crane']
+            ],
+            'Pesawat Tenaga Produksi' => [
+                'icon' => 'gears',
+                'subs' => ['Mesin Produksi', 'Penggerak Mula']
+            ],
+            'Pesawat Uap Bejana Tekan' => [
+                'icon' => 'droplet',
+                'subs' => ['Air Compressor', 'Air Dryer', 'Air Receiver Tank', 'Boiler']
+            ],
+            'Proteksi Kebakaran' => [
+                'icon' => 'fire',
+                'subs' => ['APAR', 'Fire Alarm', 'Hydrant', 'Sprinkler']
+            ],
+        ];
+
+        return view('home', compact('categories'));
+    }
+
+    /**
+     * Form pengisian laporan berdasarkan jenis yang dipilih
+     */
+    public function create(Request $request)
+    {
+        $jenis = $request->query('jenis', 'Default');
+
+        // LOGIKA MAPPING: Meminjam checklist Concrete Mixer untuk Mesin Produksi
+        $pencarianDB = $jenis;
+        if ($jenis == 'Mesin Produksi') {
+            $pencarianDB = 'Concrete Mixer';
+        }
+
+        $checklists = ChecklistItem::where('jenis_laporan', $pencarianDB)
             ->orderBy('kategori')
             ->orderBy('urutan')
             ->get();
 
-        return view('laporan.create', compact('checklists'));
+        return view('laporan.create', compact('checklists', 'jenis'));
     }
 
     public function store(Request $request)
     {
-        // validasi request :
+        // validasi request
         $request->validate([
-            // DATA UMUM
             'nomor_laporan' => 'required|string',
             'tanggal_pemeriksaan' => 'required|date',
             'jenis_pemeriksaan' => 'required|string',
-
-            // CHECKLIST
+            'jenis_laporan' => 'required|string', 
             'checklist' => 'required|array',
-
-            // DOKUMENTASI (minimal 1 foto)
             'dokumentasi.0.foto' => 'required|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-
         /* ===============================
         1. SIMPAN DATA UMUM (laporans)
-       =============================== */
+        =============================== */
         $laporan = Laporan::create([
             'nomor_laporan'         => $request->nomor_laporan,
             'tanggal_pemeriksaan'   => $request->tanggal_pemeriksaan,
-            'jenis_laporan'         => 'Concrete Mixer',
+            'jenis_laporan'         => $request->jenis_laporan, 
             'jenis_pemeriksaan'     => $request->jenis_pemeriksaan,
             'status_laporan'        => 'draft',
-
             'perusahaan_pemilik'    => $request->perusahaan_pemilik,
             'alamat_pemilik'        => $request->alamat_pemilik,
             'perusahaan_pemakai'    => $request->perusahaan_pemakai,
@@ -68,42 +102,40 @@ class LaporanController extends Controller
 
         /* ===============================
         2. SIMPAN DATA TEKNIK
-       =============================== */
+        =============================== */
         LaporanDataTeknis::create([
             'laporan_id'        => $laporan->id,
-            'jenis_pesawat'     => 'Concrete Mixer',
+            'jenis_pesawat'     => $request->jenis_laporan, 
             'merk_tipe'         => $request->merk_tipe,
             'pembuat_pemasang'  => $request->pembuat_pemasang,
             'tahun_pembuatan'   => $request->tahun_pembuatan,
             'klasifikasi'       => $request->klasifikasi,
             'nomor_seri'        => $request->nomor_seri,
             'kapasitas'         => $request->kapasitas,
-
-            // DIMENSI
             'diameter_mm'       => $request->diameter_mm,
             'panjang_mm'        => $request->panjang_mm,
             'tinggi_mm'         => $request->tinggi_mm,
-
             'power'             => $request->power,
         ]);
 
         /* ===============================
-        3. SIMPAN CHECKLIST (SEMUA BAGIAN)
-       =============================== */
+        3. SIMPAN CHECKLIST
+        =============================== */
         if ($request->has('checklist')) {
             foreach ($request->checklist as $checklistItemId => $data) {
                 ChecklistResult::create([
                     'laporan_id'        => $laporan->id,
                     'checklist_item_id' => $checklistItemId,
-                    'hasil'             => $data['hasil'] ?? null,
-                    'keterangan'        => $data['keterangan'] ?? null,
+                    // Menggunakan ?? '-' untuk mencegah error Column 'hasil' cannot be null
+                    'hasil'             => $data['hasil'] ?? '-', 
+                    'keterangan'        => $data['keterangan'] ?? '-',
                 ]);
             }
         }
 
         /* ===============================
         4. SIMPAN DOKUMENTASI FOTO
-       =============================== */
+        =============================== */
         if ($request->has('dokumentasi')) {
             foreach ($request->dokumentasi as $index => $item) {
                 if (isset($item['foto'])) {
@@ -119,10 +151,21 @@ class LaporanController extends Controller
             }
         }
 
-        return redirect('/laporan/create')
-            ->with('success', 'Laporan berhasil disimpan');
+        // PERUBAHAN DISINI: Redirect ke halaman preview, bukan ke Home
+        return redirect()->route('laporan.preview', $laporan->id)
+                         ->with('success', 'Laporan berhasil disimpan. Silakan tinjau kembali.');
     }
 
+    public function preview($id)
+    {
+        $laporan = Laporan::with([
+            'dataTeknis',
+            'checklistResults.checklistItem',
+            'fotos'
+        ])->findOrFail($id);
+
+        return view('laporan.preview', compact('laporan'));
+    }
 
     public function generatePdf($id)
     {
@@ -135,8 +178,6 @@ class LaporanController extends Controller
         $pdf = Pdf::loadView('laporan.pdf', compact('laporan'))
             ->setPaper('a4', 'portrait');
 
-        return $pdf->download(
-            'Laporan-' . $laporan->nomor_laporan . '.pdf'
-        );
+        return $pdf->download('Laporan-' . $laporan->nomor_laporan . '.pdf');
     }
 }
