@@ -1,20 +1,19 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\LaporanController; // Gunakan LaporanController saja agar simpel
 
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+*/
 
+// Ubah HomeController menjadi LaporanController
+Route::get('/', [LaporanController::class, 'index'])->name('home');
 
-// Route::get('/tes', function () {
-//     return view('laporan.pdf');
-// });
-
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/laporan/create', [LaporanController::class, 'create']);
-Route::post('/laporan', [LaporanController::class, 'store']);
-Route::get('/laporan/{id}/pdf', [LaporanController::class, 'generatePdf']);
-
-
-Route::get('/laporan/{id}/preview', [LaporanController::class, 'preview']);
-
+// Sisanya sudah benar
+Route::get('/laporan/create', [LaporanController::class, 'create'])->name('laporan.create');
+Route::post('/laporan', [LaporanController::class, 'store'])->name('laporan.store');
+Route::get('/laporan/{id}/preview', [LaporanController::class, 'preview'])->name('laporan.preview');
+Route::get('/laporan/{id}/pdf', [LaporanController::class, 'generatePdf'])->name('laporan.pdf');

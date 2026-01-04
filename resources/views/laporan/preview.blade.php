@@ -6,23 +6,67 @@
         body {
             font-family: Arial, sans-serif;
             font-size: 11px;
+            margin: 0;
+            padding: 0;
         }
 
-        /* Kontainer Header */
+        /* --- CSS UNTUK TOMBOL (Hanya tampil di Layar) --- */
+        .no-print {
+            display: block;
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+        }
+
+        .floating-action-bar {
+            background: #f8f9fa;
+            padding: 15px 40px;
+            border-bottom: 2px solid #0b7d3f;
+            text-align: right;
+            position: sticky;
+            top: 0;
+            z-index: 9999;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .btn-download {
+            background-color: #0b7d3f;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 12px;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+
+        .btn-download:hover {
+            background-color: #086332;
+        }
+
+        .btn-back {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #666;
+            font-weight: bold;
+        }
+
+        /* --- LAYOUT ASLI ANDA --- */
         .header-container {
             width: 100%;
             position: relative;
         }
 
-        /* Garis Kuning Atas */
         .yellow-bar {
             background-color: #d4c017;
-            /* Warna emas/kuning sesuai gambar */
             height: 40px;
             width: 100%;
         }
 
-        /* Area Konten Utama */
         .content-table {
             width: 100%;
             border-collapse: collapse;
@@ -37,17 +81,14 @@
         .info-section {
             width: 50%;
             text-align: right;
-
             vertical-align: middle;
             padding-right: 60px;
         }
 
-        /* Ikon dan Bar Hijau */
         .green-bar-section {
             position: absolute;
             width: 3%;
             background-color: #0b7d3f;
-            /* Warna hijau sesuai gambar */
             height: 150px;
             top: 0;
             right: 120px;
@@ -57,7 +98,6 @@
             padding-bottom: 25px;
         }
 
-        /* Styling Teks */
         .company-name {
             color: #0b7d3f;
             font-weight: bold;
@@ -71,7 +111,6 @@
             color: #333;
             margin-bottom: 8px;
             border-bottom: 2px solid #999;
-            border-width: 50%;
             display: inline-block;
             width: 100%;
             padding-bottom: 5px;
@@ -84,7 +123,6 @@
             line-height: 1.4;
         }
 
-        /* Simpul Ikon (Menggunakan teks karena domPDF kadang sulit memuat font icon lokal) */
         .icon-box {
             color: white;
             font-size: 20px;
@@ -97,6 +135,7 @@
             font-size: 10px;
             text-align: center;
             color: #666;
+            padding-top: 10px;
         }
 
         .watermark {
@@ -113,35 +152,39 @@
             margin-bottom: 12px;
         }
 
-        table,
-        th,
-        td {
+        table, th, td {
             border: 1px solid #000;
         }
 
-        th,
-        td {
+        th, td {
             padding: 8px;
             vertical-align: top;
         }
-
-        /* Styling footer */
-        
     </style>
 </head>
 
 <body>
 
+    <div class="floating-action-bar no-print">
+        <span style="float: left; color: #444; font-style: italic; margin-top: 10px;">
+            Pratinjau Laporan: Silakan periksa kembali data Anda.
+        </span>
+        <a href="{{ route('home') }}" class="btn-back">Kembali</a>
+        <a href="{{ route('laporan.pdf', $laporan->id) }}" class="btn-download">
+            💾 DOWNLOAD PDF
+        </a>
+    </div>
+
     <header class="header-container">
         <div class="yellow-bar"></div>
 
-        <table class="content-table">
-            <tr>
-                <td class="logo-section">
+        <table class="content-table" style="border:none;">
+            <tr style="border:none;">
+                <td class="logo-section" style="border:none;">
                     <img src="{{ asset('storage/images/logo_cakra.png') }}" alt="Logo" style="width: 150px;">
                 </td>
 
-                <td class="info-section">
+                <td class="info-section" style="border:none;">
                     <div class="info-text">+62 856 4042 4888</div>
                     <div class="info-text">info@cakrateknika.com</div>
                     <div class="address-text">
@@ -150,7 +193,7 @@
                     </div>
                 </td>
 
-                <td class="green-bar-section">
+                <td class="green-bar-section" style="border:none;">
                     <div class="icon-box"></div>
                     <div class="icon-box">☏</div>
                     <div class="icon-box">☏</div>
@@ -160,40 +203,20 @@
         </table>
     </header>
 
-
-
     <div class="watermark">
         <img src="{{ asset('storage/images/logo_cakra.png') }}" width="400">
     </div>
 
-    @include('laporan._content')
+    <div style="padding: 0 40px;">
+        @include('laporan._content')
+    </div>
 
     <footer>
         Ini hanya preview — bukan dokumen resmi
     </footer>
-    <div class="footer-container">
-    <div class="top-green-line"></div>
 
-    <table class="footer-table">
-        <tr>
-            <td style="width: 70%; vertical-align: top; padding: 0;">
-                <table style="width: 100%; border-collapse: collapse;">
-                    <tr>
-                        <td class="grey-bar"></td>
-                        <td class="slant-grey" style="width: 20px;"></td>
-                        <td></td> </tr>
-                    <tr>
-                        <td class="yellow-bar-footer" colspan="2"></td>
-                        <td class="slant-yellow" style="width: 30px;"></td>
-                    </tr>
-                </table>
-            </td>
-
-            <td class="slant-green-edge"></td>
-            <td class="green-block-right"></td>
-        </tr>
-    </table>
-</div>
+    <div class="footer-container no-print">
+        </div>
 </body>
 
 </html>
