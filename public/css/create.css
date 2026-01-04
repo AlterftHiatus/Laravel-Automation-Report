@@ -1,0 +1,55 @@
+/* ===== ACCORDION BASE ===== */
+h3 {
+    cursor: pointer;
+    background: #f5f7fa;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-top: 24px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    position: relative;
+}
+
+h3::after {
+    content: "▼";
+    position: absolute;
+    right: 16px;
+    transition: transform 0.3s ease;
+}
+
+h3.active::after {
+    transform: rotate(180deg);
+}
+
+/* Semua isi section disembunyikan */
+.section-content {
+    display: none;
+    padding: 16px;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    background: #fff;
+}
+
+/* Saat aktif */
+.section-content.active {
+    display: block;
+}
+
+/* Biar form lebih rapi */
+label {
+    font-weight: 600;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    max-width: 500px;
+    padding: 6px 8px;
+    margin-top: 4px;
+}
+
+hr {
+    margin: 20px 0;
+}

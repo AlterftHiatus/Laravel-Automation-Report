@@ -3,6 +3,7 @@
 
 <head>
     <title>Buat Laporan Concrete Mixer</title>
+    <link rel="stylesheet" href="{{ asset('css/create.css') }}">
 </head>
 
 <body>
@@ -41,7 +42,6 @@
         </select><br><br>
 
         <hr>
-
 
         <h3>I. Data Umum</h3>
 
@@ -110,8 +110,6 @@
 
         <hr>
 
-        <hr>
-
         <h3>II. DATA TEKNIK</h3>
 
         <label>Merk / Tipe</label><br>
@@ -152,7 +150,6 @@
 
         <hr>
 
-        <hr>
         <h3>III. PEMERIKSAAN VISUAL</h3>
 
         @php
@@ -206,7 +203,6 @@
         @endforeach
 
         <hr>
-        <hr>
 
         <h3>IV. PENGUJIAN NDT</h3>
 
@@ -228,7 +224,6 @@
         @endforeach
 
 
-        <hr>
         <hr>
 
         <h3>V. PENGUKURAN DAN PENGUJIAN SAFETY DEVICE</h3>
@@ -256,6 +251,7 @@
 
 
         <hr>
+        
         <h3>Dokumentasi Foto</h3>
 
         <div id="dokumentasi-wrapper">
@@ -281,37 +277,9 @@
 
         <button type="submit">Simpan Laporan</button>
 
-
     </form>
 
-    <script>
-        let index = 1;
-
-        function tambahDokumentasi() {
-            const wrapper = document.getElementById('dokumentasi-wrapper');
-
-            const html = `
-            <div class="dokumentasi-item">
-                <h4>Dokumentasi #${index + 1}</h4>
-
-                <label>Foto</label><br>
-                <input type="file"
-                        name="dokumentasi[${index}][foto]"
-                        accept="image/*"><br><br>
-
-                <label>Keterangan</label><br>
-                <input type="text"
-                        name="dokumentasi[${index}][keterangan]"
-                        placeholder="contoh: Detail bagian mesin"><br><br>
-
-                <hr>
-            </div>
-        `;
-
-            wrapper.insertAdjacentHTML('beforeend', html);
-            index++;
-        }
-    </script>
+    <script src="{{ asset('js/create.js') }}" defer></script>
 
 </body>
 
