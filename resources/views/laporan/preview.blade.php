@@ -10,51 +10,6 @@
             padding: 0;
         }
 
-        /* --- CSS UNTUK TOMBOL (Hanya tampil di Layar) --- */
-        .no-print {
-            display: block;
-        }
-
-        @media print {
-            .no-print {
-                display: none !important;
-            }
-        }
-
-        .floating-action-bar {
-            background: #f8f9fa;
-            padding: 15px 40px;
-            border-bottom: 2px solid #0b7d3f;
-            text-align: right;
-            position: sticky;
-            top: 0;
-            z-index: 9999;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .btn-download {
-            background-color: #0b7d3f;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 12px;
-            display: inline-block;
-            transition: background 0.3s;
-        }
-
-        .btn-download:hover {
-            background-color: #086332;
-        }
-
-        .btn-back {
-            margin-right: 15px;
-            text-decoration: none;
-            color: #666;
-            font-weight: bold;
-        }
-
         /* --- LAYOUT ASLI ANDA --- */
         .header-container {
             width: 100%;
@@ -152,11 +107,14 @@
             margin-bottom: 12px;
         }
 
-        table, th, td {
+        table,
+        th,
+        td {
             border: 1px solid #000;
         }
 
-        th, td {
+        th,
+        td {
             padding: 8px;
             vertical-align: top;
         }
@@ -164,16 +122,6 @@
 </head>
 
 <body>
-
-    <div class="floating-action-bar no-print">
-        <span style="float: left; color: #444; font-style: italic; margin-top: 10px;">
-            Pratinjau Laporan: Silakan periksa kembali data Anda.
-        </span>
-        <a href="{{ route('home') }}" class="btn-back">Kembali</a>
-        <a href="{{ route('laporan.pdf', $laporan->id) }}" class="btn-download">
-            💾 DOWNLOAD PDF
-        </a>
-    </div>
 
     <header class="header-container">
         <div class="yellow-bar"></div>
@@ -216,7 +164,7 @@
     </footer>
 
     <div class="footer-container no-print">
-        </div>
+    </div>
 </body>
 
 </html>

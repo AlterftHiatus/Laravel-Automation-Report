@@ -1,264 +1,171 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <style>
-        /* CONFIG PAGE */
         @page {
-            margin: 180px 40px 100px 40px;
+            margin: 120px 40px 100px 40px;
         }
 
         body {
-            font-family: 'Helvetica', 'Arial', sans-serif;
+            font-family: DejaVu Sans;
             font-size: 11px;
-            line-height: 1.4;
-            color: #333;
         }
 
-        /* FIXED HEADER */
-        .header {
+        header {
             position: fixed;
-            top: -160px;
-            left: 0px;
-            right: 0px;
-            height: 150px;
-            width: 100%;
-        }
-
-        .yellow-bar {
-            background-color: #d4c017;
-            height: 35px;
-            width: 100%;
-        }
-
-        .header-table {
-            width: 100%;
-            border: none !important;
-        }
-
-        .header-table td {
-            border: none !important;
-            vertical-align: middle;
-        }
-
-        .logo-col {
-            width: 40%;
-            padding-top: 15px;
-        }
-
-        .info-col {
-            width: 50%;
-            text-align: right;
-            padding-top: 15px;
-            padding-right: 50px;
-        }
-
-        .info-line {
-            border-bottom: 1px solid #999;
-            margin-bottom: 4px;
-            padding-bottom: 2px;
-            display: block;
-        }
-
-        /* PANEL HIJAU (Gaya Sidebar Kanan) */
-        .green-panel {
-            position: absolute;
-            top: 0;
+            top: -100px;
+            left: 0;
             right: 0;
-            width: 40px;
-            height: 160px;
-            background-color: #0b7d3f;
+            height: 90px;
             text-align: center;
-            padding-top: 15px;
+            border-bottom: 2px solid #000;
         }
 
-        .icon-text {
-            color: white;
-            font-size: 18px;
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        /* FIXED FOOTER */
         footer {
             position: fixed;
-            bottom: -60px;
-            left: 0px;
-            right: 0px;
-            height: 50px;
+            bottom: -80px;
+            left: 0;
+            right: 0;
+            height: 60px;
+            border-top: 2px solid #000;
             text-align: center;
-            border-top: 1px solid #333;
-            padding-top: 10px;
-        }
-
-        /* WATERMARK */
-        .watermark {
-            position: fixed;
-            top: 25%;
-            left: 15%;
-            width: 70%;
-            opacity: 0.05;
-            z-index: -1000;
-        }
-
-        /* CONTENT STYLING */
-        h3 {
-            background-color: #f2f2f2;
-            padding: 5px;
-            border-left: 5px solid #0b7d3f;
-            margin-top: 20px;
+            font-size: 10px;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         table, th, td {
             border: 1px solid #000;
         }
 
-        th {
-            background-color: #eee;
-            text-align: center;
-            padding: 8px;
-        }
-
-        td {
-            padding: 6px;
+        th, td {
+            padding: 5px;
             vertical-align: top;
         }
 
-        .kategori-row {
-            background-color: #e8f4fd;
-            font-weight: bold;
+        h3 {
+            margin-top: 20px;
+            margin-bottom: 8px;
         }
 
-        .foto-container {
-            text-align: center;
-            margin-bottom: 20px;
-            page-break-inside: avoid; /* Mencegah foto terpotong antar halaman */
-        }
-
-        .foto-img {
-            width: 400px;
-            border: 5px solid #eee;
-            margin-top: 5px;
-        }
-
-        .page-number:before {
-            content: "Halaman " counter(page);
+        h4 {
+            margin-top: 15px;
+            margin-bottom: 5px;
         }
     </style>
 </head>
+
 <body>
 
-    <div class="header">
-        <div class="yellow-bar"></div>
-        
-        <table class="header-table">
+<header>
+    <strong>PT CAKRA TEKNIKA SOLUSI</strong><br>
+    FORMULIR / CHECKLIST PEMERIKSAAN DAN PENGUJIAN MOTOR DIESEL<br>
+    (PEMERIKSAAN {{ strtoupper($laporan->jenis_pemeriksaan) }})
+</header>
+
+<footer>
+    Halaman <span class="pageNumber"></span>
+</footer>
+
+<main>
+
+{{-- ================= DATA LAPORAN ================= --}}
+<h3>DATA LAPORAN</h3>
+<table>
+    <tr>
+        <td width="30%">Nomor Laporan</td>
+        <td>{{ $laporan->nomor_laporan }}</td>
+    </tr>
+    <tr>
+        <td>Tanggal Pemeriksaan</td>
+        <td>{{ $laporan->tanggal_pemeriksaan }}</td>
+    </tr>
+    <tr>
+        <td>Jenis Pemeriksaan</td>
+        <td>{{ $laporan->jenis_pemeriksaan }}</td>
+    </tr>
+</table>
+
+{{-- ================= I. DATA UMUM ================= --}}
+<h3>I. DATA UMUM</h3>
+<table>
+    <tr><td>Perusahaan Pemilik</td><td>{{ $laporan->perusahaan_pemilik }}</td></tr>
+    <tr><td>Alamat Pemilik</td><td>{{ $laporan->alamat_pemilik }}</td></tr>
+    <tr><td>Perusahaan Pemakai</td><td>{{ $laporan->perusahaan_pemakai }}</td></tr>
+    <tr><td>Alamat Pemakai</td><td>{{ $laporan->alamat_pemakai }}</td></tr>
+    <tr><td>Pengurus / Penanggung Jawab</td><td>{{ $laporan->penanggung_jawab }}</td></tr>
+    <tr><td>Lokasi Unit</td><td>{{ $laporan->lokasi_unit }}</td></tr>
+    <tr><td>Nama Operator</td><td>{{ $laporan->nama_operator ?? '-' }}</td></tr>
+    <tr><td>Nomor Izin Pemakai</td><td>{{ $laporan->nomor_izin_pemakai ?? '-' }}</td></tr>
+    <tr><td>Sertifikasi Standar</td><td>{{ $laporan->sertifikasi_standar ?? '-' }}</td></tr>
+    <tr><td>Data Riwayat Motor Diesel</td><td>{{ $laporan->riwayat_pemeriksaan ?? '-' }}</td></tr>
+</table>
+
+{{-- ================= II. DATA TEKNIK ================= --}}
+<h3>II. DATA TEKNIK</h3>
+<table>
+    <tr><td>Merk / Tipe</td><td>{{ $laporan->dataTeknis->merk_tipe }}</td></tr>
+    <tr><td>Pabrik Pembuat / Negara</td><td>{{ $laporan->dataTeknis->pembuat_pemasang }}</td></tr>
+    <tr><td>Tahun Pembuatan</td><td>{{ $laporan->dataTeknis->tahun_pembuatan }}</td></tr>
+    <tr><td>Klasifikasi</td><td>{{ $laporan->dataTeknis->klasifikasi }}</td></tr>
+    <tr><td>Nomor Seri</td><td>{{ $laporan->dataTeknis->nomor_seri }}</td></tr>
+    <tr><td>Kapasitas</td><td>{{ $laporan->dataTeknis->kapasitas }}</td></tr>
+    <tr>
+        <td>Dimensi Mesin</td>
+        <td>
+            Diameter: {{ $laporan->dataTeknis->diameter_mm }} mm<br>
+            Panjang: {{ $laporan->dataTeknis->panjang_mm }} mm<br>
+            Tinggi: {{ $laporan->dataTeknis->tinggi_mm }} mm
+        </td>
+    </tr>
+    <tr><td>Power</td><td>{{ $laporan->dataTeknis->power }}</td></tr>
+</table>
+
+{{-- ================= III–V CHECKLIST ================= --}}
+<h3>HASIL PEMERIKSAAN & PENGUJIAN</h3>
+
+@php
+    $currentKategori = null;
+@endphp
+
+<table>
+    <tr>
+        <th width="5%">No</th>
+        <th>Komponen</th>
+        <th width="15%">Hasil</th>
+        <th width="25%">Keterangan</th>
+    </tr>
+
+    @foreach ($laporan->checklistResults as $index => $result)
+        @if ($currentKategori !== $result->checklistItem->kategori)
             <tr>
-                <td class="logo-col">
-                    <img src="{{ public_path('storage/images/logo_cakra.png') }}" style="width: 150px;">
-                </td>
-                <td class="info-col">
-                    <span class="info-line">+62 856 4042 4888</span>
-                    <span class="info-line">info@cakrateknika.com</span>
-                    <div style="font-size: 10px; margin-top: 5px;">
-                        Jalan Bukit Wato-Wato VII Blok B2A/14<br>
-                        Permata Puri, Beringin, Ngaliyan, Semarang
-                    </div>
-                </td>
+                <td colspan="4"><strong>{{ $result->checklistItem->kategori }}</strong></td>
             </tr>
-        </table>
-
-        <div class="green-panel">
-            <div class="icon-text">☏</div>
-            <div class="icon-text">🌐</div>
-            <div class="icon-text">📍</div>
-        </div>
-    </div>
-
-    <div class="watermark">
-        <img src="{{ public_path('storage/images/logo_cakra.png') }}" style="width: 100%;">
-    </div>
-
-    <footer>
-        <div class="page-number"></div>
-        <div style="font-size: 8px; margin-top: 5px;">Dokumen ini dihasilkan secara otomatis oleh Sistem Manajemen Laporan K3</div>
-    </footer>
-
-    <div class="content">
-        
-        <h2 style="text-align: center; color: #0b7d3f;">LAPORAN PEMERIKSAAN K3</h2>
-        <p style="text-align: center; margin-top: -15px;">Jenis Alat: {{ $laporan->jenis_laporan }}</p>
-
-        <h3>DATA LAPORAN</h3>
-        <table>
-            <tr><td width="30%">Nomor Laporan</td><td>{{ $laporan->nomor_laporan }}</td></tr>
-            <tr><td>Tanggal Pemeriksaan</td><td>{{ \Carbon\Carbon::parse($laporan->tanggal_pemeriksaan)->format('d F Y') }}</td></tr>
-            <tr><td>Jenis Pemeriksaan</td><td>{{ $laporan->jenis_pemeriksaan }}</td></tr>
-        </table>
-
-        <h3>I. DATA UMUM</h3>
-        <table>
-            <tr><td width="30%">Perusahaan Pemilik</td><td>{{ $laporan->perusahaan_pemilik }}</td></tr>
-            <tr><td>Alamat Pemilik</td><td>{{ $laporan->alamat_pemilik }}</td></tr>
-            <tr><td>Perusahaan Pemakai</td><td>{{ $laporan->perusahaan_pemakai }}</td></tr>
-            <tr><td>Alamat Pemakai</td><td>{{ $laporan->alamat_pemakai }}</td></tr>
-            <tr><td>Lokasi Unit</td><td>{{ $laporan->lokasi_unit }}</td></tr>
-            <tr><td>Nama Operator</td><td>{{ $laporan->nama_operator ?? '-' }}</td></tr>
-        </table>
-
-        <h3>II. DATA TEKNIK</h3>
-        <table>
-            <tr><td width="30%">Merk / Tipe</td><td>{{ $laporan->dataTeknis->merk_tipe }}</td></tr>
-            <tr><td>Tahun Pembuatan</td><td>{{ $laporan->dataTeknis->tahun_pembuatan }}</td></tr>
-            <tr><td>Kapasitas</td><td>{{ $laporan->dataTeknis->kapasitas }}</td></tr>
-            <tr><td>Power</td><td>{{ $laporan->dataTeknis->power }}</td></tr>
-        </table>
-
-        <div style="page-break-after: always;"></div> <h3>III. HASIL PEMERIKSAAN & PENGUJIAN</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th width="5%">No</th>
-                    <th>Komponen Pemeriksaan</th>
-                    <th width="15%">Hasil</th>
-                    <th width="25%">Keterangan</th>
-                </tr>
-            </thead>
-            <tbody>
-                @php $currentKategori = null; $no = 1; @endphp
-                @foreach ($laporan->checklistResults as $result)
-                    @if ($currentKategori !== $result->checklistItem->kategori)
-                        <tr class="kategori-row">
-                            <td colspan="4">{{ $result->checklistItem->kategori }}</td>
-                        </tr>
-                        @php $currentKategori = $result->checklistItem->kategori; @endphp
-                    @endif
-                    <tr>
-                        <td style="text-align: center;">{{ $no++ }}</td>
-                        <td>{{ $result->checklistItem->nama_item }}</td>
-                        <td style="text-align: center;">{{ $result->hasil }}</td>
-                        <td>{{ $result->keterangan }}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-
-        @if($laporan->fotos->count() > 0)
-            <div style="page-break-before: always;"></div>
-            <h3>IV. DOKUMENTASI FOTO</h3>
-            @foreach ($laporan->fotos as $foto)
-                <div class="foto-container">
-                    <p><strong>Foto:</strong> {{ $foto->keterangan }}</p>
-                    <img src="{{ public_path('storage/'.$foto->file_path) }}" class="foto-img">
-                </div>
-            @endforeach
+            @php $currentKategori = $result->checklistItem->kategori; @endphp
         @endif
-    </div>
+
+        <tr>
+            <td>{{ $index + 1 }}</td>
+            <td>{{ $result->checklistItem->nama_item }}</td>
+            <td>{{ $result->hasil }}</td>
+            <td>{{ $result->keterangan }}</td>
+        </tr>
+    @endforeach
+</table>
+
+{{-- ================= DOKUMENTASI ================= --}}
+<h3>DOKUMENTASI FOTO</h3>
+
+@foreach ($laporan->fotos as $foto)
+    <p>{{ $foto->keterangan }}</p>
+    <img src="{{ storage_path('app/public/'.$foto->file_path) }}" width="300">
+@endforeach
+
+</main>
 
 </body>
 </html>
