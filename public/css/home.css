@@ -1,66 +1,46 @@
-/* Palette K3: Green, Navy, and Light Gray */
+/* Palette K3 */
 :root {
     --primary-green: #27ae60;
     --dark-navy: #2c3e50;
     --light-bg: #f8f9fa;
-    --text-color: #333;
     --white: #ffffff;
 }
 
 * {
     margin: 0;
     padding: 0;
-    box-shadow: border-box;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: 'Inter', sans-serif;
     background-color: var(--light-bg);
-    color: var(--text-color);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-/* Header Style */
 header {
     background-color: var(--dark-navy);
     color: var(--white);
-    padding: 60px 20px;
+    padding: 50px 20px;
     text-align: center;
     border-bottom: 5px solid var(--primary-green);
 }
 
-header h1 {
-    font-size: 2.2rem;
-    margin-bottom: 10px;
-    letter-spacing: 1px;
-}
-
-header p {
-    font-size: 1.1rem;
-    opacity: 0.9;
-}
-
-/* Menu Container */
 .menu-container {
     flex: 1;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: flex-start;
     padding: 50px 20px;
-    gap: 25px;
-    max-width: 1300px;
+    gap: 20px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Dropdown Card Style */
-.dropdown {
-    position: relative;
-}
-
-.dropdown-btn {
+/* Class untuk Tombol Biasa dan Tombol Dropdown agar Seragam */
+.menu-card, .dropdown-btn {
     background-color: var(--white);
     color: var(--dark-navy);
     border: 2px solid #e0e0e0;
@@ -69,30 +49,29 @@ header p {
     border-radius: 12px;
     font-size: 16px;
     font-weight: 600;
-    cursor: pointer;
+    text-decoration: none; /* Untuk tag <a> */
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Pusatkan teks */
     align-items: center;
     transition: all 0.3s ease;
+    cursor: pointer;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
-.dropdown-btn:hover {
+.dropdown-btn {
+    justify-content: space-between; /* Khusus dropdown agar panah di kanan */
+}
+
+.menu-card:hover, .dropdown-btn:hover {
     border-color: var(--primary-green);
     transform: translateY(-3px);
     box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-}
-
-/* Arrow indicator */
-.arrow {
-    border: solid var(--primary-green);
-    border-width: 0 2px 2px 0;
-    display: inline-block;
-    padding: 3px;
-    transform: rotate(45deg);
+    color: var(--primary-green);
 }
 
 /* Dropdown Content */
+.dropdown { position: relative; }
+
 .dropdown-content {
     display: none;
     position: absolute;
@@ -102,7 +81,7 @@ header p {
     min-width: 100%;
     border-radius: 12px;
     box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-    z-index: 999;
+    z-index: 1000;
     border: 1px solid #eee;
     overflow: hidden;
 }
@@ -112,35 +91,25 @@ header p {
     padding: 15px 20px;
     text-decoration: none;
     display: block;
-    font-size: 14px;
     border-bottom: 1px solid #f1f1f1;
-    transition: background 0.2s;
 }
 
 .dropdown-content a:hover {
     background-color: #f1fcf4;
     color: var(--primary-green);
-    font-weight: bold;
-    padding-left: 25px;
 }
 
-.dropdown-content a:last-child {
-    border-bottom: none;
+.arrow {
+    border: solid var(--primary-green);
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
 }
 
-/* Footer */
 footer {
     text-align: center;
-    padding: 30px;
-    background-color: #eee;
-    color: #777;
+    padding: 25px;
+    background: #eee;
     font-size: 14px;
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-    header { padding: 40px 20px; }
-    header h1 { font-size: 1.8rem; }
-    .menu-container { flex-direction: column; align-items: center; }
-    .dropdown-btn { width: 320px; }
 }
