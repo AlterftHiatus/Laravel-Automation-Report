@@ -15,5 +15,5 @@ Route::get('/laporan/create', [LaporanController::class, 'create']);
 Route::post('/laporan', [LaporanController::class, 'store']);
 Route::get('/laporan/{id}/preview', [LaporanController::class, 'preview'])->name('laporan.preview');
 Route::get('/laporan/{id}/pdf', [LaporanController::class, 'generatePdf']);
-
+Route::get('/laporan/{kategori}/{alat}', [LaporanController::class, 'create']);
 
