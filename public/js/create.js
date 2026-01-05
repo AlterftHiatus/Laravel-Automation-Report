@@ -1,22 +1,16 @@
 /* =========================================================
-   CREATE LAPORAN - UI SCRIPT
-   - Accordion per section (h3)
-   - Tambah dokumentasi foto
-   TIDAK menyentuh logika backend
+   CREATE LAPORAN - UI SCRIPT (PROFESSIONAL VERSION)
    ========================================================= */
 
-/* ------------------------------
-   ACCORDION FORM SECTION
--------------------------------- */
 document.addEventListener("DOMContentLoaded", function () {
     const headers = document.querySelectorAll("h3");
 
-    headers.forEach((header) => {
-        // Buat container untuk isi section
+    headers.forEach((header, index) => {
+        // 1. Buat container untuk isi section
         const content = document.createElement("div");
         content.classList.add("section-content");
 
-        // Ambil semua elemen sampai h3 berikutnya
+        // 2. Bungkus elemen-elemen di bawah h3 ke dalam div.section-content
         let next = header.nextElementSibling;
         while (next && next.tagName !== "H3") {
             const temp = next;
@@ -24,11 +18,27 @@ document.addEventListener("DOMContentLoaded", function () {
             content.appendChild(temp);
         }
 
-        // Sisipkan content setelah h3
+        // 3. Sisipkan content tepat setelah h3
         header.after(content);
 
-        // Toggle accordion saat klik judul
+        // 4. Buka section pertama secara default (biar user tahu itu accordion)
+        if (index === 0) {
+            header.classList.add("active");
+            content.classList.add("active");
+        }
+
+        // 5. Toggle accordion saat klik
         header.addEventListener("click", function () {
+            // Opsional: Tutup section lain saat satu dibuka (Mode Solo)
+            /*
+            headers.forEach(h => {
+                if(h !== header) {
+                    h.classList.remove("active");
+                    h.nextElementSibling.classList.remove("active");
+                }
+            });
+            */
+
             header.classList.toggle("active");
             content.classList.toggle("active");
         });
@@ -38,36 +48,24 @@ document.addEventListener("DOMContentLoaded", function () {
 /* ------------------------------
    TAMBAH DOKUMENTASI FOTO
 -------------------------------- */
-let index = 1;
+let docIndex = 1; // Mulai dari 1 karena index 0 sudah ada di blade
 
-// expose ke global karena dipanggil dari onclick=""
 window.tambahDokumentasi = function () {
     const wrapper = document.getElementById("dokumentasi-wrapper");
-
     if (!wrapper) return;
 
-    const html = `
-        <div class="dokumentasi-item">
-            <h4>Dokumentasi #${index + 1}</h4>
-
-            <label>Foto</label><br>
-            <input 
-                type="file"
-                name="dokumentasi[${index}][foto]"
-                accept="image/*"
-            ><br><br>
-
-            <label>Keterangan</label><br>
-            <input 
-                type="text"
-                name="dokumentasi[${index}][keterangan]"
-                placeholder="contoh: Detail bagian mesin"
-            ><br><br>
-
-            <hr>
-        </div>
+    const div = document.createElement("div");
+    div.classList.add("dokumentasi-item");
+    div.innerHTML = `
+        <h4>Dokumentasi #${docIndex + 1}</h4>
+        <label>Foto</label>
+        <input type="file" name="dokumentasi[${docIndex}][foto]" accept="image/*">
+        
+        <label>Keterangan</label>
+        <input type="text" name="dokumentasi[${docIndex}][keterangan]" placeholder="contoh: Detail bagian mesin">
+        <hr>
     `;
 
-    wrapper.insertAdjacentHTML("beforeend", html);
-    index++;
+    wrapper.appendChild(div);
+    docIndex++;
 };

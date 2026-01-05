@@ -1,55 +1,181 @@
-/* ===== ACCORDION BASE ===== */
+/* ===== GLOBAL RESET & FONTS ===== */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+h2 {
+    color: #2c3e50;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+form {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+/* ===== ACCORDION (H3) ===== */
 h3 {
     cursor: pointer;
-    background: #f5f7fa;
-    padding: 12px 16px;
-    border-radius: 6px;
-    margin-top: 24px;
-    font-size: 16px;
-    border: 1px solid #ddd;
+    background: #2c3e50 !important; /* Navy Blue K3 */
+    color: #ffffff;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    font-size: 15px;
+    font-weight: 600;
     position: relative;
+    border: none;
+    transition: background 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h3:hover {
+    background: #34495e !important;
 }
 
 h3::after {
     content: "▼";
-    position: absolute;
-    right: 16px;
+    font-size: 12px;
     transition: transform 0.3s ease;
+}
+
+h3.active {
+    border-radius: 8px 8px 0 0;
+    background: #27ae60 !important; 
 }
 
 h3.active::after {
     transform: rotate(180deg);
 }
 
-/* Semua isi section disembunyikan */
+/* ===== SECTION CONTENT ===== */
 .section-content {
     display: none;
-    padding: 16px;
-    border: 1px solid #ddd;
+    padding: 25px;
+    border: 1px solid #e1e4e8;
     border-top: none;
-    border-radius: 0 0 6px 6px;
+    border-radius: 0 0 8px 8px;
     background: #fff;
+    margin-bottom: 10px;
 }
 
-/* Saat aktif */
 .section-content.active {
     display: block;
+    animation: fadeIn 0.4s ease;
 }
 
-/* Biar form lebih rapi */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== INPUTS & LABELS ===== */
 label {
-    font-weight: 600;
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: #555;
+    margin-bottom: 5px;
+    text-transform: uppercase;
 }
 
-input,
+input[type="text"],
+input[type="number"],
+input[type="date"],
 select,
 textarea {
     width: 100%;
-    max-width: 500px;
-    padding: 6px 8px;
-    margin-top: 4px;
+    max-width: 100%; /* Lebar penuh dalam container */
+    padding: 10px 14px;
+    margin-bottom: 15px;
+    border: 1.5px solid #dcdfe6;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: #fcfcfc;
+    transition: all 0.2s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #27ae60;
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.1);
+}
+
+textarea {
+    min-height: 80px;
+}
+
+/* ===== GRID FOR DATA (Optional) ===== */
+.section-content p {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 6px;
+}
+
+/* ===== BUTTONS ===== */
+button[type="button"] {
+    background-color: #edf2f7;
+    color: #4a5568;
+    border: 1px solid #cbd5e0;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+button[type="button"]:hover {
+    background-color: #e2e8f0;
+}
+
+button[type="submit"] {
+    display: block;
+    width: 100%;
+    background-color: #27ae60; 
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 30px;
+    text-transform: uppercase;
+    transition: background 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #219150;
+    box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
 }
 
 hr {
+    border: 0;
+    border-top: 1px solid #eee;
     margin: 20px 0;
+}
+
+
+.dokumentasi-item {
+    background: #fdfdfd;
+    padding: 15px;
+    border: 1px dashed #cbd5e0;
+    border-radius: 8px;
+    margin-bottom: 15px;
 }
