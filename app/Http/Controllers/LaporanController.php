@@ -144,7 +144,8 @@ class LaporanController extends Controller
         ])->findOrFail($id);
 
         $pdf = Pdf::loadView('laporan.pdf', compact('laporan'))
-            ->setPaper('a4', 'portrait');
+            ->setPaper([0, 0, 595, 935], 'portrait');
+
 
         return $pdf->download(
             'Laporan-' . $laporan->nomor_laporan . '.pdf'
