@@ -2,258 +2,10 @@
 <html>
 
 <head>
-    <style>
-        /* ===== PAGE MARGIN (sesuai template PDF) ===== */
-        @page {
-            margin: 160px 60px 110px 60px;
-        }
-
-        /* ===== GLOBAL FONT ===== */
-        body {
-            font-family: 'cambria', serif;
-            font-size: 11px;
-            line-height: 1.4;
-        }
-
-        /* ===== HEADER ===== */
-        header {
-            position: fixed;
-            top: -150px;
-            left: -40px;
-            right: -40px;
-            height: 120px;
-            text-align: center;
-            /* border-bottom: 2px solid #000; */
-        }
-
-        /* FIXED HEADER */
-        /* .header {
-            position: fixed;
-            top: -160px;
-            left: 0px;
-            right: 0px;
-            height: 150px;
-            width: 100%;
-        } */
-
-        .yellow-bar {
-            background-color: #d4c017;
-            height: 35px;
-            width: 100%;
-        }
-
-        .header-table {
-            width: 100%;
-            border: none !important;
-        }
-
-        .header-table td {
-            border: none !important;
-            vertical-align: middle;
-        }
-
-        .logo-col {
-            width: 40%;
-            padding-top: 15px;
-        }
-
-        .info-col {
-            width: 50%;
-            text-align: right;
-            padding-top: 15px;
-            padding-right: 120px;
-        }
-
-        .info-line {
-            border-bottom: 1px solid #999;
-            margin-bottom: 8px;
-            padding-bottom: 8px;
-            display: block;
-        }
-
-        /* PANEL HIJAU (Gaya Sidebar Kanan) */
-        .green-panel {
-            position: absolute;
-            top: 0;
-            right: 70px;
-            width: 40px;
-            height: 160px;
-            background-color: #0b7d3f;
-            text-align: center;
-            padding-top: 15px;
-        }
-
-        .icon-text {
-            color: white;
-            font-size: 18px;
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        /* ===== WATERMARK ===== */
-        .watermark {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            opacity: 0.2;
-            z-index: -1;
-            width: 80%;
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            position: fixed;
-            bottom: -95px;
-            left: -40px;
-            right: -40px;
-            height: 40px;
-            text-align: center;
-            font-size: 10px;
-            width: 100%;
-            /* background-color: #000; */
-        }
-
-        .footer-layer-wrapper {
-            position: fixed;
-            bottom: -120px;
-            left: -40px;
-            right: -40px;
-            height: 90px;
-            width: 100%;
-            overflow: hidden;
-        }
-
-        /* Pengaturan umum untuk setiap lapisan */
-        .layer {
-            position: absolute;
-            bottom: 0;
-            height: 100%;
-            width: 100%;
-        }
-
-        /* Lapisan Hijau Paling Atas (Garis Tipis) */
-        .layer-green-top {
-            border-radius: 0 15px 0 0;
-            height: 10px;
-            top: 15px;
-            background-color: #008744;
-            /* Hijau Tua */
-        }
-
-        /* Lapisan Abu-abu */
-        .layer-gray {
-            border-radius: 0 15px 0 0;
-            background-color: #eeeeee;
-            top: 35px;
-            height: 45px;
-            width: 55%;
-            bottom: 0;
-            clip-path: polygon(0 0, 62% 0, 65% 100%, 0% 100%);
-        }
-
-        /* Lapisan Kuning/Emas */
-        .layer-gold {
-            border-radius: 0 15px 0 0;
-            background-color: #d4c000;
-            bottom: 0;
-            height: 40px;
-            width: 50%;
-            clip-path: polygon(0 0, 70% 0, 75% 100%, 0% 100%);
-            z-index: 2;
-        }
-
-        /* Lapisan Hijau Besar di Sisi Kanan */
-        .layer-green-main {
-            border-radius: 0 15px 0 0;
-            background-color: #008744;
-            right: 0;
-            width: 30%;
-            height: 100%;
-            top: 15px;
-            clip-path: polygon(15% 0, 100% 0, 100% 100%, 30% 100%);
-            z-index: 3;
-        }
-
-        /* ===== TABLE ===== */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 12px;
-        }
-
-        table,
-        th,
-        td {
-            border: 1px solid #000;
-        }
-
-        th,
-        td {
-            padding: 5px;
-            vertical-align: top;
-        }
-
-        /* ===== HEADING ===== */
-        h3 {
-            margin-top: 20px;
-            margin-bottom: 12px;
-            text-align: center;
-        }
-
-        h4 {
-            margin-top: 15px;
-            margin-bottom: 6px;
-        }
-/* ===== FORM TABLE – DOMPDF SAFE ===== */
-.table-clean {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 12px;
-}
-
-.table-clean tr {
-    height: 20px;
-}
-
-.table-clean td {
-    border: none !important;
-    padding: 4px 6px;
-    vertical-align: middle;
-    font-size: 11px;
-}
-
-/* Jangan pakai table-layout fixed dulu (ini biang masalah tadi) */
-.col-label {
-    width: 125px;
-}
-
-.col-colon {
-    width: 20px;
-    text-align: center;
-}
-
-.col-value {
-    width: auto;
-}
-/* ===== HAPUS SEMUA GARIS TABEL (FINAL) ===== */
-.table-clean,
-.table-clean tr,
-.table-clean td {
-    border: none !important;
-}
-
-/* Kalau sebelumnya ada table global border, matikan khusus summary */
-.table-clean {
-    border-collapse: collapse;
-    background: transparent;
-}
-
-    </style>
-
+    <link rel="stylesheet" href="{{ public_path('css/concrete_mixer.css') }}">
 </head>
 
-<body>
+<body style="margin-top: 55px; border: 1px solid red;">
 
     <header class="header">
         <div class="yellow-bar"></div>
@@ -261,12 +13,13 @@
         <table class="header-table">
             <tr>
                 <td class="logo-col">
-                    <img src="{{ public_path('storage/images/logo_cakra.png') }}" style="width: 130px;">
+                    <img src="{{ public_path('storage/images/logo_cakra.png') }}"
+                        style="width: 130px; margin-left: 30px;">
                 </td>
                 <td class="info-col">
                     <span class="info-line">+62 856 4042 4888</span>
                     <span class="info-line">info@cakrateknika.com</span>
-                    <div style="font-size: 10px; margin-top: 5px;">
+                    <div style="font-size: 12px; margin-top: 5px;">
                         Jalan Bukit Wato-Wato VII Blok B2A/14<br>
                         Permata Puri, Beringin, Ngaliyan, Semarang
                     </div>
@@ -275,157 +28,167 @@
         </table>
 
         <div class="green-panel">
-            <div class="icon-text">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0id2hpdGUiIGNsYXNzPSJiaSBiaS1waG9uZS1maWxsIiB2aWV3Qm94PSIwIDAgMTYgMTYiPgogIDxwYXRoIGQ9Ik0zIDJhMiAyIDAgMCAxIDItMmg2YTIgMiAwIDAgMSAyIDJ2MTJhMiAyIDAgMCAxLTIgMmgtNmEyIDIgMCAwIDEtMi0yVjJ6bTYgMTFhMSAxIDAgMSAwIDAtMiAxIDEgMCAwIDAgMCAyeiIvPgo8L3N2Zz4="
-                    width="18">
+            <div class="icon-text" style="margin-top: 33px">
+                <img src="{{ public_path('storage/images/phone_icon.png') }}" style="width: 18px; color: white;">
             </div>
 
             <div class="icon-text">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0id2hpdGUiIGNsYXNzPSJiaSBiaS1nbG9iZSIgdmlld0JveD0iMCAwIDE2IDE2Ij4KICA8cGF0aCBkPSJNMCA4YTggOCAwIDEgMSAxNiAwQTggOCAwIDAgMSAwIDh6bTcuNSA2LjkyM2MtLjk2LS4zOTktMS43NjUtMS4wNTYtMi4zNDYtMS45MDhBNi43MTEgNi43MTEgMCAwIDEgNy41IDE0LjkyM3pNMTAuNDU1IDEzYTIuMDcyIDIuMDcyIDAgMCAwIC40OTYtMS4xNThIMTQuMzhhNi43MiA2LjcyIDAgMCAxLTMuOTI1IDMuMDc5em0yLjQ1MS0yLjExSDkuMjE3YTUuNTEzIDUuNTEzIDAgMCAwIC40OTItMi40MjNoNC4zMjJhNi43IDYuNyAwIDAgMS0xLjYzIDIuNDIzek0xNC4wMyA3aC00LjMzNWE1LjUxIDUuNTEgMCAwIDAtLjQ5Mi0yLjQyM2gzLjE5N0E2LjcwMSA2LjcwMSAwIDAgMSAxNC4wMyA3ek0xMC40NTUgM2EyLjA3OCAyLjA3OCAwIDAgMC0uNDk2IDEuMTU4SDE0LjM4QTYuNzIgNi43MiAwIDAgMCAxMC40NTUgM3pNNy41IDEuMDc3Yy0uOTYtLjM5OS0xLjc2NS0xLjA1Ni0yLjM0Ni0xLjkwOEE2LjcxMSA2LjcxMSAwIDAgMSA3LjUgMS4wNzd6TTQuNDY1IDYuOTU1SDEuOTdhNi43IDYuNyAwIDAgMSAxLjYzLTIuNDIzaDMuMTk3YTkuMTQ5IDkuMTQ5IDAgMCAwLS4zMzIgMi40MjN6bTAgMi4wOUgxLjk3YTYuNyA2LjcgMCAwIDAgMS42MyAyLjQyM2gzLjE5N2E5LjE0OSA5LjE0OSAwIDAgMS0uMzMyLTIuNDIzek0xLjk3IDcuNWguMDA1YTYuNzUgNi43NSAwIDAgMC0uMDIuNTA3TDQuMDkgOC40NTNBNi45IDYuOSAwIDAgMSA0IDguNWgtLjAwNWE2Ljk1IDYuOTUgMCAwIDEgMC0xLjA0N0g0LjA5YTYuOSA2LjkgMCAwIDEgLjA3MS45NTRsLTIuMTk1LS40Nzd6bTEyLjA2IDBIMTIuMDlhNi45IDYuOSAwIDAgMSAuMDcxLS45NTRsMi4xOTUuNDc3YTYuNzUgNi43NSAwIDAgMC0uMDItLjUwN0gxNC4wM2E2LjcwMSA2LjcwMSAwIDAgMSAwIDEuMDR6Ii8+Cjwvc3ZnPg=="
-                    width="18">
+                <img src="{{ public_path('storage/images/email_icon.png') }}" style="width: 18px; color: white;">
             </div>
 
             <div class="icon-text">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0id2hpdGUiIGNsYXNzPSJiaSBiaS1nZW8tYWx0LWZpbGwiIHZpZXdCb3g9i00IDAgMTYgMTYiPgogIDxwYXRoIGQ9Ik04IDE2czYtNS42ODYgNi0xMEE2IDYgMCAwIDAgMiA2YzAgNC4zMTQgNiAxMCA2IDEwek04IDhhMiAyIDAgMSAxIDAtNCAyIDIgMCAwIDEgMCA0eiIvPgo8L3N2Zz4="
-                    width="18">
+                <img src="{{ public_path('storage/images/location_icon.png') }}" style="width: 18px; color: white;">
+
             </div>
         </div>
     </header>
 
     <div class="watermark">
-        <img src="{{ public_path('storage/images/logo_cakra.png') }}" style="width: 100%;">
+        <img src="{{ public_path('storage/images/watermark.jpeg') }}" style="width: 100%;">
     </div>
 
-    <footer class="footer-layer-wrapper">
-        <div class="layer layer-gray"></div>
-        <div class="layer layer-green-top"></div>
-        <div class="layer layer-green-main"></div>
-        <div class="layer layer-gold"></div>
+    <footer>
+        <div>
+        <img src="{{ public_path('storage/images/footer.jpeg') }}" style="width: 595pt;">
+        </div>
     </footer>
 
     <main>
         {{-- ================= SUMMARY REPORT ================= --}}
-   <div class="summary-wrapper" style="font-family: Georgia, serif; font-size: 11px;">
+        <div class="summary-wrapper" style="font-family: Georgia, serif; font-size: 11px;">
 
-    <h3 style="text-align:center; margin-bottom:20px;">
-        SUMMARY REPORT
-    </h3>
+            <h3 style="text-align:center; margin-bottom:20px; margin-top: 0px; padding-top: 0px;">
+                SUMMARY REPORT
+            </h3>
 
-<table class="table-clean">
-        <tr>
-            <td class="col-label">No Laporan</td>
-            <td class="col-colon">:</td>
-            <td class="col-value"></td>
-        </tr>
-        <tr>
-            <td class="col-label">Tanggal Pemeriksaan</td>
-            <td class="col-colon">:</td>
-            <td class="col-value"></td>
-        </tr>
-    </table>
+            <table class="table-clean" style="border: 1px solid red;">
+                <tr>
+                    <td class="col-label" style="padding-left: 205px">No Laporan</td>
+                    <td class="col-colon">:</td>
+                    <td class="col-value"></td>
+                </tr>
+                <tr>
+                    <td class="col-label" style="padding-left: 205px">Tanggal Pemeriksaan</td>
+                    <td class="col-colon">:</td>
+                    <td class="col-value"></td>
+                </tr>
+            </table>
 
-    <p><strong>Data Umum</strong></p>
+            <p class="judul"><strong>Data Umum</strong></p>
 
-    <table class="table-clean">
-    <tr>
-        <td class="col-label">Nama Perusahaan</td>
-        <td class="col-colon">:</td>
-        <td class="col-value"></td>
-    </tr>
-    <tr>
-        <td class="col-label">Lokasi</td>
-        <td class="col-colon">:</td>
-        <td class="col-value"></td>
-    </tr>
-    <tr>
-        <td class="col-label">Alamat Perusahaan</td>
-        <td class="col-colon">:</td>
-        <td class="col-value"></td>
-    </tr>
-    <tr>
-        <td class="col-label">Jenis Pemeriksaan</td>
-        <td class="col-colon">:</td>
-        <td class="col-value"></td>
-    </tr>
-    <tr>
-        <td class="col-label">Pemeriksa</td>
-        <td class="col-colon">:</td>
-        <td class="col-value"></td>
-    </tr>
-    </table>
+            <table class="table-clean">
+                <tr>
+                    <td class="col-label">Nama Perusahaan</td>
+                    <td class="col-colon">:</td>
+                    <td class="col-value"></td>
+                </tr>
+                <tr>
+                    <td class="col-label">Lokasi</td>
+                    <td class="col-colon">:</td>
+                    <td class="col-value"></td>
+                </tr>
+                <tr>
+                    <td class="col-label">Alamat Perusahaan</td>
+                    <td class="col-colon">:</td>
+                    <td class="col-value"></td>
+                </tr>
+                <tr>
+                    <td class="col-label">Jenis Pemeriksaan</td>
+                    <td class="col-colon">:</td>
+                    <td class="col-value"></td>
+                </tr>
+                <tr>
+                    <td class="col-label">Pemeriksa</td>
+                    <td class="col-colon">:</td>
+                    <td class="col-value"></td>
+                </tr>
+            </table>
 
-    <p><strong>Data Teknis</strong></p>
+            <p class="judul"><strong>Data Teknis</strong></p>
 
-    <table class="table-clean">
-         <tr>
-        <td class="col-label">Merk / Tipe</td>
-        <td class="col-colon">:</td>
-        <td class="col-value"></td>
-    </tr>
-    <tr>
-        <td class="col-label">Pabrik Pembuat</td>
-        <td class="col-colon">:</td>
-        <td class="col-value"></td>
-    </tr>
-    <tr>
-        <td class="col-label">Tahun Pembuatan</td>
-        <td class="col-colon">:</td>
-        <td class="col-value"></td>
-    </tr>
-    <tr>
-        <td class="col-label">Nomor Seri</td>
-        <td class="col-colon">:</td>
-        <td class="col-value"></td>
-    </tr>
-    <tr>
-        <td class="col-label">Kapasitas</td>
-        <td class="col-colon">:</td>
-        <td class="col-value"></td>
-    </tr>
-    </table>
+            <table class="table-clean">
+                <tr>
+                    <td class="col-label">Merk / Tipe</td>
+                    <td class="col-colon">:</td>
+                    <td class="col-value"></td>
+                </tr>
+                <tr>
+                    <td class="col-label">Pabrik Pembuat</td>
+                    <td class="col-colon">:</td>
+                    <td class="col-value"></td>
+                </tr>
+                <tr>
+                    <td class="col-label">Tahun Pembuatan</td>
+                    <td class="col-colon">:</td>
+                    <td class="col-value"></td>
+                </tr>
+                <tr>
+                    <td class="col-label">Nomor Seri</td>
+                    <td class="col-colon">:</td>
+                    <td class="col-value"></td>
+                </tr>
+                <tr>
+                    <td class="col-label">Kapasitas</td>
+                    <td class="col-colon">:</td>
+                    <td class="col-value"></td>
+                </tr>
+            </table>
 
-    <p><strong>Referensi / Standart</strong></p>
+            <p><strong>Referensi / Standart</strong></p>
 
-    <table class="table-clean">
-        <tr>
-            <td class="col-label">1.</td>
-            <td class="col-colon"></td>
-            <td class="col-value"></td>
-        </tr>
-        <tr>
-            <td>2.</td>
-            <td></td>
-            <td></td>
-        </tr>
-    </table>
+            <table class="table-clean">
+                <tr>
+                    <td class="col-label">1.</td>
+                    <td class="col-colon"></td>
+                    <td class="col-value"></td>
+                </tr>
+                <tr>
+                    <td>2.</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
 
-    <p><strong>Ruang Lingkup Pemeriksaan</strong></p>
+            <p><strong>Ruang Lingkup Pemeriksaan</strong></p>
 
-    <table class="table-clean">
-        <tr><td>1.</td></tr>
-        <tr><td>2.</td></tr>
-        <tr><td>3.</td></tr>
-        <tr><td>4.</td></tr>
-        <tr><td>5.</td></tr>
-    </table>
-</div>
-<div style="margin-top:40px; text-align:right;">
+            <table class="table-clean">
+                <tr>
+                    <td>1.</td>
+                </tr>
+                <tr>
+                    <td>2.</td>
+                </tr>
+                <tr>
+                    <td>3.</td>
+                </tr>
+                <tr>
+                    <td>4.</td>
+                </tr>
+                <tr>
+                    <td>5.</td>
+                </tr>
+            </table>
+            <p>
+                Berdasarkan hasil pemeriksaan dan pengujian yang dilakukan dapat disimpulkan bahwa peralatan di atas dalam kondisi Baik dan Memenuhi Syarat Keselamatan dan Kesehatan Kerja (K3)
+            </p>
+        </div>
+        <div style="margin-top:40px; padding-right: 30px; text-align:right; border: 1px solid red;">
 
-    <p>
-        Semarang, ....................................
-    </p>
+            <p>
+                Semarang, ....................................
+            </p>
 
-    <p style="margin-top:20px;">
-        PT Cakra Teknika Solusi<br>
-        Yang Memeriksa dan Menguji
-    </p>
+            <p style="margin-top:20px;">
+                PT Cakra Teknika Solusi<br>
+                Yang Memeriksa dan Menguji
+            </p>
 
-    <p style="margin-top:40px;">
-        <strong>( ........................................ )</strong><br>
-        Direktur
-    </p>
+            <p style="margin-top:40px; border: 1px solid black;">
+                <strong>( ........................................ )</strong><br>
+                <span>Direktur</span>
+            </p>
 
-</div>
+        </div>
         <div style="page-break-after: always;"></div>
 
         {{-- ================= BAB 1 ================= --}}
