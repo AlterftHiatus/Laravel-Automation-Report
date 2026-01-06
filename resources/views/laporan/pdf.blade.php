@@ -105,12 +105,74 @@
         footer {
             position: fixed;
             bottom: -95px;
-            left: 0;
-            right: 0;
-            height: 70px;
-            border-top: 2px solid #000;
+            left: -40px;
+            right: -40px;
+            height: 40px;
             text-align: center;
             font-size: 10px;
+            width: 100%;
+            background-color: #000;
+        }
+
+        .footer-layer-wrapper {
+            position: fixed;
+            bottom: -120px;
+            left: -40px;
+            right: -40px;
+            height: 90px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        /* Pengaturan umum untuk setiap lapisan */
+        .layer {
+            position: absolute;
+            bottom: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        /* Lapisan Hijau Paling Atas (Garis Tipis) */
+        .layer-green-top {
+            border-radius: 0 15px 0 0;
+            height: 10px;
+            top: 15px;
+            background-color: #008744;
+            /* Hijau Tua */
+        }
+
+        /* Lapisan Abu-abu */
+        .layer-gray {
+            border-radius: 0 15px 0 0;
+            background-color: #eeeeee;
+            top: 35px;
+            height: 45px;
+            width: 55%;
+            bottom: 0;
+            clip-path: polygon(0 0, 62% 0, 65% 100%, 0% 100%);
+        }
+
+        /* Lapisan Kuning/Emas */
+        .layer-gold {
+            border-radius: 0 15px 0 0;
+            background-color: #d4c000;
+            bottom: 0;
+            height: 40px;
+            width: 50%;
+            clip-path: polygon(0 0, 70% 0, 75% 100%, 0% 100%);
+            z-index: 2;
+        }
+
+        /* Lapisan Hijau Besar di Sisi Kanan */
+        .layer-green-main {
+            border-radius: 0 15px 0 0;
+            background-color: #008744;
+            right: 0;
+            width: 30%;
+            height: 100%;
+            top: 15px;
+            clip-path: polygon(15% 0, 100% 0, 100% 100%, 30% 100%);
+            z-index: 3;
         }
 
         /* ===== TABLE ===== */
@@ -187,8 +249,11 @@
         <img src="{{ public_path('storage/images/logo_cakra.png') }}" style="width: 100%;">
     </div>
 
-    <footer>
-        Halaman <span class="pageNumber"></span>
+    <footer class="footer-layer-wrapper">
+        <div class="layer layer-gray"></div>
+        <div class="layer layer-green-top"></div>
+        <div class="layer layer-green-main"></div>
+        <div class="layer layer-gold"></div>
     </footer>
 
     <main>
