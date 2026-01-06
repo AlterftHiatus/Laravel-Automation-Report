@@ -111,7 +111,7 @@
             text-align: center;
             font-size: 10px;
             width: 100%;
-            background-color: #000;
+            /* background-color: #000; */
         }
 
         .footer-layer-wrapper {
@@ -205,6 +205,50 @@
             margin-top: 15px;
             margin-bottom: 6px;
         }
+/* ===== FORM TABLE – DOMPDF SAFE ===== */
+.table-clean {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 12px;
+}
+
+.table-clean tr {
+    height: 20px;
+}
+
+.table-clean td {
+    border: none !important;
+    padding: 4px 6px;
+    vertical-align: middle;
+    font-size: 11px;
+}
+
+/* Jangan pakai table-layout fixed dulu (ini biang masalah tadi) */
+.col-label {
+    width: 125px;
+}
+
+.col-colon {
+    width: 20px;
+    text-align: center;
+}
+
+.col-value {
+    width: auto;
+}
+/* ===== HAPUS SEMUA GARIS TABEL (FINAL) ===== */
+.table-clean,
+.table-clean tr,
+.table-clean td {
+    border: none !important;
+}
+
+/* Kalau sebelumnya ada table global border, matikan khusus summary */
+.table-clean {
+    border-collapse: collapse;
+    background: transparent;
+}
+
     </style>
 
 </head>
@@ -232,15 +276,18 @@
 
         <div class="green-panel">
             <div class="icon-text">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0id2hpdGUiIGNsYXNzPSJiaSBiaS1waG9uZS1maWxsIiB2aWV3Qm94PSIwIDAgMTYgMTYiPgogIDxwYXRoIGQ9Ik0zIDJhMiAyIDAgMCAxIDItMmg2YTIgMiAwIDAgMSAyIDJ2MTJhMiAyIDAgMCAxLTIgMmgtNmEyIDIgMCAwIDEtMi0yVjJ6bTYgMTFhMSAxIDAgMSAwIDAtMiAxIDEgMCAwIDAgMCAyeiIvPgo8L3N2Zz4=" width="18">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0id2hpdGUiIGNsYXNzPSJiaSBiaS1waG9uZS1maWxsIiB2aWV3Qm94PSIwIDAgMTYgMTYiPgogIDxwYXRoIGQ9Ik0zIDJhMiAyIDAgMCAxIDItMmg2YTIgMiAwIDAgMSAyIDJ2MTJhMiAyIDAgMCAxLTIgMmgtNmEyIDIgMCAwIDEtMi0yVjJ6bTYgMTFhMSAxIDAgMSAwIDAtMiAxIDEgMCAwIDAgMCAyeiIvPgo8L3N2Zz4="
+                    width="18">
             </div>
 
             <div class="icon-text">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0id2hpdGUiIGNsYXNzPSJiaSBiaS1nbG9iZSIgdmlld0JveD0iMCAwIDE2IDE2Ij4KICA8cGF0aCBkPSJNMCA4YTggOCAwIDEgMSAxNiAwQTggOCAwIDAgMSAwIDh6bTcuNSA2LjkyM2MtLjk2LS4zOTktMS43NjUtMS4wNTYtMi4zNDYtMS45MDhBNi43MTEgNi43MTEgMCAwIDEgNy41IDE0LjkyM3pNMTAuNDU1IDEzYTIuMDcyIDIuMDcyIDAgMCAwIC40OTYtMS4xNThIMTQuMzhhNi43MiA2LjcyIDAgMCAxLTMuOTI1IDMuMDc5em0yLjQ1MS0yLjExSDkuMjE3YTUuNTEzIDUuNTEzIDAgMCAwIC40OTItMi40MjNoNC4zMjJhNi43IDYuNyAwIDAgMS0xLjYzIDIuNDIzek0xNC4wMyA3aC00LjMzNWE1LjUxIDUuNTEgMCAwIDAtLjQ5Mi0yLjQyM2gzLjE5N0E2LjcwMSA2LjcwMSAwIDAgMSAxNC4wMyA3ek0xMC40NTUgM2EyLjA3OCAyLjA3OCAwIDAgMC0uNDk2IDEuMTU4SDE0LjM4QTYuNzIgNi43MiAwIDAgMCAxMC40NTUgM3pNNy41IDEuMDc3Yy0uOTYtLjM5OS0xLjc2NS0xLjA1Ni0yLjM0Ni0xLjkwOEE2LjcxMSA2LjcxMSAwIDAgMSA3LjUgMS4wNzd6TTQuNDY1IDYuOTU1SDEuOTdhNi43IDYuNyAwIDAgMSAxLjYzLTIuNDIzaDMuMTk3YTkuMTQ5IDkuMTQ5IDAgMCAwLS4zMzIgMi40MjN6bTAgMi4wOUgxLjk3YTYuNyA2LjcgMCAwIDAgMS42MyAyLjQyM2gzLjE5N2E5LjE0OSA5LjE0OSAwIDAgMS0uMzMyLTIuNDIzek0xLjk3IDcuNWguMDA1YTYuNzUgNi43NSAwIDAgMC0uMDIuNTA3TDQuMDkgOC40NTNBNi45IDYuOSAwIDAgMSA0IDguNWgtLjAwNWE2Ljk1IDYuOTUgMCAwIDEgMC0xLjA0N0g0LjA5YTYuOSA2LjkgMCAwIDEgLjA3MS45NTRsLTIuMTk1LS40Nzd6bTEyLjA2IDBIMTIuMDlhNi45IDYuOSAwIDAgMSAuMDcxLS45NTRsMi4xOTUuNDc3YTYuNzUgNi43NSAwIDAgMC0uMDItLjUwN0gxNC4wM2E2LjcwMSA2LjcwMSAwIDAgMSAwIDEuMDR6Ii8+Cjwvc3ZnPg==" width="18">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0id2hpdGUiIGNsYXNzPSJiaSBiaS1nbG9iZSIgdmlld0JveD0iMCAwIDE2IDE2Ij4KICA8cGF0aCBkPSJNMCA4YTggOCAwIDEgMSAxNiAwQTggOCAwIDAgMSAwIDh6bTcuNSA2LjkyM2MtLjk2LS4zOTktMS43NjUtMS4wNTYtMi4zNDYtMS45MDhBNi43MTEgNi43MTEgMCAwIDEgNy41IDE0LjkyM3pNMTAuNDU1IDEzYTIuMDcyIDIuMDcyIDAgMCAwIC40OTYtMS4xNThIMTQuMzhhNi43MiA2LjcyIDAgMCAxLTMuOTI1IDMuMDc5em0yLjQ1MS0yLjExSDkuMjE3YTUuNTEzIDUuNTEzIDAgMCAwIC40OTItMi40MjNoNC4zMjJhNi43IDYuNyAwIDAgMS0xLjYzIDIuNDIzek0xNC4wMyA3aC00LjMzNWE1LjUxIDUuNTEgMCAwIDAtLjQ5Mi0yLjQyM2gzLjE5N0E2LjcwMSA2LjcwMSAwIDAgMSAxNC4wMyA3ek0xMC40NTUgM2EyLjA3OCAyLjA3OCAwIDAgMC0uNDk2IDEuMTU4SDE0LjM4QTYuNzIgNi43MiAwIDAgMCAxMC40NTUgM3pNNy41IDEuMDc3Yy0uOTYtLjM5OS0xLjc2NS0xLjA1Ni0yLjM0Ni0xLjkwOEE2LjcxMSA2LjcxMSAwIDAgMSA3LjUgMS4wNzd6TTQuNDY1IDYuOTU1SDEuOTdhNi43IDYuNyAwIDAgMSAxLjYzLTIuNDIzaDMuMTk3YTkuMTQ5IDkuMTQ5IDAgMCAwLS4zMzIgMi40MjN6bTAgMi4wOUgxLjk3YTYuNyA2LjcgMCAwIDAgMS42MyAyLjQyM2gzLjE5N2E5LjE0OSA5LjE0OSAwIDAgMS0uMzMyLTIuNDIzek0xLjk3IDcuNWguMDA1YTYuNzUgNi43NSAwIDAgMC0uMDIuNTA3TDQuMDkgOC40NTNBNi45IDYuOSAwIDAgMSA0IDguNWgtLjAwNWE2Ljk1IDYuOTUgMCAwIDEgMC0xLjA0N0g0LjA5YTYuOSA2LjkgMCAwIDEgLjA3MS45NTRsLTIuMTk1LS40Nzd6bTEyLjA2IDBIMTIuMDlhNi45IDYuOSAwIDAgMSAuMDcxLS45NTRsMi4xOTUuNDc3YTYuNzUgNi43NSAwIDAgMC0uMDItLjUwN0gxNC4wM2E2LjcwMSA2LjcwMSAwIDAgMSAwIDEuMDR6Ii8+Cjwvc3ZnPg=="
+                    width="18">
             </div>
 
             <div class="icon-text">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0id2hpdGUiIGNsYXNzPSJiaSBiaS1nZW8tYWx0LWZpbGwiIHZpZXdCb3g9i00IDAgMTYgMTYiPgogIDxwYXRoIGQ9Ik04IDE2czYtNS42ODYgNi0xMEE2IDYgMCAwIDAgMiA2YzAgNC4zMTQgNiAxMCA2IDEwek04IDhhMiAyIDAgMSAxIDAtNCAyIDIgMCAwIDEgMCA0eiIvPgo8L3N2Zz4=" width="18">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0id2hpdGUiIGNsYXNzPSJiaSBiaS1nZW8tYWx0LWZpbGwiIHZpZXdCb3g9i00IDAgMTYgMTYiPgogIDxwYXRoIGQ9Ik04IDE2czYtNS42ODYgNi0xMEE2IDYgMCAwIDAgMiA2YzAgNC4zMTQgNiAxMCA2IDEwek04IDhhMiAyIDAgMSAxIDAtNCAyIDIgMCAwIDEgMCA0eiIvPgo8L3N2Zz4="
+                    width="18">
             </div>
         </div>
     </header>
@@ -258,68 +305,127 @@
 
     <main>
         {{-- ================= SUMMARY REPORT ================= --}}
-        <div style="font-family: Georgia, serif; font-size: 11px;">
-            <h3 style="text-align:center; margin-bottom:20px; font-family: Georgia, serif; font-size: 11px;">
-                SUMMARY REPORT
-            </h3>
+   <div class="summary-wrapper" style="font-family: Georgia, serif; font-size: 11px;">
 
-            <p style="margin-left:80px;">
-                No Laporan <span style="display:inline-block; width:25px;">:</span><br>
-                Tanggal Pemeriksaan <span style="display:inline-block; width:25px;">:</span>
-            </p>
+    <h3 style="text-align:center; margin-bottom:20px;">
+        SUMMARY REPORT
+    </h3>
 
-            <p style="margin-top:15px;"><strong>Data Umum</strong></p>
+<table class="table-clean">
+        <tr>
+            <td class="col-label">No Laporan</td>
+            <td class="col-colon">:</td>
+            <td class="col-value"></td>
+        </tr>
+        <tr>
+            <td class="col-label">Tanggal Pemeriksaan</td>
+            <td class="col-colon">:</td>
+            <td class="col-value"></td>
+        </tr>
+    </table>
 
-            <p style="margin-left:80px;">
-                Nama Perusahaan <span style="display:inline-block; width:25px;">:</span><br>
-                Lokasi <span style="display:inline-block; width:25px;">:</span><br>
-                Alamat Perusahaan <span style="display:inline-block; width:25px;">:</span><br>
-                Jenis Pemeriksaan <span style="display:inline-block; width:25px;">:</span><br>
-                Pemeriksa <span style="display:inline-block; width:25px;">:</span>
-            </p>
+    <p><strong>Data Umum</strong></p>
 
-            <p style="margin-top:15px;"><strong>Data Teknis</strong></p>
+    <table class="table-clean">
+    <tr>
+        <td class="col-label">Nama Perusahaan</td>
+        <td class="col-colon">:</td>
+        <td class="col-value"></td>
+    </tr>
+    <tr>
+        <td class="col-label">Lokasi</td>
+        <td class="col-colon">:</td>
+        <td class="col-value"></td>
+    </tr>
+    <tr>
+        <td class="col-label">Alamat Perusahaan</td>
+        <td class="col-colon">:</td>
+        <td class="col-value"></td>
+    </tr>
+    <tr>
+        <td class="col-label">Jenis Pemeriksaan</td>
+        <td class="col-colon">:</td>
+        <td class="col-value"></td>
+    </tr>
+    <tr>
+        <td class="col-label">Pemeriksa</td>
+        <td class="col-colon">:</td>
+        <td class="col-value"></td>
+    </tr>
+    </table>
 
-            <p style="margin-left:80px;">
-                Merk / Tipe <span style="display:inline-block; width:25px;">:</span><br>
-                Pabrik Pembuat <span style="display:inline-block; width:25px;">:</span><br>
-                Tahun Pembuatan <span style="display:inline-block; width:25px;">:</span><br>
-                Nomor Seri <span style="display:inline-block; width:25px;">:</span><br>
-                Kapasitas <span style="display:inline-block; width:25px;">:</span>
-            </p>
+    <p><strong>Data Teknis</strong></p>
 
-            <p style="margin-top:15px;"><strong>Referensi / Standart</strong></p>
+    <table class="table-clean">
+         <tr>
+        <td class="col-label">Merk / Tipe</td>
+        <td class="col-colon">:</td>
+        <td class="col-value"></td>
+    </tr>
+    <tr>
+        <td class="col-label">Pabrik Pembuat</td>
+        <td class="col-colon">:</td>
+        <td class="col-value"></td>
+    </tr>
+    <tr>
+        <td class="col-label">Tahun Pembuatan</td>
+        <td class="col-colon">:</td>
+        <td class="col-value"></td>
+    </tr>
+    <tr>
+        <td class="col-label">Nomor Seri</td>
+        <td class="col-colon">:</td>
+        <td class="col-value"></td>
+    </tr>
+    <tr>
+        <td class="col-label">Kapasitas</td>
+        <td class="col-colon">:</td>
+        <td class="col-value"></td>
+    </tr>
+    </table>
 
-            <p style="margin-left:80px;">
-                1. <br>
-                2.
-            </p>
+    <p><strong>Referensi / Standart</strong></p>
 
-            <p style="margin-top:15px;"><strong>Ruang Lingkup Pemeriksaan:</strong></p>
-            <p style="margin-left:80px;">
-                1. Pemeriksaan dokumen<br>
-                2. Pemeriksaan visual<br>
-                3. Pengujian fungsi<br>
-                4. Pengujian tidak merusak<br>
-                5. Pengujian beban
-            </p>
+    <table class="table-clean">
+        <tr>
+            <td class="col-label">1.</td>
+            <td class="col-colon"></td>
+            <td class="col-value"></td>
+        </tr>
+        <tr>
+            <td>2.</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
 
-            <p style="margin-top:15px; text-align:justify;">
-                Berdasarkan hasil pemeriksaan dan pengujian yang dilakukan dapat disimpulkan bahwa
-                peralatan ini berada dalam kondisi baik dan memenuhi syarat keselamatan dan kesehatan kerja (K3).
-            </p>
+    <p><strong>Ruang Lingkup Pemeriksaan</strong></p>
 
-            <p style="margin-top:40px; text-align:right; margin-right:80px;">
-                PT Cakra Teknika Solusi<br>
-                Semarang
-            </p>
+    <table class="table-clean">
+        <tr><td>1.</td></tr>
+        <tr><td>2.</td></tr>
+        <tr><td>3.</td></tr>
+        <tr><td>4.</td></tr>
+        <tr><td>5.</td></tr>
+    </table>
+</div>
+<div style="margin-top:40px; text-align:right;">
 
-            <p style="margin-top:60px; text-align:right; margin-right:80px;">
-                <strong>( ........................................ )</strong><br>
-                Direktur
-            </p>
-        </div>
+    <p>
+        Semarang, ....................................
+    </p>
 
+    <p style="margin-top:20px;">
+        PT Cakra Teknika Solusi<br>
+        Yang Memeriksa dan Menguji
+    </p>
+
+    <p style="margin-top:40px;">
+        <strong>( ........................................ )</strong><br>
+        Direktur
+    </p>
+
+</div>
         <div style="page-break-after: always;"></div>
 
         {{-- ================= BAB 1 ================= --}}
@@ -539,7 +645,7 @@
         <h3>HASIL PEMERIKSAAN & PENGUJIAN</h3>
 
         @php
-        $currentKategori = null;
+            $currentKategori = null;
         @endphp
 
         <table>
@@ -551,19 +657,19 @@
             </tr>
 
             @foreach ($laporan->checklistResults as $index => $result)
-            @if ($currentKategori !== $result->checklistItem->kategori)
-            <tr>
-                <td colspan="4"><strong>{{ $result->checklistItem->kategori }}</strong></td>
-            </tr>
-            @php $currentKategori = $result->checklistItem->kategori; @endphp
-            @endif
+                @if ($currentKategori !== $result->checklistItem->kategori)
+                    <tr>
+                        <td colspan="4"><strong>{{ $result->checklistItem->kategori }}</strong></td>
+                    </tr>
+                    @php $currentKategori = $result->checklistItem->kategori; @endphp
+                @endif
 
-            <tr>
-                <td>{{ $index + 1 }}</td>
-                <td>{{ $result->checklistItem->nama_item }}</td>
-                <td>{{ $result->hasil }}</td>
-                <td>{{ $result->keterangan }}</td>
-            </tr>
+                <tr>
+                    <td>{{ $index + 1 }}</td>
+                    <td>{{ $result->checklistItem->nama_item }}</td>
+                    <td>{{ $result->hasil }}</td>
+                    <td>{{ $result->keterangan }}</td>
+                </tr>
             @endforeach
         </table>
 
@@ -571,8 +677,8 @@
         <h3>DOKUMENTASI FOTO</h3>
 
         @foreach ($laporan->fotos as $foto)
-        <p>{{ $foto->keterangan }}</p>
-        <img src="{{ storage_path('app/public/'.$foto->file_path) }}" width="300">
+            <p>{{ $foto->keterangan }}</p>
+            <img src="{{ storage_path('app/public/' . $foto->file_path) }}" width="300">
         @endforeach
         <div style="page-break-after: always;"></div>
 
