@@ -134,7 +134,7 @@
                 </tr>
             </table>
 
-            <p><strong>Referensi / Standart</strong></p>
+            <p class="judul"><strong>Referensi / Standart</strong></p>
 
             <table class="table-clean">
                 <tr>
@@ -143,51 +143,53 @@
                     <td class="col-value"></td>
                 </tr>
                 <tr>
-                    <td>2.</td>
-                    <td></td>
-                    <td></td>
+                    <td class="col-label">2.</td>
+                    <td class="col-colon"></td>
+                    <td class="col-value"></td>
+                </tr>
+                <tr>
+                    <td class="col-label">3.</td>
+                    <td class="col-colon"></td>
+                    <td class="col-value"></td>
                 </tr>
             </table>
 
-            <p><strong>Ruang Lingkup Pemeriksaan</strong></p>
+            <p class="judul"><strong>Ruang Lingkup Pemeriksaan</strong></p>
 
             <table class="table-clean">
-                <tr>
-                    <td>1.</td>
+                 <tr>
+                    <td class="col-label">1.</td>
+                    <td class="col-colon"></td>
+                    <td class="col-value"></td>
                 </tr>
                 <tr>
-                    <td>2.</td>
+                    <td class="col-label">2.</td>
+                    <td class="col-colon"></td>
+                    <td class="col-value"></td>
                 </tr>
                 <tr>
-                    <td>3.</td>
-                </tr>
-                <tr>
-                    <td>4.</td>
-                </tr>
-                <tr>
-                    <td>5.</td>
+                    <td class="col-label">3.</td>
+                    <td class="col-colon"></td>
+                    <td class="col-value"></td>
                 </tr>
             </table>
-            <p>
-                Berdasarkan hasil pemeriksaan dan pengujian yang dilakukan dapat disimpulkan bahwa peralatan di atas dalam kondisi Baik dan Memenuhi Syarat Keselamatan dan Kesehatan Kerja (K3)
+            <p class="judul text-align: justify;">
+                Berdasarkan hasil pemeriksaan dan pengujian 
+                yang dilakukan dapat disimpulkan bahwa peralatan di 
+                atas dalam kondisi <strong>Baik dan Memenuhi Syarat Keselamatan 
+                dan Kesehatan Kerja (K3)</strong>
             </p>
         </div>
-        <div style="margin-top:40px; padding-right: 30px; text-align:right; border: 1px solid red;">
-
-            <p>
-                Semarang, ....................................
+        <div style="margin-top:0px; padding-right: 30px; text-align:right; border: 1px solid red;">
+            <p style="padding-top: 0px;">
+                PT CAKRA TEKNIKA SOLUSI SEMARANG<br>
             </p>
 
-            <p style="margin-top:20px;">
-                PT Cakra Teknika Solusi<br>
-                Yang Memeriksa dan Menguji
+            <p style="margin-top:60px; padding-right: 40px; border: 1px solid black;">
+                <strong>( ........................................ )</strong>
+                <br>
+                <span style="padding-right: 30px">DIREKTUR</span>
             </p>
-
-            <p style="margin-top:40px; border: 1px solid black;">
-                <strong>( ........................................ )</strong><br>
-                <span>Direktur</span>
-            </p>
-
         </div>
         <div style="page-break-after: always;"></div>
 
@@ -198,7 +200,7 @@
             </h3>
 
             <h4 style="font-family: Georgia, serif; font-size: 11px;">1.1 Latar Belakang</h4>
-            <p style="text-align: justify;">
+            <p style="text-align: justify; text-indent: 35px; padding-left: 30px;">
                 Disebutkan di dalam Undang-Undang No. 1 Tahun 1970 bahwa setiap pembuatan,
                 percobaan, dan pemakaian mesin, pesawat, alat perkakas, peralatan atau instalasi
                 yang berbahaya atau dapat menimbulkan kecelakaan maupun peledakan harus dilakukan
