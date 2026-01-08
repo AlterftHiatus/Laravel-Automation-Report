@@ -55,7 +55,7 @@
 
     <main>
         {{-- ================= SUMMARY REPORT ================= --}}
-        <div class="summary-wrapper" style="font-family: Georgia, serif; font-size: 11px;">
+        <div class="summary-wrapper">
 
             <h3 style="text-align:center; margin-bottom:20px; margin-top: 0px; padding-top: 0px;">
                 SUMMARY REPORT
@@ -194,13 +194,13 @@
         <div style="page-break-after: always;"></div>
 
         {{-- ================= BAB 1 ================= --}}
-        <div style="font-family: Georgia, serif; font-size: 11px;">
-            <h3 style="text-align:center; font-family: Georgia, serif; font-size: 11px;">
-                BAB I<br>PENDAHULUAN
+        <div>
+            <h3 style="text-align:center;">
+                BAB I<br>PENDAHULUAN    
             </h3>
 
-            <h4 style="font-family: Georgia, serif; font-size: 11px;">1.1 Latar Belakang</h4>
-            <p style="text-align: justify; text-indent: 35px; padding-left: 30px;">
+            <h4 padding-left: 13px;>1.1 Latar Belakang</h4>
+            <p style="text-align: justify; text-indent: 25px; padding-left: 30px;">
                 Disebutkan di dalam Undang-Undang No. 1 Tahun 1970 bahwa setiap pembuatan,
                 percobaan, dan pemakaian mesin, pesawat, alat perkakas, peralatan atau instalasi
                 yang berbahaya atau dapat menimbulkan kecelakaan maupun peledakan harus dilakukan
@@ -209,7 +209,7 @@
                 RI Nomor 38 Tahun 2016.
             </p>
 
-            <p style="text-align: justify;">
+            <p style="text-align: justify; text-indent: 25px; padding-left: 30px;">
                 Dalam melakukan pengawasan tersebut, Kementerian Ketenagakerjaan Republik Indonesia
                 menunjuk Perusahaan Jasa Keselamatan dan Kesehatan Kerja (PJK3) sebagai pihak yang
                 berwenang untuk melaksanakan pemeriksaan dan pengujian sesuai dengan regulasi yang
@@ -217,19 +217,19 @@
                 di Negara Republik Indonesia.
             </p>
 
-            <p style="text-align: justify;">
+            <p style="text-align: justify; text-indent: 25px; padding-left: 30px;">
                 Tujuan penyusunan Laporan Hasil Pemeriksaan dan Pengujian Pesawat Tenaga dan Produksi
                 ini adalah untuk menjalankan amanat undang-undang serta peraturan yang telah
                 ditetapkan, sekaligus mewujudkan rasa aman dan nyaman bagi tenaga kerja di lingkungan kerja.
             </p>
 
-            <h4 style="font-family: Georgia, serif; font-size: 11px;">1.2 Identitas Pesawat Tenaga dan Produksi</h4>
-            <p style="text-align: justify;">
+            <h4 style= "padding-left: 13px;">1.2 Identitas Pesawat Tenaga dan Produksi</h4>
+            <p style="text-align: justify; padding-left: 30px;">
                 Identitas Pesawat Tenaga dan Produksi jenis mesin yang dilakukan pemeriksaan
                 dan pengujian adalah sebagai berikut:
             </p>
 
-            <table>
+            <table style="padding-left: 30px; padding-right: 100px;">
                 <tr>
                     <td width="30%">Jenis Pesawat</td>
                     <td>: {{ $laporans_data_teknis->jenis_pesawat ?? 'Concrete Mixer' }}</td>
@@ -260,13 +260,13 @@
                 </tr>
             </table>
 
-            <h4 style="font-family: Georgia, serif; font-size: 11px;">1.3 Dasar Hukum / Referensi</h4>
-            <p style="text-align: justify;">
+            <h4 style="padding-left: 13px;">1.3 Dasar Hukum / Referensi</h4>
+            <p style="text-align: justify; padding-left: 30px; text-indent: 25px;">
                 Dasar hukum yang digunakan dalam pelaksanaan kegiatan pemeriksaan dan pengujian
                 terhadap pesawat tenaga dan produksi adalah sebagai berikut:
             </p>
 
-            <ol style="margin-left: 20px;">
+            <ol style="margin-left: 20px;border: 1px solid red;">
                 <li>Undang-Undang Nomor 1 Tahun 1970 tentang Keselamatan Kerja</li>
                 <li>Undang-Undang Nomor 13 Tahun 2003 tentang Ketenagakerjaan</li>
                 <li>Peraturan Pemerintah Nomor 50 Tahun 2012 tentang Penerapan Sistem Manajemen
@@ -287,7 +287,7 @@
                 <li>Standar internasional dan/atau standar negara lain yang diakui</li>
             </ol>
 
-            <h4 style="font-family: Georgia, serif; font-size: 11px;">1.4 Alat Uji dan Alat Ukur</h4>
+            <h4>1.4 Alat Uji dan Alat Ukur</h4>
             <p style="text-align: justify;">
                 Alat uji dan alat ukur yang digunakan dalam pelaksanaan pemeriksaan dan pengujian
                 Pesawat Tenaga dan Produksi meliputi:
@@ -448,8 +448,8 @@
         <div style="page-break-after: always;"></div>
 
         {{-- ================= BAB 3 ================= --}}
-        <div style="font-family: Georgia, serif; font-size: 11px;">
-            <h3 style="text-align:center; margin-bottom:20px; font-family: Georgia, serif; font-size: 11px;">
+        <div>
+            <h3 style="text-align:center; margin-bottom:20px; ">
                 BAB III<br>
                 HASIL DAN KESIMPULAN
             </h3>

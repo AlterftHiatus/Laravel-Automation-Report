@@ -3,12 +3,12 @@
     margin: 120px 40px 100px 40px;
 }
 
-
 /* ===== GLOBAL FONT ===== */
+*,
 body {
-    font-family: "cambria", serif;
-    font-size: 11px;
-    line-height: 1.4;
+    font-family: "DejaVu Serif", serif;
+    font-size: 11pt;
+    line-height: 1.5;
 }
 
 /* ===== HEADER ===== */
@@ -221,10 +221,9 @@ h4 {
 }
 
 .table-clean td {
-    border: none ;
+    border: none;
     padding: 4px 6px;
     vertical-align: middle;
-    font-size: 11px;
 }
 
 /* Jangan pakai table-layout fixed dulu (ini biang masalah tadi) */

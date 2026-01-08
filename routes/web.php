@@ -17,3 +17,9 @@ Route::get('/laporan/{id}/preview', [LaporanController::class, 'preview'])->name
 Route::get('/laporan/{id}/pdf', [LaporanController::class, 'generatePdf']);
 
 
+
+
+Route::get('/dunlut', function () {
+    return view('dunlut');
+});
+
