@@ -188,7 +188,7 @@ return [
          *
          * @var string
          */
-        'default_font' => 'dejavuserif',
+        'default_font' => 'Times',
 
 
         /**

@@ -7,7 +7,7 @@
 </head>
 <body>
    <div>
-    <a href="/laporan/12/pdf">iki dunlut let</a>
+    <a href="/laporan/8/pdf">iki dunlut let</a>
 </div> 
     
 </body>

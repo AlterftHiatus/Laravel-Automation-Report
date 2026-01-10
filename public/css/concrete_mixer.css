@@ -6,7 +6,7 @@
 /* ===== GLOBAL FONT ===== */
 *,
 body {
-    font-family: "DejaVu Serif", serif;
+    font-family: "Times", serif;
     font-size: 11pt;
     line-height: 1.5;
 }
@@ -14,85 +14,8 @@ body {
 /* ===== HEADER ===== */
 header {
     position: fixed;
-    top: -125px;
+    top: -124px;
     left: -40px;
-    right: -40px;
-    height: 120px;
-    text-align: center;
-    /* border-bottom: 2px solid #000; */
-}
-
-/* FIXED HEADER */
-/* .header {
-            position: fixed;
-            top: -160px;
-            left: 0px;
-            right: 0px;
-            height: 150px;
-            width: 100%;
-        } */
-
-.yellow-bar {
-    background-color: #d4c017;
-    height: 35px;
-    width: 100%;
-}
-
-.header-table {
-    width: 100%;
-    border: none !important;
-    /* border: 1px solid red; */
-    margin-top: 0px;
-}
-
-.header-table td {
-    border: none !important;
-    /* border: 1px solid blue; */
-    vertical-align: middle;
-}
-
-.logo-col {
-    width: 40%;
-    padding-top: 5px;
-}
-
-.info-col {
-    width: 50%;
-    text-align: right;
-    /* padding-top: 15px; */
-    padding-top: 0px;
-    padding-right: 120px;
-    margin-top: 0px;
-    font-size: 12px;
-}
-
-.info-line {
-    border-bottom: 1px solid black;
-    margin-bottom: 8px;
-    margin-top: 0px;
-    padding-top: 0px;
-    padding-bottom: 8px;
-    display: block;
-    /* border: 1px solid rgb(251, 255, 0); */
-}
-
-/* PANEL HIJAU (Gaya Sidebar Kanan) */
-.green-panel {
-    position: absolute;
-    top: 0;
-    right: 70px;
-    width: 40px;
-    height: 150px;
-    background-color: #0b7d3f;
-    text-align: center;
-    padding-top: 15px;
-}
-
-.icon-text {
-    color: white;
-    font-size: 18px;
-    margin-bottom: 10px;
-    display: block;
 }
 
 /* ===== WATERMARK ===== */
@@ -110,73 +33,7 @@ header {
 footer {
     position: fixed;
     bottom: -100px;
-    left: 0px;
-    right: 0px;
-    /* height: 40px; */
-    text-align: center;
-    /* font-size: 10px; */
-    /* background-color: #000; */
-}
-
-.footer-layer-wrapper {
-    position: fixed;
-    bottom: -120px;
     left: -40px;
-    right: -40px;
-    height: 90px;
-    width: 100%;
-    overflow: hidden;
-}
-
-/* Pengaturan umum untuk setiap lapisan */
-.layer {
-    position: absolute;
-    bottom: 0;
-    height: 100%;
-    width: 100%;
-}
-
-/* Lapisan Hijau Paling Atas (Garis Tipis) */
-.layer-green-top {
-    border-radius: 0 15px 0 0;
-    height: 10px;
-    top: 15px;
-    background-color: #008744;
-    /* Hijau Tua */
-}
-
-/* Lapisan Abu-abu */
-.layer-gray {
-    border-radius: 0 15px 0 0;
-    background-color: #eeeeee;
-    top: 35px;
-    height: 45px;
-    width: 55%;
-    bottom: 0;
-    clip-path: polygon(0 0, 62% 0, 65% 100%, 0% 100%);
-}
-
-/* Lapisan Kuning/Emas */
-.layer-gold {
-    border-radius: 0 15px 0 0;
-    background-color: #d4c000;
-    bottom: 0;
-    height: 40px;
-    width: 50%;
-    clip-path: polygon(0 0, 70% 0, 75% 100%, 0% 100%);
-    z-index: 2;
-}
-
-/* Lapisan Hijau Besar di Sisi Kanan */
-.layer-green-main {
-    border-radius: 0 15px 0 0;
-    background-color: #008744;
-    right: 0;
-    width: 30%;
-    height: 100%;
-    top: 15px;
-    clip-path: polygon(15% 0, 100% 0, 100% 100%, 30% 100%);
-    z-index: 3;
 }
 
 /* ===== TABLE ===== */
@@ -194,7 +51,7 @@ td {
 
 th,
 td {
-    padding: 5px;
+    padding: 3px;
     vertical-align: top;
 }
 
@@ -222,29 +79,34 @@ h4 {
 
 .table-clean td {
     border: none;
-    padding: 4px 6px;
+    padding-left: 4px;
+    padding-bottom: 0px;
+    padding-top: 0px;
     vertical-align: middle;
 }
 
 /* Jangan pakai table-layout fixed dulu (ini biang masalah tadi) */
 .col-label {
     width: 125px;
+    background-color: bisque;
 }
 
 .col-colon {
-    width: 20px;
+    width: 10px;
     text-align: center;
+    background-color: aqua;
 }
 
 .col-value {
     width: auto;
+    background-color: rgb(255, 255, 51);
 }
 /* ===== HAPUS SEMUA GARIS TABEL (FINAL) ===== */
-.table-clean,
+/* .table-clean,
 .table-clean tr,
 .table-clean td {
-    /* border: none !important; */
-}
+    border: none !important;
+} */
 
 /* Kalau sebelumnya ada table global border, matikan khusus summary */
 .table-clean {
@@ -258,4 +120,54 @@ h4 {
 
 .judul {
     margin-left: 45px;
+}
+
+/* ===== Tanda tangan Summary Report ===== */
+
+
+.ttd {
+    margin-left: auto;
+    margin-right: 20px;
+    text-align: center;
+    width: 300px;
+    border: 1px solid rgb(255, 0, 0);
+}
+
+.ttd p {
+    margin: 0; /* Menghapus semua margin bawaan p */
+}
+
+/* Memberi jarak khusus antara blok atas dan blok nama */
+.ttd p:last-child {
+    margin-top: 70px; /* Ini akan menjadi tempat tanda tangan tangan */
+}
+
+/* ===== BAB I ===== */
+
+.sub_bab1 {
+    padding-left: 70px;
+}
+
+.bab1_container p {
+    text-align: justify;
+    text-indent: 30px;
+    padding-left: 93px;
+    padding-right: 20px;
+}
+
+.bab1_container table {
+    margin-left: 93px;
+    width: 550px;
+}
+
+.container_1_3 {
+    margin-left: 71px;
+    padding-left: 0px;
+    padding-right: 20px;
+    border: 1px solid rgb(255, 71, 102);
+}
+
+.container_1_3 li {
+    text-align: justify;
+    line-height: 1.7;
 }

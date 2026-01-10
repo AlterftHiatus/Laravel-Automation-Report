@@ -5,41 +5,10 @@
     <link rel="stylesheet" href="{{ public_path('css/concrete_mixer.css') }}">
 </head>
 
-<body style="margin-top: 55px; border: 1px solid red;">
-
-    <header class="header">
-        <div class="yellow-bar"></div>
-
-        <table class="header-table">
-            <tr>
-                <td class="logo-col">
-                    <img src="{{ public_path('storage/images/logo_cakra.png') }}"
-                        style="width: 130px; margin-left: 30px;">
-                </td>
-                <td class="info-col">
-                    <span class="info-line">+62 856 4042 4888</span>
-                    <span class="info-line">info@cakrateknika.com</span>
-                    <div style="font-size: 12px; margin-top: 5px;">
-                        Jalan Bukit Wato-Wato VII Blok B2A/14<br>
-                        Permata Puri, Beringin, Ngaliyan, Semarang
-                    </div>
-                </td>
-            </tr>
-        </table>
-
-        <div class="green-panel">
-            <div class="icon-text" style="margin-top: 33px">
-                <img src="{{ public_path('storage/images/phone_icon.png') }}" style="width: 18px; color: white;">
-            </div>
-
-            <div class="icon-text">
-                <img src="{{ public_path('storage/images/email_icon.png') }}" style="width: 18px; color: white;">
-            </div>
-
-            <div class="icon-text">
-                <img src="{{ public_path('storage/images/location_icon.png') }}" style="width: 18px; color: white;">
-
-            </div>
+<body style="margin-top: 55px; margin-right: 10px; border: 1px solid red;">
+    <header>
+        <div>
+            <img src="{{ public_path('storage/images/header.jpeg') }}" style="width: 595pt;">
         </div>
     </header>
 
@@ -49,7 +18,7 @@
 
     <footer>
         <div>
-        <img src="{{ public_path('storage/images/footer.jpeg') }}" style="width: 595pt;">
+            <img src="{{ public_path('storage/images/footer.jpeg') }}" style="width: 595pt;">
         </div>
     </footer>
 
@@ -57,150 +26,143 @@
         {{-- ================= SUMMARY REPORT ================= --}}
         <div class="summary-wrapper">
 
-            <h3 style="text-align:center; margin-bottom:20px; margin-top: 0px; padding-top: 0px;">
+            <h3 style="text-align:center; margin-bottom: 0px; margin-top: 0px; padding-top: 0px;">
                 SUMMARY REPORT
             </h3>
 
-            <table class="table-clean" style="border: 1px solid red;">
+            <table class="table-clean" style="border: 1px solid green;">
                 <tr>
-                    <td class="col-label" style="padding-left: 205px">No Laporan</td>
+                    <td class="col-label" style="padding-left: 150px; padding-right: 50px;">No Laporan</td>
                     <td class="col-colon">:</td>
-                    <td class="col-value"></td>
+                    <td class="col-value">013/CTS/LHPP-RIKS/IX/2025</td>
                 </tr>
                 <tr>
-                    <td class="col-label" style="padding-left: 205px">Tanggal Pemeriksaan</td>
+                    <td class="col-label" style="padding-left: 150px;">Tanggal Pemeriksaan</td>
                     <td class="col-colon">:</td>
-                    <td class="col-value"></td>
+                    <td class="col-value">3 September 2025</td>
                 </tr>
             </table>
 
-            <p class="judul"><strong>Data Umum</strong></p>
+            <p class="judul">Data Umum</p>
 
             <table class="table-clean">
                 <tr>
                     <td class="col-label">Nama Perusahaan</td>
                     <td class="col-colon">:</td>
-                    <td class="col-value"></td>
+                    <td class="col-value">CV AKHADI ADI PUTRA</td>
                 </tr>
                 <tr>
                     <td class="col-label">Lokasi</td>
                     <td class="col-colon">:</td>
-                    <td class="col-value"></td>
+                    <td class="col-value">WORKSHOP</td>
                 </tr>
                 <tr>
                     <td class="col-label">Alamat Perusahaan</td>
                     <td class="col-colon">:</td>
-                    <td class="col-value"></td>
+                    <td class="col-value">JALAN KENANGA 14 RT 08/RW 04, PEGULON, KENDAL</td>
                 </tr>
                 <tr>
                     <td class="col-label">Jenis Pemeriksaan</td>
                     <td class="col-colon">:</td>
-                    <td class="col-value"></td>
+                    <td class="col-value">BERKALA</td>
                 </tr>
                 <tr>
                     <td class="col-label">Pemeriksa</td>
                     <td class="col-colon">:</td>
-                    <td class="col-value"></td>
+                    <td class="col-value">NAUFAL ARYA PRIHANDIKO</td>
                 </tr>
             </table>
 
-            <p class="judul"><strong>Data Teknis</strong></p>
+            <p class="judul">Data Teknis</p>
 
             <table class="table-clean">
                 <tr>
                     <td class="col-label">Merk / Tipe</td>
                     <td class="col-colon">:</td>
-                    <td class="col-value"></td>
+                    <td class="col-value">Quad</td>
                 </tr>
                 <tr>
                     <td class="col-label">Pabrik Pembuat</td>
                     <td class="col-colon">:</td>
-                    <td class="col-value"></td>
+                    <td class="col-value">-</td>
                 </tr>
                 <tr>
                     <td class="col-label">Tahun Pembuatan</td>
                     <td class="col-colon">:</td>
-                    <td class="col-value"></td>
+                    <td class="col-value">2022</td>
                 </tr>
                 <tr>
                     <td class="col-label">Nomor Seri</td>
                     <td class="col-colon">:</td>
-                    <td class="col-value"></td>
+                    <td class="col-value">003</td>
                 </tr>
                 <tr>
                     <td class="col-label">Kapasitas</td>
                     <td class="col-colon">:</td>
-                    <td class="col-value"></td>
+                    <td class="col-value">350 Liter</td>
                 </tr>
             </table>
 
-            <p class="judul"><strong>Referensi / Standart</strong></p>
+            <p class="judul">Referensi / Standart</p>
 
             <table class="table-clean">
                 <tr>
-                    <td class="col-label">1.</td>
-                    <td class="col-colon"></td>
-                    <td class="col-value"></td>
+                    <td class="col-label">1. Undang-Undang RI No 1 Tahun 1970 tentang Keselamatan Kerja</td>
                 </tr>
                 <tr>
-                    <td class="col-label">2.</td>
-                    <td class="col-colon"></td>
-                    <td class="col-value"></td>
-                </tr>
-                <tr>
-                    <td class="col-label">3.</td>
-                    <td class="col-colon"></td>
-                    <td class="col-value"></td>
+                    <td class="col-label">2. Peraturan Menteri Tenaga Kerja No 38 Tahun 2016</td>
                 </tr>
             </table>
 
-            <p class="judul"><strong>Ruang Lingkup Pemeriksaan</strong></p>
+            <p class="judul">Ruang Lingkup Pemeriksaan</p>
 
             <table class="table-clean">
-                 <tr>
-                    <td class="col-label">1.</td>
-                    <td class="col-colon"></td>
-                    <td class="col-value"></td>
+                <tr>
+                    <td class="col-label">1. Pemeriksaan dokumen</td>
                 </tr>
                 <tr>
-                    <td class="col-label">2.</td>
-                    <td class="col-colon"></td>
-                    <td class="col-value"></td>
+                    <td class="col-label">2. Pemeriksaan visual</td>
                 </tr>
                 <tr>
-                    <td class="col-label">3.</td>
-                    <td class="col-colon"></td>
-                    <td class="col-value"></td>
+                    <td class="col-label">3. Pengujian Fungsi</td>
+                </tr>
+                <tr>
+                    <td class="col-label">4. Pengujian Tidak Merusak</td>
+                </tr>
+                <tr>
+                    <td class="col-label">5. Pengujian Beban</td>
                 </tr>
             </table>
-            <p class="judul text-align: justify;">
-                Berdasarkan hasil pemeriksaan dan pengujian 
-                yang dilakukan dapat disimpulkan bahwa peralatan di 
-                atas dalam kondisi <strong>Baik dan Memenuhi Syarat Keselamatan 
-                dan Kesehatan Kerja (K3)</strong>
+            <p class="judul" style="text-align: justify; padding-right: 20px;">
+                Berdasarkan hasil pemeriksaan dan pengujian
+                yang dilakukan dapat disimpulkan bahwa peralatan di
+                atas dalam kondisi <strong>Baik dan Memenuhi Syarat Keselamatan dan Kesehatan Kerja (K3)</strong>
             </p>
         </div>
-        <div style="margin-top:0px; padding-right: 30px; text-align:right; border: 1px solid red;">
-            <p style="padding-top: 0px;">
-                PT CAKRA TEKNIKA SOLUSI SEMARANG<br>
-            </p>
+        <div class="ttd_container" style="border: 1px solid rgb(4, 0, 255);">
+            <div class="ttd">
+                <p>
+                    <span>PT CAKRA TEKNIKA SOLUSI</span> <br>
+                    <span>SEMARANG</span>
+                </p>
 
-            <p style="margin-top:60px; padding-right: 40px; border: 1px solid black;">
-                <strong>( ........................................ )</strong>
-                <br>
-                <span style="padding-right: 30px">DIREKTUR</span>
-            </p>
+                <p>
+                    <span>NAUFAL ARYA PRIHANDIKO</span>
+                    <br>
+                    <span>DIREKTUR</span>
+                </p>
+            </div>
         </div>
         <div style="page-break-after: always;"></div>
 
         {{-- ================= BAB 1 ================= --}}
-        <div>
-            <h3 style="text-align:center;">
-                BAB I<br>PENDAHULUAN    
+        <div class="bab1_container" style="border: 1px solid rgb(4, 0, 255)">
+            <h3 style="text-align:center; margin-top: 0px;">
+                BAB I<br>PENDAHULUAN
             </h3>
 
-            <h4 padding-left: 13px;>1.1 Latar Belakang</h4>
-            <p style="text-align: justify; text-indent: 25px; padding-left: 30px;">
+            <h4 class="sub_bab1 latbel">1.1 Latar Belakang</h4>
+            <p>
                 Disebutkan di dalam Undang-Undang No. 1 Tahun 1970 bahwa setiap pembuatan,
                 percobaan, dan pemakaian mesin, pesawat, alat perkakas, peralatan atau instalasi
                 yang berbahaya atau dapat menimbulkan kecelakaan maupun peledakan harus dilakukan
@@ -209,7 +171,7 @@
                 RI Nomor 38 Tahun 2016.
             </p>
 
-            <p style="text-align: justify; text-indent: 25px; padding-left: 30px;">
+            <p>
                 Dalam melakukan pengawasan tersebut, Kementerian Ketenagakerjaan Republik Indonesia
                 menunjuk Perusahaan Jasa Keselamatan dan Kesehatan Kerja (PJK3) sebagai pihak yang
                 berwenang untuk melaksanakan pemeriksaan dan pengujian sesuai dengan regulasi yang
@@ -217,83 +179,92 @@
                 di Negara Republik Indonesia.
             </p>
 
-            <p style="text-align: justify; text-indent: 25px; padding-left: 30px;">
+            <p>
                 Tujuan penyusunan Laporan Hasil Pemeriksaan dan Pengujian Pesawat Tenaga dan Produksi
                 ini adalah untuk menjalankan amanat undang-undang serta peraturan yang telah
                 ditetapkan, sekaligus mewujudkan rasa aman dan nyaman bagi tenaga kerja di lingkungan kerja.
             </p>
 
-            <h4 style= "padding-left: 13px;">1.2 Identitas Pesawat Tenaga dan Produksi</h4>
-            <p style="text-align: justify; padding-left: 30px;">
+            <h4 class="sub_bab1">1.2 Identitas Pesawat Tenaga dan Produksi</h4>
+            <p>
                 Identitas Pesawat Tenaga dan Produksi jenis mesin yang dilakukan pemeriksaan
                 dan pengujian adalah sebagai berikut:
             </p>
 
-            <table style="padding-left: 30px; padding-right: 100px;">
+            <table>
                 <tr>
-                    <td width="30%">Jenis Pesawat</td>
-                    <td>: {{ $laporans_data_teknis->jenis_pesawat ?? 'Concrete Mixer' }}</td>
+                    <td>Jenis Pesawat</td>
+                    <td style="text-align: center">:</td>
+                    <td>{{ $laporans_data_teknis->jenis_pesawat ?? 'Concrete Mixer' }}</td>
                 </tr>
                 <tr>
                     <td>Merk / Model</td>
-                    <td>: {{ $laporan->dataTeknis->merk_tipe ?? '-' }}</td>
+                    <td style="text-align: center">:</td>
+                    <td>{{ $laporan->dataTeknis->merk_tipe ?? '-' }}</td>
                 </tr>
                 <tr>
                     <td>No. Seri</td>
-                    <td>: {{ $laporan->dataTeknis->nomor_seri ?? '-' }}</td>
+                    <td style="text-align: center">:</td>
+                    <td>{{ $laporan->dataTeknis->nomor_seri ?? '-' }}</td>
                 </tr>
                 <tr>
                     <td>Pabrik Pembuat</td>
-                    <td>: {{ $laporan->dataTeknis->pabrik_pembuat ?? '-' }}</td>
+                    <td style="text-align: center">:</td>
+                    <td>{{ $laporan->dataTeknis->pabrik_pembuat ?? '-' }}</td>
                 </tr>
                 <tr>
                     <td>Kapasitas</td>
-                    <td>: {{ $laporan->dataTeknis->kapasitas ?? '-' }}</td>
+                    <td style="text-align: center">:</td>
+                    <td>{{ $laporan->dataTeknis->kapasitas ?? '-' }}</td>
                 </tr>
                 <tr>
                     <td>Tahun Pembuatan</td>
-                    <td>: {{ $laporan->dataTeknis->tahun_pembuatan ?? '-' }}</td>
+                    <td style="text-align: center">:</td>
+                    <td>{{ $laporan->dataTeknis->tahun_pembuatan ?? '-' }}</td>
                 </tr>
                 <tr>
                     <td>Pemilik Pesawat</td>
-                    <td>: {{ $laporan->perusahaan_pemilik }}</td>
+                    <td style="text-align: center">:</td>
+                    <td>{{ $laporan->perusahaan_pemilik }}</td>
                 </tr>
             </table>
 
-            <h4 style="padding-left: 13px;">1.3 Dasar Hukum / Referensi</h4>
-            <p style="text-align: justify; padding-left: 30px; text-indent: 25px;">
+            <div style="page-break-after: always;"></div>
+
+            <h4 class="sub_bab1" style="margin-top: 0px; padding-top: 0px;">1.3 Dasar Hukum / Referensi</h4>
+            <p>
                 Dasar hukum yang digunakan dalam pelaksanaan kegiatan pemeriksaan dan pengujian
                 terhadap pesawat tenaga dan produksi adalah sebagai berikut:
             </p>
 
-            <ol style="margin-left: 20px;border: 1px solid red;">
-                <li>Undang-Undang Nomor 1 Tahun 1970 tentang Keselamatan Kerja</li>
-                <li>Undang-Undang Nomor 13 Tahun 2003 tentang Ketenagakerjaan</li>
-                <li>Peraturan Pemerintah Nomor 50 Tahun 2012 tentang Penerapan Sistem Manajemen
-                    Keselamatan dan Kesehatan Kerja</li>
-                <li>Peraturan Menteri Tenaga Kerja Republik Indonesia Nomor 04/MEN/1995 tentang
-                    Jasa Keselamatan dan Kesehatan Kerja</li>
-                <li>Peraturan Menteri Tenaga Kerja Republik Indonesia Nomor 38/MEN/2016 tentang
-                    Keselamatan dan Kesehatan Kerja Pesawat Tenaga dan Produksi</li>
-            </ol>
+            <div class="container_1_3">
+                <ol>
+                    <li>Undang-Undang Nomor 1 Tahun 1970 tentang Keselamatan Kerja</li>
+                    <li>Undang-Undang Nomor 13 Tahun 2003 tentang Ketenagakerjaan</li>
+                    <li>Peraturan Pemerintah Nomor 50 Tahun 2012 tentang Penerapan Sistem Manajemen
+                        Keselamatan dan Kesehatan Kerja</li>
+                    <li>Peraturan Menteri Tenaga Kerja Republik Indonesia Nomor 04/MEN/1995 tentang
+                        Jasa Keselamatan dan Kesehatan Kerja</li>
+                    <li>Peraturan Menteri Tenaga Kerja Republik Indonesia Nomor 38/MEN/2016 tentang
+                        Keselamatan dan Kesehatan Kerja Pesawat Tenaga dan Produksi
+                        <br><br>
+                        Referensi dan standar lain yang digunakan dalam pelaksanaan pemeriksaan dan pengujian
+                        pesawat tenaga dan produksi antara lain:
+                        <br>
+                        1. Manual book pesawat angkat dan angkut
+                        <br>
+                        2. Standar internasional dan/atau standar negara lain yang diakui
+                    </li>
+                </ol>
+            </div>
 
-            <p style="text-align: justify;">
-                Referensi dan standar lain yang digunakan dalam pelaksanaan pemeriksaan dan pengujian
-                pesawat tenaga dan produksi antara lain:
-            </p>
-
-            <ol style="margin-left: 20px;">
-                <li>Manual book pesawat angkat dan angkut</li>
-                <li>Standar internasional dan/atau standar negara lain yang diakui</li>
-            </ol>
-
-            <h4>1.4 Alat Uji dan Alat Ukur</h4>
-            <p style="text-align: justify;">
+            <h4 class="sub_bab1">1.4 Alat Uji dan Alat Ukur</h4>
+            <p>
                 Alat uji dan alat ukur yang digunakan dalam pelaksanaan pemeriksaan dan pengujian
                 Pesawat Tenaga dan Produksi meliputi:
             </p>
 
-            <ol style="margin-left: 20px;">
+            <ol style="margin-left: 72px;">
                 <li>Meteran gulung</li>
                 <li>Lux Meter</li>
                 <li>Tacho Meter</li>
