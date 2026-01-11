@@ -12,6 +12,7 @@ class Laporan extends Model
         'jenis_laporan',
         'jenis_pemeriksaan',
         'status_laporan',
+        'nama_pemeriksa',
 
         // DATA UMUM
         'perusahaan_pemilik',

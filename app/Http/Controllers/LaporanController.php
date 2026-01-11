@@ -49,6 +49,7 @@ class LaporanController extends Controller
             'tanggal_pemeriksaan'   => $request->tanggal_pemeriksaan,
             'jenis_laporan'         => 'Concrete Mixer',
             'jenis_pemeriksaan'     => $request->jenis_pemeriksaan,
+            'nama_pemeriksa'        => $request->nama_pemeriksa,
             'status_laporan'        => 'draft',
 
             'perusahaan_pemilik'    => $request->perusahaan_pemilik,

@@ -34,13 +34,16 @@
                 <tr>
                     <td class="col-label" style="padding-left: 150px; padding-right: 50px;">No Laporan</td>
                     <td class="col-colon">:</td>
-                    <td class="col-value">013/CTS/LHPP-RIKS/IX/2025</td>
+                    <td class="col-value"><span style="background-color: yellow">Diisi Manual Oleh Office</span></td>
                 </tr>
                 <tr>
                     <td class="col-label" style="padding-left: 150px;">Tanggal Pemeriksaan</td>
                     <td class="col-colon">:</td>
-                    <td class="col-value">3 September 2025</td>
+                    <td class="col-value">
+                        {{ \Carbon\Carbon::parse($laporan->tanggal_pemeriksaan)->translatedFormat('d F Y') }}
+                    </td>
                 </tr>
+
             </table>
 
             <p class="judul">Data Umum</p>
@@ -49,7 +52,7 @@
                 <tr>
                     <td class="col-label">Nama Perusahaan</td>
                     <td class="col-colon">:</td>
-                    <td class="col-value">CV AKHADI ADI PUTRA</td>
+                    <td class="col-value">{{ $laporan->perusahaan_pemilik }}</td>
                 </tr>
                 <tr>
                     <td class="col-label">Lokasi</td>
@@ -69,7 +72,7 @@
                 <tr>
                     <td class="col-label">Pemeriksa</td>
                     <td class="col-colon">:</td>
-                    <td class="col-value">NAUFAL ARYA PRIHANDIKO</td>
+                    <td class="col-value">{{ $laporan->nama_pemeriksa ?? 'Belum diisi'}}</td>
                 </tr>
             </table>
 

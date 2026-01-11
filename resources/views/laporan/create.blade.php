@@ -27,7 +27,7 @@
         <h3>DATA LAPORAN</h3>
 
         <label>Nomor Laporan</label><br>
-        <input type="text" name="nomor_laporan" placeholder="contoh: 013/CTS/LHPP/X/2025"><br><br>
+        <input type="text" name="nomor_laporan" value="Diisi manual oleh Office" readonly><br><br>
 
         <label>Tanggal Pemeriksaan</label><br>
         <input type="date" name="tanggal_pemeriksaan"><br><br>
@@ -39,7 +39,12 @@
             <option value="Berkala">Berkala</option>
             <option value="Ulang">Ulang</option>
             <option value="Khusus">Khusus</option>
-        </select><br><br>
+        </select>
+
+        <label>Nama Pemeriksa</label><br>
+        <input type="text" name="nama_pemeriksa" placeholder="Nama pemeriksa"><br><br>
+
+        <br><br>
 
         <hr>
 
@@ -251,7 +256,7 @@
 
 
         <hr>
-        
+
         <h3>Dokumentasi Foto</h3>
 
         <div id="dokumentasi-wrapper">
