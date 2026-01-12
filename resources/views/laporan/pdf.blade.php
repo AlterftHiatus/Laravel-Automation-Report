@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="{{ public_path('css/concrete_mixer.css') }}">
 </head>
 
-<body style="margin-top: 55px; margin-right: 10px; border: 1px solid red;">
+<body style="border: 1px solid red; margin-top: 55px; margin-right: 10px;">
     <header>
         <div>
             <img src="{{ public_path('storage/images/header.jpeg') }}" style="width: 595pt;">
@@ -29,8 +29,9 @@
             <h3 style="text-align:center; margin-bottom: 0px; margin-top: 0px; padding-top: 0px;">
                 SUMMARY REPORT
             </h3>
+            <br>
 
-            <table class="table-clean" style="border: 1px solid green;">
+            <table class="table-clean">
                 <tr>
                     <td class="col-label" style="padding-left: 150px; padding-right: 50px;">No Laporan</td>
                     <td class="col-colon">:</td>
@@ -55,24 +56,24 @@
                     <td class="col-value">{{ $laporan->perusahaan_pemilik }}</td>
                 </tr>
                 <tr>
-                    <td class="col-label">Lokasi</td>
+                    <td class="col-label">Lokasi Unit</td>
                     <td class="col-colon">:</td>
-                    <td class="col-value">WORKSHOP</td>
+                    <td class="col-value">{{ $laporan->lokasi_unit }}</td>
                 </tr>
                 <tr>
                     <td class="col-label">Alamat Perusahaan</td>
                     <td class="col-colon">:</td>
-                    <td class="col-value">JALAN KENANGA 14 RT 08/RW 04, PEGULON, KENDAL</td>
+                    <td class="col-value">{{ $laporan->alamat_pemilik }}</td>
                 </tr>
                 <tr>
                     <td class="col-label">Jenis Pemeriksaan</td>
                     <td class="col-colon">:</td>
-                    <td class="col-value">BERKALA</td>
+                    <td class="col-value">{{ $laporan->jenis_pemeriksaan }}</td>
                 </tr>
                 <tr>
                     <td class="col-label">Pemeriksa</td>
                     <td class="col-colon">:</td>
-                    <td class="col-value">{{ $laporan->nama_pemeriksa ?? 'Belum diisi'}}</td>
+                    <td class="col-value">{{ $laporan->nama_pemeriksa ?? 'Belum diisi' }}</td>
                 </tr>
             </table>
 
@@ -82,27 +83,27 @@
                 <tr>
                     <td class="col-label">Merk / Tipe</td>
                     <td class="col-colon">:</td>
-                    <td class="col-value">Quad</td>
+                    <td class="col-value">{{ $laporan->dataTeknis->merk_tipe ?? '-' }}</td>
                 </tr>
                 <tr>
                     <td class="col-label">Pabrik Pembuat</td>
                     <td class="col-colon">:</td>
-                    <td class="col-value">-</td>
+                    <td class="col-value">{{ $laporan->dataTeknis->pembuat_pemasang ?? '-' }}</td>
                 </tr>
                 <tr>
                     <td class="col-label">Tahun Pembuatan</td>
                     <td class="col-colon">:</td>
-                    <td class="col-value">2022</td>
+                    <td class="col-value">{{ $laporan->dataTeknis->tahun_pembuatan ?? '-' }}</td>
                 </tr>
                 <tr>
                     <td class="col-label">Nomor Seri</td>
                     <td class="col-colon">:</td>
-                    <td class="col-value">003</td>
+                    <td class="col-value">{{ $laporan->dataTeknis->nomor_seri }}</td>
                 </tr>
                 <tr>
                     <td class="col-label">Kapasitas</td>
                     <td class="col-colon">:</td>
-                    <td class="col-value">350 Liter</td>
+                    <td class="col-value">{{ $laporan->dataTeknis->kapasitas }}</td>
                 </tr>
             </table>
 
@@ -142,7 +143,7 @@
                 atas dalam kondisi <strong>Baik dan Memenuhi Syarat Keselamatan dan Kesehatan Kerja (K3)</strong>
             </p>
         </div>
-        <div class="ttd_container" style="border: 1px solid rgb(4, 0, 255);">
+        <div class="ttd_container">
             <div class="ttd">
                 <p>
                     <span>PT CAKRA TEKNIKA SOLUSI</span> <br>
@@ -159,7 +160,7 @@
         <div style="page-break-after: always;"></div>
 
         {{-- ================= BAB 1 ================= --}}
-        <div class="bab1_container" style="border: 1px solid rgb(4, 0, 255)">
+        <div class="bab1_container">
             <h3 style="text-align:center; margin-top: 0px;">
                 BAB I<br>PENDAHULUAN
             </h3>
@@ -213,7 +214,7 @@
                 <tr>
                     <td>Pabrik Pembuat</td>
                     <td style="text-align: center">:</td>
-                    <td>{{ $laporan->dataTeknis->pabrik_pembuat ?? '-' }}</td>
+                    <td>{{ $laporan->dataTeknis->pembuat_pemasang ?? '-' }}</td>
                 </tr>
                 <tr>
                     <td>Kapasitas</td>
@@ -234,13 +235,17 @@
 
             <div style="page-break-after: always;"></div>
 
-            <h4 class="sub_bab1" style="margin-top: 0px; padding-top: 0px;">1.3 Dasar Hukum / Referensi</h4>
-            <p>
-                Dasar hukum yang digunakan dalam pelaksanaan kegiatan pemeriksaan dan pengujian
-                terhadap pesawat tenaga dan produksi adalah sebagai berikut:
-            </p>
+            <h4 class="sub_bab1" style="margin-top: 0px; padding-top: 0px; margin-bottom: 0px;">1.3 Dasar Hukum /
+                Referensi</h4>
+
 
             <div class="container_1_3">
+
+                <p style=" text-align: justify; text-indent: 30px; padding-left: 20px; padding-right: 0px;">
+                    Dasar hukum yang digunakan dalam pelaksanaan kegiatan pemeriksaan dan pengujian
+                    terhadap pesawat tenaga dan produksi adalah sebagai berikut:
+                </p>
+
                 <ol>
                     <li>Undang-Undang Nomor 1 Tahun 1970 tentang Keselamatan Kerja</li>
                     <li>Undang-Undang Nomor 13 Tahun 2003 tentang Ketenagakerjaan</li>
@@ -250,7 +255,7 @@
                         Jasa Keselamatan dan Kesehatan Kerja</li>
                     <li>Peraturan Menteri Tenaga Kerja Republik Indonesia Nomor 38/MEN/2016 tentang
                         Keselamatan dan Kesehatan Kerja Pesawat Tenaga dan Produksi
-                        <br><br>
+                        <br>
                         Referensi dan standar lain yang digunakan dalam pelaksanaan pemeriksaan dan pengujian
                         pesawat tenaga dan produksi antara lain:
                         <br>
@@ -277,67 +282,175 @@
         </div>
         <div style="page-break-after: always;"></div>
 
-        {{-- ================= DATA LAPORAN ================= --}}
-        <h3>DATA LAPORAN</h3>
-        <table>
-            <tr>
-                <td width="30%">Nomor Laporan</td>
-                <td>{{ $laporan->nomor_laporan }}</td>
-            </tr>
-            <tr>
-                <td>Tanggal Pemeriksaan</td>
-                <td>{{ $laporan->tanggal_pemeriksaan }}</td>
-            </tr>
-            <tr>
-                <td>Jenis Pemeriksaan</td>
-                <td>{{ $laporan->jenis_pemeriksaan }}</td>
-            </tr>
+        {{-- ================= BAB 2 ================= --}}
+        <h3 style="text-align:center; margin-top: 0px;">
+            BAB II<br>LAPORAN HASIL PEMERIKSAAN DAN PENGUJIAN
+            <br><br>
+        </h3>
+
+
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th colspan="3">PEMERIKSAAN DAN PENGUJIAN MOTOR DIESEL</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="label">Yang Memeriksa</td>
+                    <td class="colon"></td>
+                    <td class="value"></td>
+                </tr>
+                <tr>
+                    <td class="label">Nama</td>
+                    <td class="colon">:</td>
+                    <td class="value">{{ $laporan->nama_pemeriksa ?? 'Belum diisi' }}</td>
+                </tr>
+                <tr>
+                    <td class="label">No.Kep</td>
+                    <td class="colon">:</td>
+                    <td class="value"><span style="background-color: yellow">Diisi Manual Oleh Office</span></td>
+                </tr>
+                <tr>
+                    <td class="label">Bidang</td>
+                    <td class="colon">:</td>
+                    <td class="value">Pesawat Tenaga dan Produksi</td>
+                </tr>
+                <tr>
+                    <td class="label">Pelaksanaan</td>
+                    <td class="colon">:</td>
+                    <td class="value">
+                        {{ \Carbon\Carbon::parse($laporan->tanggal_pemeriksaan)->translatedFormat('d F Y') }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">Jenis Pemeriksaan</td>
+                    <td class="colon">:</td>
+                    <td class="value">{{ $laporan->jenis_pemeriksaan }}</td>
+                </tr>
+            </tbody>
         </table>
 
         {{-- ================= I. DATA UMUM ================= --}}
-        <h3>I. DATA UMUM</h3>
-        <table>
-            <tr>
-                <td>Perusahaan Pemilik</td>
-                <td>{{ $laporan->perusahaan_pemilik }}</td>
-            </tr>
-            <tr>
-                <td>Alamat Pemilik</td>
-                <td>{{ $laporan->alamat_pemilik }}</td>
-            </tr>
-            <tr>
-                <td>Perusahaan Pemakai</td>
-                <td>{{ $laporan->perusahaan_pemakai }}</td>
-            </tr>
-            <tr>
-                <td>Alamat Pemakai</td>
-                <td>{{ $laporan->alamat_pemakai }}</td>
-            </tr>
-            <tr>
-                <td>Pengurus / Penanggung Jawab</td>
-                <td>{{ $laporan->penanggung_jawab }}</td>
-            </tr>
-            <tr>
-                <td>Lokasi Unit</td>
-                <td>{{ $laporan->lokasi_unit }}</td>
-            </tr>
-            <tr>
-                <td>Nama Operator</td>
-                <td>{{ $laporan->nama_operator ?? '-' }}</td>
-            </tr>
-            <tr>
-                <td>Nomor Izin Pemakai</td>
-                <td>{{ $laporan->nomor_izin_pemakai ?? '-' }}</td>
-            </tr>
-            <tr>
-                <td>Sertifikasi Standar</td>
-                <td>{{ $laporan->sertifikasi_standar ?? '-' }}</td>
-            </tr>
-            <tr>
-                <td>Data Riwayat Motor Diesel</td>
-                <td>{{ $laporan->riwayat_pemeriksaan ?? '-' }}</td>
-            </tr>
-        </table>
+        <div class="container_data_umum">
+            <table class="table_data_umum">
+                <thead>
+                    <tr>
+                        <th colspan="3" class="th1">FORMULIR/CHECHLIST PEMERIKSAAN DAN PENGUJUAN MOTOR DIESEL</th>
+                    </tr>
+                    <tr>
+                        <th colspan="3" style="text-align: left; padding: 8px 10px;">I. DATA UMUM</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="no">1</td>
+                        <td class="label">Perusahaan Pemilik</td>
+                        <td class="value">{{ $laporan->perusahaan_pemilik }}</td>
+                    </tr>
+                    <tr>
+                        <td class="no">2</td>
+                        <td class="label">Alamat Pemilik</td>
+                        <td class="value">{{ $laporan->alamat_pemilik }}</td>
+                    </tr>
+                    <tr>
+                        <td class="no">3</td>
+                        <td class="label">Perusahaan Pemakai</td>
+                        <td class="value">{{ $laporan->perusahaan_pemakai }}</td>
+                    </tr>
+                    <tr>
+                        <td class="no">4</td>
+                        <td class="label">Alamat Pemakai</td>
+                        <td class="value">{{ $laporan->alamat_pemakai }}</td>
+                    </tr>
+                    <tr>
+                        <td class="no">5</td>
+                        <td class="label">Pengurus / Penanggung Jawab</td>
+                        <td class="value">{{ $laporan->penanggung_jawab }}</td>
+                    </tr>
+                    <tr>
+                        <td class="no">6</td>
+                        <td class="label">Lokasi Unit</td>
+                        <td class="value">{{ $laporan->lokasi_unit }}</td>
+                    </tr>
+                    <tr>
+                        <td class="no">7</td>
+                        <td class="label">Jenis Pesawat / Tipe</td>
+                        <td class="value">{{ $laporans_data_teknis->jenis_pesawat ?? 'Concrete Mixer' }}</td>
+                    </tr>
+                    <tr>
+                        <td class="no">8</td>
+                        <td class="label">Merek / Tipe</td>
+                        <td class="value">{{ $laporan->dataTeknis->merk_tipe ?? '-' }}</td>
+                    </tr>
+                    <tr>
+                        <td class="no">9</td>
+                        <td class="label">No. Seri / No. Unit</td>
+                        <td class="value">{{ $laporan->dataTeknis->nomor_seri ?? '-' }}</td>
+                    </tr>
+                    <tr>
+                        <td class="no">10</td>
+                        <td class="label">Perusahaan Pembuat</td>
+                        <td class="value">{{ $laporan->dataTeknis->pembuat_pemasang ?? '-' }}</td>
+                    </tr>
+                    <tr>
+                        <td class="no">11</td>
+                        <td class="label">Tahun Pembuatan</td>
+                        <td class="value">{{ $laporan->dataTeknis->tahun_pembuatan ?? '-' }}</td>
+                    </tr>
+                    <tr>
+                        <td class="no">12</td>
+                        <td class="label">Kapasitas</td>
+                        <td class="value">{{ $laporan->dataTeknis->kapasitas ?? '-' }}</td>
+                    </tr>
+                    <tr>
+                        <td class="no">13</td>
+                        <td class="label">Digunakan Untuk</td>
+                        <td class="value">{{ $laporan->dataTeknis->digunakan_untuk ?? '-' }}</td>
+                    </tr>
+                    <tr>
+                        <td class="no">14</td>
+                        <td class="label">Nama / No.Sertifikat Juru Las</td>
+                        <td class="value">{{ $laporan->sertifikat_juru_las ?? '-' }}</td>
+                    </tr>
+                    <tr>
+                        <td class="no">15</td>
+                        <td class="label">No. SKP / Bidang PJK3</td>
+                        <td class="value">{{ $laporan->no_skp_pjk3 ?? '-' }}</td>
+                    </tr>
+                    <tr>
+                        <td class="no">16</td>
+                        <td class="label">No. SKP / Bidang AK3</td>
+                        <td class="value">{{ $laporan->no_skp_ak3 ?? '-' }}</td>
+                    </tr>
+                    <tr>
+                        <td class="no">17</td>
+                        <td class="label">Sertifikasi Standar</td>
+                        <td class="value">{{ $laporan->sertifikasi_standar ?? '-' }}</td>
+                    </tr>
+                    <tr>
+                        <td class="no">18</td>
+                        <td class="label">Klasifikasi</td>
+                        <td class="value">{{ $laporan->dataTeknis->klasifikasi ?? '-' }}</td>
+                    </tr>
+                    <tr>
+                        <td class="no">19</td>
+                        <td class="label">Nomor Izin Pemakai</td>
+                        <td class="value">{{ $laporan->nomor_izin_pemakai ?? '-' }}</td>
+                    </tr>
+                    <tr>
+                        <td class="no">20</td>
+                        <td class="label">Nama Operator</td>
+                        <td class="value">{{ $laporan->nama_operator ?? '-' }}</td>
+                    </tr>
+                    <tr>
+                        <td class="no">21</td>
+                        <td class="label">Data Riwayat Motor Diesel</td>
+                        <td class="value">{{ $laporan->riwayat_pemeriksaan ?? '-' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
         {{-- ================= II. DATA TEKNIK ================= --}}
         <h3>II. DATA TEKNIK</h3>
@@ -348,7 +461,7 @@
             </tr>
             <tr>
                 <td>Pabrik Pembuat / Negara</td>
-                <td>{{ $laporan->dataTeknis->pembuat_pemasang }}</td>
+                <td>{{ $laporan->dataTeknis->pembuat_pemasang ?? '-' }}</td>
             </tr>
             <tr>
                 <td>Tahun Pembuatan</td>
@@ -384,7 +497,7 @@
         <h3>HASIL PEMERIKSAAN & PENGUJIAN</h3>
 
         @php
-        $currentKategori = null;
+            $currentKategori = null;
         @endphp
 
         <table>
@@ -396,19 +509,19 @@
             </tr>
 
             @foreach ($laporan->checklistResults as $index => $result)
-            @if ($currentKategori !== $result->checklistItem->kategori)
-            <tr>
-                <td colspan="4"><strong>{{ $result->checklistItem->kategori }}</strong></td>
-            </tr>
-            @php $currentKategori = $result->checklistItem->kategori; @endphp
-            @endif
+                @if ($currentKategori !== $result->checklistItem->kategori)
+                    <tr>
+                        <td colspan="4"><strong>{{ $result->checklistItem->kategori }}</strong></td>
+                    </tr>
+                    @php $currentKategori = $result->checklistItem->kategori; @endphp
+                @endif
 
-            <tr>
-                <td>{{ $index + 1 }}</td>
-                <td>{{ $result->checklistItem->nama_item }}</td>
-                <td>{{ $result->hasil }}</td>
-                <td>{{ $result->keterangan }}</td>
-            </tr>
+                <tr>
+                    <td>{{ $index + 1 }}</td>
+                    <td>{{ $result->checklistItem->nama_item }}</td>
+                    <td>{{ $result->hasil }}</td>
+                    <td>{{ $result->keterangan }}</td>
+                </tr>
             @endforeach
         </table>
 
@@ -416,8 +529,8 @@
         <h3>DOKUMENTASI FOTO</h3>
 
         @foreach ($laporan->fotos as $foto)
-        <p>{{ $foto->keterangan }}</p>
-        <img src="{{ storage_path('app/public/' . $foto->file_path) }}" width="300">
+            <p>{{ $foto->keterangan }}</p>
+            <img src="{{ storage_path('app/public/' . $foto->file_path) }}" width="300">
         @endforeach
         <div style="page-break-after: always;"></div>
 
@@ -438,30 +551,42 @@
 
             <ol style="margin-left: 40px;">
                 <li>Area kerja Concreate Mixer harus dalam keadaan bersih</li>
-                <li>Petugas Operator Concreate Mixer harus memenuhi syarat Keselamatan dan Kesehatan Kerja, dan memiliki kemampuan teknis yang diperlukan</li>
-                <li>Petugas atau operator motor diesel wajib memakai APD (Ear Plug) ketika mengoperasikan motor diesel</li>
+                <li>Petugas Operator Concreate Mixer harus memenuhi syarat Keselamatan dan Kesehatan Kerja, dan memiliki
+                    kemampuan teknis yang diperlukan</li>
+                <li>Petugas atau operator motor diesel wajib memakai APD (Ear Plug) ketika mengoperasikan motor diesel
+                </li>
                 <li>Menambahkan Apar di dekat ruang Concreate Mixer.</li>
             </ol>
 
             <p style="margin-top:15px;"><strong>3.3 Kesimpulan</strong></p>
 
             <p style="text-align:justify; margin-left:40px;">
-                Dari hasil pemeriksaan dan pengujian tersebut diatas dinyatakan bahwa <b>CONREATE MIXER MEMENUHI PERSYARATAN KESELAMATAN DAN KESEHATAN KERJA</b>. Genset boleh dioperasikan sebagaimana fungsinya dan harus dilaksanakan perbaikan-perbaikan yang direkomendasikan.
+                Dari hasil pemeriksaan dan pengujian tersebut diatas dinyatakan bahwa <b>CONREATE MIXER MEMENUHI
+                    PERSYARATAN KESELAMATAN DAN KESEHATAN KERJA</b>. Genset boleh dioperasikan sebagaimana fungsinya dan
+                harus dilaksanakan perbaikan-perbaikan yang direkomendasikan.
             </p>
 
             <p style="margin-top:15px;"><strong>3.4 Syarat-syarat dan Ketentuan</strong></p>
 
             <ol style="margin-left: 40px;">
-                <li>Sebelum concreate mixer ini dioperasikan, semua perlengkapan pengamanan dan peralatannya harus diperiksa/dichek terlebih dahulu oleh operator</li>
-                <li>Prosedur perawatan dan pengoperasian aman harus sesuai dengan <i>Manual Book</i> (Buku Petunjuk Pabrik Pembuat)</li>
+                <li>Sebelum concreate mixer ini dioperasikan, semua perlengkapan pengamanan dan peralatannya harus
+                    diperiksa/dichek terlebih dahulu oleh operator</li>
+                <li>Prosedur perawatan dan pengoperasian aman harus sesuai dengan <i>Manual Book</i> (Buku Petunjuk
+                    Pabrik Pembuat)</li>
                 <li>Kondisi area kerja dalam keadaan baik dan ruang sekitarnya dalam kondisi bersih.</li>
                 <li>Operator yang mengoperasikan diwajibkan memiliki Sertifikat dari Kemnaker RI</li>
-                <li>Operator/orang yang memasuki ruang genset/Pembangkitan Listrik harus diwajibkan memakai peralatan pelindung diri (APD) sesuai dengan ketentuan yang ditetapkan dan memasang tanda berbahaya / larangan yang membahayakan serta menjaga kebersihan ruang diesel/genset.</li>
+                <li>Operator/orang yang memasuki ruang genset/Pembangkitan Listrik harus diwajibkan memakai peralatan
+                    pelindung diri (APD) sesuai dengan ketentuan yang ditetapkan dan memasang tanda berbahaya / larangan
+                    yang membahayakan serta menjaga kebersihan ruang diesel/genset.</li>
                 <li>Perusahaan wajib memperhatikan Alat Pemadam Api Ringan (APAR)</li>
-                <li>Perusahaan wajib menyediakan dan menempatkan Alat Pelindung Diri (APD) berupa Ear Muff, Safety Helmet, Safety Shoes, Safety Vest, Safety Glooves/Sarung Tangan, Safety Googles/Kacamata Pelindung saat mau merawat/mengoperasikan mesin.</li>
+                <li>Perusahaan wajib menyediakan dan menempatkan Alat Pelindung Diri (APD) berupa Ear Muff, Safety
+                    Helmet, Safety Shoes, Safety Vest, Safety Glooves/Sarung Tangan, Safety Googles/Kacamata Pelindung
+                    saat mau merawat/mengoperasikan mesin.</li>
                 <li>Diwajibkan membuat SOP / Standar Operasional Prosedur saat pengoperasian mesin.</li>
-                <li>Apabila ada perubahan konstruksi/perbaikan konstruksi harus melapor Instansi Ketenagakerjaan setempat.</li>
-                <li>Concreate mixer dilaksanakan pemeriksaan berkala dilaksanakan <b>1 (satu) tahun sekali</b>. Pemeriksaan dan pengujian selanjutnya dilaksanakan paling lambat 27 Agustus 2026</li>
+                <li>Apabila ada perubahan konstruksi/perbaikan konstruksi harus melapor Instansi Ketenagakerjaan
+                    setempat.</li>
+                <li>Concreate mixer dilaksanakan pemeriksaan berkala dilaksanakan <b>1 (satu) tahun sekali</b>.
+                    Pemeriksaan dan pengujian selanjutnya dilaksanakan paling lambat 27 Agustus 2026</li>
             </ol>
 
             <p style="margin-top:30px; text-align:right; margin-right:80px;">

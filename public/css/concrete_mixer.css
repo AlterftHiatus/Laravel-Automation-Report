@@ -88,25 +88,25 @@ h4 {
 /* Jangan pakai table-layout fixed dulu (ini biang masalah tadi) */
 .col-label {
     width: 125px;
-    background-color: bisque;
+    /* background-color: bisque; */
 }
 
 .col-colon {
     width: 10px;
     text-align: center;
-    background-color: aqua;
+    /* background-color: aqua; */
 }
 
 .col-value {
     width: auto;
-    background-color: rgb(255, 255, 51);
+    /* background-color: rgb(255, 255, 51); */
 }
 /* ===== HAPUS SEMUA GARIS TABEL (FINAL) ===== */
-/* .table-clean,
+.table-clean,
 .table-clean tr,
 .table-clean td {
     border: none !important;
-} */
+}
 
 /* Kalau sebelumnya ada table global border, matikan khusus summary */
 .table-clean {
@@ -124,13 +124,12 @@ h4 {
 
 /* ===== Tanda tangan Summary Report ===== */
 
-
 .ttd {
     margin-left: auto;
     margin-right: 20px;
     text-align: center;
     width: 300px;
-    border: 1px solid rgb(255, 0, 0);
+    /* border: 1px solid rgb(255, 0, 0); */
 }
 
 .ttd p {
@@ -142,7 +141,7 @@ h4 {
     margin-top: 70px; /* Ini akan menjadi tempat tanda tangan tangan */
 }
 
-/* ===== BAB I ===== */
+/* ===== BAB 1 ===== */
 
 .sub_bab1 {
     padding-left: 70px;
@@ -164,10 +163,95 @@ h4 {
     margin-left: 71px;
     padding-left: 0px;
     padding-right: 20px;
-    border: 1px solid rgb(255, 71, 102);
+    /* border: 1px solid rgb(255, 71, 102); */
 }
 
-.container_1_3 li {
+.container_1_3 li,
+.container_1_3 br {
     text-align: justify;
-    line-height: 1.7;
+    line-height: 2;
 }
+
+/* ===== BAB 2 ===== */
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    /* Memberikan border luar pada seluruh tabel */
+    border: 1px solid black;
+}
+
+/* Mengatur cell */
+.data-table th, 
+.data-table td {
+    /* Menghilangkan semua border bawaan cell */
+    border: none; 
+    padding: 0px 12px;
+    vertical-align: middle;
+    font-weight: normal;
+}
+
+/* Memberikan garis bawah khusus pada Header (th) */
+.data-table th {
+    text-align: center;
+    text-transform: uppercase;
+    padding: 5px;
+    border-bottom: 1px solid black; /* Garis pemisah antara judul dan isi */
+}
+
+/* Lebar Kolom Label */
+.label {
+    width: 200px;
+    text-align: left;
+}
+
+/* Lebar Kolom Titik Dua */
+.colon {
+    width: 10px;
+    text-align: center;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* Kolom Nilai */
+.value {
+    text-align: left;
+}
+
+/* ===== I. DATA UMUM ===== */
+
+.table_data_umum {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+    margin-top: 20px;
+    border: 1px solid black;
+}
+
+.table_data_umum thead {
+    font-weight: bold;
+}
+
+.table_data_umum .th1 {
+    text-align: center;
+    background-color: #d3d3d3;
+    padding: 8px 0px;
+}
+
+.table_data_umum .no {
+    width: 25px;
+    text-align: center;
+}
+
+.table_data_umum .label {
+    width: 190px;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.table_data_umum .value {
+    text-align: left;
+    padding-left: 10px;
+}
+

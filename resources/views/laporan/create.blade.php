@@ -77,8 +77,8 @@
         <label>No. Seri / No. Unit</label><br>
         <input type="text" name="nomor_seri"><br><br>
 
-        <label>Perusahaan Pembuat / Pemasang</label><br>
-        <input type="text" name="pembuat_pemasang"><br><br>
+        {{-- <label>Perusahaan Pembuat / Pemasang</label><br>
+        <input type="text" name="pembuat_pemasang"><br><br> --}}
 
         <label>Tahun Pembuatan</label><br>
         <input type="number" name="tahun_pembuatan"><br><br>

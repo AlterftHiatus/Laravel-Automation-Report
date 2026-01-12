@@ -79,6 +79,7 @@ class LaporanController extends Controller
             'klasifikasi'       => $request->klasifikasi,
             'nomor_seri'        => $request->nomor_seri,
             'kapasitas'         => $request->kapasitas,
+            'digunakan_untuk'   => $request->digunakan_untuk,
 
             // DIMENSI
             'diameter_mm'       => $request->diameter_mm,
