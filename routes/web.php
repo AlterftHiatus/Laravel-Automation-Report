@@ -17,8 +17,29 @@ Route::get('/laporan/{id}/preview', [LaporanController::class, 'preview'])->name
 Route::get('/laporan/{id}/pdf', [LaporanController::class, 'generatePdf']);
 
 
+// ini front end  
+Route::get('/input_laporan', function () {
+    return view('input-laporan');
+});
 
 
+Route::get('/profile_perusahaan', function () {
+    return view('profile-perusahaan');
+});
+
+Route::get('/riwayat', function () {
+    return view('riwayat');
+});
+
+Route::get('/tentang', function () {
+    return view('tentang');
+});
+
+Route::get('/contact', function () {
+    return view('contact-us');
+});
+
+// Ini buat download pdf
 Route::get('/dunlut', function () {
     return view('dunlut');
 });

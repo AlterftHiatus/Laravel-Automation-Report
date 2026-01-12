@@ -20,6 +20,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
+
     <style>
         :root {
             --primary-green: #27ae60;
@@ -83,9 +84,9 @@
 
 </head>
 
-<body class="bg-gray-50 font-[Inter] m-0 p-0">
+<body class="bg-gray-50 font-[Inter]" style="margin: 0px; border: 1px solid blue; padding: 0px;">
 
-    <header x-data="{ openMenu: false, scrolled: false }"
+       <header x-data="{ openMenu: false, scrolled: false }"
         x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 30 })" :class="scrolled
         ? 'bg-white/70 backdrop-blur-xl shadow-md py-2'
         : 'bg-white py-4'" class="sticky top-0 z-50 transition-all duration-300 border-b border-[#27ae60]/40">
@@ -190,42 +191,131 @@
             </aside>
     </header>
 
-    
-    <section class="relative w-full h-[65vh] md:h-[75vh] lg:h-[85vh] overflow-hidden">
+    <main x-data="{ show: true }" class="menu-container max-w-6xl mx-auto px-4 lg:px-8 py-10">
 
-        <img src="{{ asset('storage/images/gemini_generated_image_81arxr81arxr81ar.png') }}" alt="Banner K3" class="absolute inset-0 w-full h-full object-cover" />
-
-        <div class="absolute inset-0 bg-[#1f8f55]/80"></div>
-
-        <div class="relative z-10 h-full max-w-7xl mx-auto px-6
-               flex flex-col justify-center
-               items-center text-center
-               md:items-start md:text-left">
-
-            <p class="text-white/80 text-sm md:text-base tracking-widest mb-3 uppercase">
-                Sistem Pelaporan Otomatis LHPP K3
+        <div class="mb-8">
+            <h2 class="text-2xl font-bold text-slate-800">Kategori Inspeksi K3</h2>
+            <p class="text-gray-500 text-sm">
+                Pilih kategori peralatan untuk memulai penginputan laporan LHPP.
             </p>
+        </div>
 
-            <h1 class="text-white font-extrabold leading-tight
-                   text-3xl sm:text-4xl md:text-5xl lg:text-6xl max-w-3xl">
-                Input Laporan Sesuai Bagian,<br class="hidden md:block">
-                Dokumen Cepat,<br class="hidden md:block">
-                Hasil Akurat.
-            </h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-            <div class="mt-8">
-                <a href="/input_laporan" class="inline-flex items-center gap-3
-                      bg-yellow-400 hover:bg-yellow-500
-                      text-gray-900 font-bold
-                      px-8 py-4 rounded-xl
-                      shadow-lg transition">
-                    Lihat Layanan
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
+            <template x-for="(item, index) in [
+
+            {
+                icon: 'bi-lightning-charge-fill',
+                title: 'Listrik',
+                color: 'text-amber-500',
+                bg: 'bg-amber-50',
+                links: [
+                    { label: 'Instalasi Listrik', href: '#' },
+                    { label: 'Penyalur Petir', href: '#' }
+                ]
+            },
+
+            {
+                icon: 'bi-truck-front-fill',
+                title: 'Pesawat Angkat Angkut',
+                color: 'text-blue-500',
+                bg: 'bg-blue-50',
+                links: [
+                    { label: 'Excavator', href: '#' },
+                    { label: 'Forklift', href: '#' },
+                    { label: 'Gondola', href: '#' },
+                    { label: 'Konveyor', href: '#' },
+                    { label: 'Loader', href: '#' },
+                    { label: 'Overhead Crane', href: '#' }
+                ]
+            },
+
+            {
+                icon: 'bi-gear-fill',
+                title: 'Pesawat Tenaga Produksi',
+                color: 'text-orange-500',
+                bg: 'bg-orange-50',
+                links: [
+                    { label: 'Mesin Produksi (Concrete Mixer)', href: 'laporan/create' },
+                    { label: 'Penggerak Mula', href: '#' }
+                ]
+            },
+
+            {
+                icon: 'bi-wind',
+                title: 'Pesawat Uap Bejana Tekan',
+                color: 'text-cyan-500',
+                bg: 'bg-cyan-50',
+                links: [
+                    { label: 'Air Compressor', href: '#' },
+                    { label: 'Air Dryer', href: '#' },
+                    { label: 'Air Receiver Tank', href: '#' },
+                    { label: 'Boiler', href: '#' }
+                ]
+            },
+
+            {
+                icon: 'bi-fire',
+                title: 'Proteksi Kebakaran',
+                color: 'text-red-500',
+                bg: 'bg-red-50',
+                links: [
+                    { label: 'APAR', href: '#' },
+                    { label: 'Fire Alarm', href: '#' },
+                    { label: 'Hydrant', href: '#' },
+                    { label: 'Sprinkler', href: '#' }
+                ]
+            }
+
+        ]" :key="index">
+
+                <!-- CARD -->
+                <div x-data="{ open: false }" x-show="show" x-transition:enter="transition ease-out duration-500"
+                    x-transition:enter-start="opacity-0 translate-y-6"
+                    x-transition:enter-end="opacity-100 translate-y-0" :style="`transition-delay: ${index * 100}ms`"
+                    class="group relative bg-white rounded-2xl border border-gray-100 shadow-sm
+                       hover:shadow-xl hover:border-green-200 transition-all duration-300">
+
+                    <!-- HEADER -->
+                    <button @click="open = !open"
+                        class="w-full flex justify-between items-center px-6 py-5 rounded-2xl">
+                        <span class="flex items-center gap-4">
+                            <div :class="item.bg" class="w-12 h-12 flex items-center justify-center rounded-xl
+                                   transition-transform group-hover:scale-110">
+                                <i class="bi text-xl" :class="item.icon + ' ' + item.color"></i>
+                            </div>
+                            <span class="font-bold text-slate-700 text-lg" x-text="item.title"></span>
+                        </span>
+
+                        <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300"
+                            :class="open && 'rotate-180 text-green-600'"></i>
+                    </button>
+
+                    <!-- SUB MENU -->
+                    <div x-show="open" x-cloak x-collapse
+                        class="bg-gray-50/50 rounded-b-2xl border-t border-gray-50 overflow-hidden">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 p-2 gap-1">
+
+                            <template x-for="link in item.links">
+                                <a :href="link.href" class="flex items-center px-4 py-3 text-sm text-slate-600
+                                       hover:bg-white hover:text-green-600 hover:shadow-sm
+                                       rounded-lg transition-all group/link">
+                                    <i class="bi bi-arrow-right mr-2 opacity-0
+                                          group-hover/link:opacity-100 transition-all"></i>
+                                    <span x-text="link.label"></span>
+                                </a>
+                            </template>
+
+                        </div>
+                    </div>
+
+                </div>
+            </template>
 
         </div>
-    </section>
+    </main>
+
+
 
     <footer class="bg-gray-800 text-white pt-14 pb-6 mt-0">
 

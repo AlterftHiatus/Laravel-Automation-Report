@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem Automation Report K3 - LHPP</title>
+    <title>Hubungi Kami - Sistem Automation Report K3 - LHPP</title>
 
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -85,7 +85,7 @@
 
 <body class="bg-gray-50 font-[Inter] m-0 p-0">
 
-    <header x-data="{ openMenu: false, scrolled: false }"
+      <header x-data="{ openMenu: false, scrolled: false }"
         x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 30 })" :class="scrolled
         ? 'bg-white/70 backdrop-blur-xl shadow-md py-2'
         : 'bg-white py-4'" class="sticky top-0 z-50 transition-all duration-300 border-b border-[#27ae60]/40">
@@ -190,40 +190,74 @@
             </aside>
     </header>
 
-    
-    <section class="relative w-full h-[65vh] md:h-[75vh] lg:h-[85vh] overflow-hidden">
-
-        <img src="{{ asset('storage/images/gemini_generated_image_81arxr81arxr81ar.png') }}" alt="Banner K3" class="absolute inset-0 w-full h-full object-cover" />
-
-        <div class="absolute inset-0 bg-[#1f8f55]/80"></div>
-
-        <div class="relative z-10 h-full max-w-7xl mx-auto px-6
-               flex flex-col justify-center
-               items-center text-center
-               md:items-start md:text-left">
-
-            <p class="text-white/80 text-sm md:text-base tracking-widest mb-3 uppercase">
-                Sistem Pelaporan Otomatis LHPP K3
-            </p>
-
-            <h1 class="text-white font-extrabold leading-tight
-                   text-3xl sm:text-4xl md:text-5xl lg:text-6xl max-w-3xl">
-                Input Laporan Sesuai Bagian,<br class="hidden md:block">
-                Dokumen Cepat,<br class="hidden md:block">
-                Hasil Akurat.
-            </h1>
-
-            <div class="mt-8">
-                <a href="/input_laporan" class="inline-flex items-center gap-3
-                      bg-yellow-400 hover:bg-yellow-500
-                      text-gray-900 font-bold
-                      px-8 py-4 rounded-xl
-                      shadow-lg transition">
-                    Lihat Layanan
-                    <i class="fas fa-arrow-right"></i>
-                </a>
+    <!-- Konten Utama: Hubungi Kami -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-bold text-gray-800 mb-4">Hubungi Kami</h1>
+                <p class="text-lg text-gray-600">Jika Anda mengalami kendala dalam menggunakan sistem LHPP K3, silakan hubungi tim support kami. Kami siap membantu Anda dengan cepat dan efisien.</p>
             </div>
 
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Kontak Support -->
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-semibold text-gray-800 mb-6">Kontak Support Sistem</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4">
+                            <i class="fas fa-user text-green-600 text-xl"></i>
+                            <div>
+                                <p class="font-medium text-gray-800">Yudi</p>
+                                <p class="text-gray-600">IT Support Specialist</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <i class="fas fa-envelope text-green-600 text-xl"></i>
+                            <div>
+                                <p class="font-medium text-gray-800">yudislebew@gmail.com</p>
+                                <p class="text-gray-600">Email untuk kendala sistem</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <i class="fas fa-phone text-green-600 text-xl"></i>
+                            <div>
+                                <p class="font-medium text-gray-800">+62 812-3456-7890</p>
+                                <p class="text-gray-600">Telepon/WhatsApp</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <i class="fas fa-clock text-green-600 text-xl"></i>
+                            <div>
+                                <p class="font-medium text-gray-800">Jam Operasional</p>
+                                <p class="text-gray-600">Senin - Jumat: 08:00 - 17:00 WIB</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Kontak -->
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-semibold text-gray-800 mb-6">Kirim Pesan</h2>
+                    <form action="#" method="post">
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Nama</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600" placeholder="Masukkan nama Anda" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600" placeholder="Masukkan email Anda" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="subject" class="block text-gray-700 font-medium mb-2">Subjek</label>
+                            <input type="text" id="subject" name="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600" placeholder="Masukkan subjek pesan" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Pesan</label>
+                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600" placeholder="Jelaskan kendala yang Anda alami" required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -232,7 +266,7 @@
         <div class="container mx-auto px-4">
 
             <div class="flex flex-col items-center mb-10 text-center">
-                <img src="{{ asset('storage/images/image.png') }}" alt="Logo Perusahaan" class="h-24 md:h-20 lg:h-28 w-auto mb-4">
+                <img src="../img/logo-cakra.png" alt="Logo Perusahaan" class="h-24 md:h-20 lg:h-28 w-auto mb-4">
                 <p class="text-gray-400 text-sm italic">
                     "Keselamatan dan Kesehatan Kerja adalah Prioritas Utama"
                 </p>

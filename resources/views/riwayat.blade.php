@@ -4,88 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem Automation Report K3 - LHPP</title>
+    <title>Riwayat laporan LHPP</title>
 
-    <!-- Tailwind -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <!-- Alpine JS -->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
-    <style>
-        :root {
-            --primary-green: #27ae60;
-            --dark-navy: #2c3e50;
-            --white: #ffffff;
-        }
 
-        [x-cloak] {
-            display: none !important;
-        }
-
-        .dropdown-content-smooth {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            margin-top: 1px;
-            background-color: var(--white);
-            min-width: 100%;
-            border-radius: 14px;
-            box-shadow: 0 18px 35px rgba(0, 0, 0, 0.18);
-            z-index: 100;
-            border: 1px solid #eee;
-            overflow: hidden;
-        }
-
-        .dropdown-content-smooth a {
-            display: block;
-            padding: 15px 22px;
-            color: var(--dark-navy);
-            border-bottom: 1px solid #f1f1f1;
-            transition: all 0.25s ease;
-        }
-
-        .dropdown-content-smooth a:hover {
-            background-color: #f1fcf4;
-            color: var(--primary-green);
-            padding-left: 28px;
-        }
-    </style>
-
-    <style>
-        /* icon menu */
-        .menu-icon {
-            font-size: 1.25rem;
-            width: 1.75rem;
-            height: 1.75rem;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            transition: color 0.25s ease;
-            color: #4b5563;
-            /* gray-600 */
-        }
-
-        /* hover effect */
-        .dropdown-btn:hover .menu-icon {
-            color: #27ae60;
-            /* hijau utama */
-        }
-    </style>
-
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 </head>
 
-<body class="bg-gray-50 font-[Inter] m-0 p-0">
+<body>
 
-    <header x-data="{ openMenu: false, scrolled: false }"
+     <header x-data="{ openMenu: false, scrolled: false }"
         x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 30 })" :class="scrolled
         ? 'bg-white/70 backdrop-blur-xl shadow-md py-2'
         : 'bg-white py-4'" class="sticky top-0 z-50 transition-all duration-300 border-b border-[#27ae60]/40">
@@ -190,44 +127,127 @@
             </aside>
     </header>
 
-    
-    <section class="relative w-full h-[65vh] md:h-[75vh] lg:h-[85vh] overflow-hidden">
 
-        <img src="{{ asset('storage/images/gemini_generated_image_81arxr81arxr81ar.png') }}" alt="Banner K3" class="absolute inset-0 w-full h-full object-cover" />
+    <main class="container mx-auto max-w-7xl px-4 py-12" x-data="{ visible: false, searchQuery: '' }"
+        x-init="setTimeout(() => visible = true, 100)">
 
-        <div class="absolute inset-0 bg-[#1f8f55]/80"></div>
+        <div class="mb-10 text-center md:text-left" x-show="visible"
+            x-transition:enter="transition ease-out duration-500">
+            <h2 class="text-3xl font-bold text-[#2c3e50] mb-2 flex items-center justify-center md:justify-start gap-3">
+                <i class="fas fa-file-invoice text-green-600"></i>
+                Arsip Laporan Selesai
+            </h2>
+            <p class="text-gray-500 text-lg">Daftar seluruh laporan pemeriksaan (LHPP) yang telah diterbitkan.</p>
+        </div>
 
-        <div class="relative z-10 h-full max-w-7xl mx-auto px-6
-               flex flex-col justify-center
-               items-center text-center
-               md:items-start md:text-left">
-
-            <p class="text-white/80 text-sm md:text-base tracking-widest mb-3 uppercase">
-                Sistem Pelaporan Otomatis LHPP K3
-            </p>
-
-            <h1 class="text-white font-extrabold leading-tight
-                   text-3xl sm:text-4xl md:text-5xl lg:text-6xl max-w-3xl">
-                Input Laporan Sesuai Bagian,<br class="hidden md:block">
-                Dokumen Cepat,<br class="hidden md:block">
-                Hasil Akurat.
-            </h1>
-
-            <div class="mt-8">
-                <a href="/input_laporan" class="inline-flex items-center gap-3
-                      bg-yellow-400 hover:bg-yellow-500
-                      text-gray-900 font-bold
-                      px-8 py-4 rounded-xl
-                      shadow-lg transition">
-                    Lihat Layanan
-                    <i class="fas fa-arrow-right"></i>
-                </a>
+        <div class="mb-8 flex flex-col md:flex-row gap-4 items-center justify-between" x-show="visible"
+            x-transition:enter="transition ease-out duration-500 delay-100">
+            <div class="relative w-full md:w-96">
+                <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+                    <i class="fas fa-search"></i>
+                </span>
+                <input type="text" x-model="searchQuery" placeholder="Cari berdasarkan kode atau judul..."
+                    class="w-full pl-10 pr-4 py-3 rounded-2xl border border-gray-200 focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition shadow-sm">
             </div>
 
+            <a href="/laporan/create"
+                class="w-full md:w-auto bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-2xl font-bold transition flex items-center justify-center gap-2 shadow-lg shadow-green-100">
+                <i class="fas fa-plus"></i> Buat Laporan Baru
+            </a>
         </div>
-    </section>
 
-    <footer class="bg-gray-800 text-white pt-14 pb-6 mt-0">
+        <div class="hidden md:block bg-white rounded-[2rem] shadow-xl shadow-slate-200/60 overflow-hidden border border-gray-100"
+            x-show="visible" x-transition:enter="transition ease-out duration-500 delay-200">
+            <table class="w-full text-left border-collapse">
+                <thead class="bg-slate-50 border-b border-gray-100 text-slate-500 uppercase text-xs tracking-widest">
+                    <tr>
+                        <th class="px-8 py-5 font-bold">No. Kode</th>
+                        <th class="px-8 py-5 font-bold">Judul Laporan</th>
+                        <th class="px-8 py-5 font-bold">Pemeriksa</th>
+                        <th class="px-8 py-5 font-bold">Tanggal Terbit</th>
+                        <th class="px-8 py-5 font-bold text-center">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-50">
+                    <tr class="hover:bg-green-50/30 transition duration-200">
+                        <td class="px-8 py-5 font-bold text-green-700">LHPP-2024-001</td>
+                        <td class="px-8 py-5 font-medium text-slate-800">Pemeriksaan Berkala Crane Overhead</td>
+                        <td class="px-8 py-5 text-slate-600 text-sm">Ahmad Pratama</td>
+                        <td class="px-8 py-5 text-slate-500 text-sm">12 Jan 2026</td>
+                        <td class="px-8 py-5">
+                            <div class="flex items-center justify-center gap-3">
+                                <button title="Lihat"
+                                    class="p-2.5 text-blue-600 hover:bg-blue-50 rounded-xl transition"><i
+                                        class="fas fa-eye"></i></button>
+                                <button title="Unduh PDF"
+                                    class="flex items-center gap-2 px-4 py-2 bg-green-100 text-green-700 rounded-xl hover:bg-green-200 transition font-bold text-xs">
+                                    <i class="fas fa-download"></i> UNDUH PDF
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-green-50/30 transition duration-200">
+                        <td class="px-8 py-5 font-bold text-green-700">LHPP-2024-002</td>
+                        <td class="px-8 py-5 font-medium text-slate-800">Uji Kelayakan Bejana Tekan</td>
+                        <td class="px-8 py-5 text-slate-600 text-sm">Siti Rahmawati</td>
+                        <td class="px-8 py-5 text-slate-500 text-sm">15 Jan 2026</td>
+                        <td class="px-8 py-5">
+                            <div class="flex items-center justify-center gap-3">
+                                <button title="Lihat"
+                                    class="p-2.5 text-blue-600 hover:bg-blue-50 rounded-xl transition"><i
+                                        class="fas fa-eye"></i></button>
+                                <button title="Unduh PDF"
+                                    class="flex items-center gap-2 px-4 py-2 bg-green-100 text-green-700 rounded-xl hover:bg-green-200 transition font-bold text-xs">
+                                    <i class="fas fa-download"></i> UNDUH PDF
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="px-8 py-4 bg-slate-50 flex items-center justify-between border-t border-gray-100">
+                <span class="text-sm text-slate-400 font-medium">Menampilkan 2 laporan terbaru</span>
+                <div class="flex gap-2">
+                    <button
+                        class="p-2 px-4 border border-slate-200 rounded-xl text-slate-400 cursor-not-allowed text-xs font-bold uppercase">Prev</button>
+                    <button
+                        class="p-2 px-4 border border-green-200 text-green-600 rounded-xl hover:bg-green-50 text-xs font-bold uppercase">Next</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="md:hidden space-y-4" x-show="visible"
+            x-transition:enter="transition ease-out duration-500 delay-300">
+            <div class="bg-white rounded-3xl shadow-lg shadow-slate-200/50 p-6 border border-gray-100">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-xs font-black text-green-600 bg-green-50 px-3 py-1 rounded-full">LHPP-001</span>
+                    <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">12 Jan 2026</span>
+                </div>
+                <h3 class="font-bold text-slate-800 text-lg leading-tight mb-4">Pemeriksaan Berkala Crane Overhead</h3>
+                <div class="flex items-center gap-3 mb-6">
+                    <div
+                        class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-slate-400 text-xs">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="text-sm">
+                        <p class="text-slate-400 text-[10px] uppercase font-bold leading-none">Pemeriksa</p>
+                        <p class="font-bold text-slate-700">Ahmad Pratama</p>
+                    </div>
+                </div>
+                <div class="flex gap-2">
+                    <button
+                        class="flex-1 py-3 bg-slate-100 text-slate-600 rounded-2xl font-bold text-sm">Detail</button>
+                    <button
+                        class="flex-[2] py-3 bg-green-600 text-white rounded-2xl font-bold text-sm shadow-lg shadow-green-100 flex items-center justify-center gap-2">
+                        <i class="fas fa-download"></i> Unduh PDF
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+     <footer class="bg-gray-800 text-white pt-14 pb-6 mt-0">
 
         <div class="container mx-auto px-4">
 
@@ -298,6 +318,7 @@
 
         </div>
     </footer>
+
 
     <script src="{{ asset('js/home.js') }}"></script>
 
