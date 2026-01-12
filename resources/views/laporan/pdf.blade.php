@@ -384,7 +384,7 @@
         <h3>HASIL PEMERIKSAAN & PENGUJIAN</h3>
 
         @php
-            $currentKategori = null;
+        $currentKategori = null;
         @endphp
 
         <table>
@@ -396,19 +396,19 @@
             </tr>
 
             @foreach ($laporan->checklistResults as $index => $result)
-                @if ($currentKategori !== $result->checklistItem->kategori)
-                    <tr>
-                        <td colspan="4"><strong>{{ $result->checklistItem->kategori }}</strong></td>
-                    </tr>
-                    @php $currentKategori = $result->checklistItem->kategori; @endphp
-                @endif
+            @if ($currentKategori !== $result->checklistItem->kategori)
+            <tr>
+                <td colspan="4"><strong>{{ $result->checklistItem->kategori }}</strong></td>
+            </tr>
+            @php $currentKategori = $result->checklistItem->kategori; @endphp
+            @endif
 
-                <tr>
-                    <td>{{ $index + 1 }}</td>
-                    <td>{{ $result->checklistItem->nama_item }}</td>
-                    <td>{{ $result->hasil }}</td>
-                    <td>{{ $result->keterangan }}</td>
-                </tr>
+            <tr>
+                <td>{{ $index + 1 }}</td>
+                <td>{{ $result->checklistItem->nama_item }}</td>
+                <td>{{ $result->hasil }}</td>
+                <td>{{ $result->keterangan }}</td>
+            </tr>
             @endforeach
         </table>
 
@@ -416,8 +416,8 @@
         <h3>DOKUMENTASI FOTO</h3>
 
         @foreach ($laporan->fotos as $foto)
-            <p>{{ $foto->keterangan }}</p>
-            <img src="{{ storage_path('app/public/' . $foto->file_path) }}" width="300">
+        <p>{{ $foto->keterangan }}</p>
+        <img src="{{ storage_path('app/public/' . $foto->file_path) }}" width="300">
         @endforeach
         <div style="page-break-after: always;"></div>
 
@@ -430,39 +430,39 @@
 
             <p><strong>3.1 Temuan</strong></p>
 
-            <p style="margin-left:40px;">
-                1. <br>
-            </p>
+            <ol style="margin-left: 40px;">
+                <li>Hasil pengukuran kebisingan suara genset didalam ruang genset adalah ... db</li>
+            </ol>
 
             <p style="margin-top:15px;"><strong>3.2 Rekomendasi</strong></p>
 
-            <p style="margin-left:40px;">
-                1. <br>
-                2. <br>
-                3. <br>
-                4. <br>
-            </p>
+            <ol style="margin-left: 40px;">
+                <li>Area kerja Concreate Mixer harus dalam keadaan bersih</li>
+                <li>Petugas Operator Concreate Mixer harus memenuhi syarat Keselamatan dan Kesehatan Kerja, dan memiliki kemampuan teknis yang diperlukan</li>
+                <li>Petugas atau operator motor diesel wajib memakai APD (Ear Plug) ketika mengoperasikan motor diesel</li>
+                <li>Menambahkan Apar di dekat ruang Concreate Mixer.</li>
+            </ol>
 
             <p style="margin-top:15px;"><strong>3.3 Kesimpulan</strong></p>
 
             <p style="text-align:justify; margin-left:40px;">
-
+                Dari hasil pemeriksaan dan pengujian tersebut diatas dinyatakan bahwa <b>CONREATE MIXER MEMENUHI PERSYARATAN KESELAMATAN DAN KESEHATAN KERJA</b>. Genset boleh dioperasikan sebagaimana fungsinya dan harus dilaksanakan perbaikan-perbaikan yang direkomendasikan.
             </p>
 
             <p style="margin-top:15px;"><strong>3.4 Syarat-syarat dan Ketentuan</strong></p>
 
-            <p style="margin-left:40px;">
-                1. <br>
-                2. <br>
-                3. <br>
-                4. <br>
-                5. <br>
-                6. <br>
-                7. <br>
-                8. <br>
-                9. <br>
-                10.
-            </p>
+            <ol style="margin-left: 40px;">
+                <li>Sebelum concreate mixer ini dioperasikan, semua perlengkapan pengamanan dan peralatannya harus diperiksa/dichek terlebih dahulu oleh operator</li>
+                <li>Prosedur perawatan dan pengoperasian aman harus sesuai dengan <i>Manual Book</i> (Buku Petunjuk Pabrik Pembuat)</li>
+                <li>Kondisi area kerja dalam keadaan baik dan ruang sekitarnya dalam kondisi bersih.</li>
+                <li>Operator yang mengoperasikan diwajibkan memiliki Sertifikat dari Kemnaker RI</li>
+                <li>Operator/orang yang memasuki ruang genset/Pembangkitan Listrik harus diwajibkan memakai peralatan pelindung diri (APD) sesuai dengan ketentuan yang ditetapkan dan memasang tanda berbahaya / larangan yang membahayakan serta menjaga kebersihan ruang diesel/genset.</li>
+                <li>Perusahaan wajib memperhatikan Alat Pemadam Api Ringan (APAR)</li>
+                <li>Perusahaan wajib menyediakan dan menempatkan Alat Pelindung Diri (APD) berupa Ear Muff, Safety Helmet, Safety Shoes, Safety Vest, Safety Glooves/Sarung Tangan, Safety Googles/Kacamata Pelindung saat mau merawat/mengoperasikan mesin.</li>
+                <li>Diwajibkan membuat SOP / Standar Operasional Prosedur saat pengoperasian mesin.</li>
+                <li>Apabila ada perubahan konstruksi/perbaikan konstruksi harus melapor Instansi Ketenagakerjaan setempat.</li>
+                <li>Concreate mixer dilaksanakan pemeriksaan berkala dilaksanakan <b>1 (satu) tahun sekali</b>. Pemeriksaan dan pengujian selanjutnya dilaksanakan paling lambat 27 Agustus 2026</li>
+            </ol>
 
             <p style="margin-top:30px; text-align:right; margin-right:80px;">
                 Semarang, ....................................
