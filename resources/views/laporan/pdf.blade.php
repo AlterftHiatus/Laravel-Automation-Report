@@ -53,27 +53,28 @@
                 <tr>
                     <td class="col-label">Nama Perusahaan</td>
                     <td class="col-colon">:</td>
-                    <td class="col-value">{{ $laporan->perusahaan_pemilik }}</td>
+                    <td class="col-value" style="text-transform: uppercase;">{{ $laporan->perusahaan_pemilik }}</td>
                 </tr>
                 <tr>
                     <td class="col-label">Lokasi Unit</td>
                     <td class="col-colon">:</td>
-                    <td class="col-value">{{ $laporan->lokasi_unit }}</td>
+                    <td class="col-value" style="text-transform: uppercase;">{{ $laporan->lokasi_unit }}</td>
                 </tr>
                 <tr>
                     <td class="col-label">Alamat Perusahaan</td>
                     <td class="col-colon">:</td>
-                    <td class="col-value">{{ $laporan->alamat_pemilik }}</td>
+                    <td class="col-value" style="text-transform: uppercase;">{{ $laporan->alamat_pemilik }}</td>
                 </tr>
                 <tr>
                     <td class="col-label">Jenis Pemeriksaan</td>
                     <td class="col-colon">:</td>
-                    <td class="col-value">{{ $laporan->jenis_pemeriksaan }}</td>
+                    <td class="col-value" style="text-transform: uppercase;">{{ $laporan->jenis_pemeriksaan }}</td>
                 </tr>
                 <tr>
                     <td class="col-label">Pemeriksa</td>
                     <td class="col-colon">:</td>
-                    <td class="col-value">{{ $laporan->nama_pemeriksa ?? 'Belum diisi' }}</td>
+                    <td class="col-value" style="text-transform: uppercase;">
+                        {{ $laporan->nama_pemeriksa ?? 'Belum diisi' }}</td>
                 </tr>
             </table>
 
@@ -309,7 +310,7 @@
                 <tr>
                     <td class="label">No.Kep</td>
                     <td class="colon">:</td>
-                    <td class="value"><span style="background-color: yellow">Diisi Manual Oleh Office</span></td>
+                    <td class="value">5/24797/AS.01.04/XII/2024</td>
                 </tr>
                 <tr>
                     <td class="label">Bidang</td>
@@ -336,7 +337,9 @@
             <table class="table_data_umum">
                 <thead>
                     <tr>
-                        <th colspan="3" class="th1">FORMULIR/CHECHLIST PEMERIKSAAN DAN PENGUJUAN MOTOR DIESEL</th>
+                        <th colspan="3" class="th1">FORMULIR/CHECHLIST PEMERIKSAAN DAN PENGUJUAN MOTOR DIESEL
+                            <br> ( PEMERIKSAAN {{ $laporan->jenis_pemeriksaan }} )
+                        </th>
                     </tr>
                     <tr>
                         <th colspan="3" style="text-align: left; padding: 8px 10px;">I. DATA UMUM</th>
@@ -453,48 +456,202 @@
         </div>
 
         {{-- ================= II. DATA TEKNIK ================= --}}
-        <h3>II. DATA TEKNIK</h3>
-        <table>
-            <tr>
-                <td>Merk / Tipe</td>
-                <td>{{ $laporan->dataTeknis->merk_tipe }}</td>
-            </tr>
-            <tr>
-                <td>Pabrik Pembuat / Negara</td>
-                <td>{{ $laporan->dataTeknis->pembuat_pemasang ?? '-' }}</td>
-            </tr>
-            <tr>
-                <td>Tahun Pembuatan</td>
-                <td>{{ $laporan->dataTeknis->tahun_pembuatan }}</td>
-            </tr>
-            <tr>
-                <td>Klasifikasi</td>
-                <td>{{ $laporan->dataTeknis->klasifikasi }}</td>
-            </tr>
-            <tr>
-                <td>Nomor Seri</td>
-                <td>{{ $laporan->dataTeknis->nomor_seri }}</td>
-            </tr>
-            <tr>
-                <td>Kapasitas</td>
-                <td>{{ $laporan->dataTeknis->kapasitas }}</td>
-            </tr>
-            <tr>
-                <td>Dimensi Mesin</td>
-                <td>
-                    Diameter: {{ $laporan->dataTeknis->diameter_mm }} mm<br>
-                    Panjang: {{ $laporan->dataTeknis->panjang_mm }} mm<br>
-                    Tinggi: {{ $laporan->dataTeknis->tinggi_mm }} mm
-                </td>
-            </tr>
-            <tr>
-                <td>Power</td>
-                <td>{{ $laporan->dataTeknis->power }}</td>
-            </tr>
-        </table>
 
+        <div class="container_data_umum">
+            <table class="table_data_umum">
+                <thead>
+                    <tr>
+                        <th colspan="3" style="text-align: left; padding: 8px 10px;">II. DATA TEKNIK</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="no">1</td>
+                        <td class="label">Merk / Tipe</td>
+                        <td class="value">{{ $laporan->dataTeknis->merk_tipe }}</td>
+                    </tr>
+                    <tr>
+                        <td class="no">2</td>
+                        <td class="label">Pabrik Pembuat / Negara</td>
+                        <td class="value">{{ $laporan->dataTeknis->pembuat_pemasang ?? '-' }}</td>
+                    </tr>
+                    <tr>
+                        <td class="no">3</td>
+                        <td class="label">Tahun Pembuatan</td>
+                        <td class="value">{{ $laporan->dataTeknis->tahun_pembuatan }}</td>
+                    </tr>
+                    <tr>
+                        <td class="no">4</td>
+                        <td class="label">Klasifikasi</td>
+                        <td class="value">{{ $laporan->dataTeknis->klasifikasi }}</td>
+                    </tr>
+                    <tr>
+                        <td class="no">5</td>
+                        <td class="label">Nomor Seri</td>
+                        <td class="value">{{ $laporan->dataTeknis->nomor_seri }}</td>
+                    </tr>
+                    <tr>
+                        <td class="no">6</td>
+                        <td class="label">Kapasitas</td>
+                        <td class="value">{{ $laporan->dataTeknis->kapasitas }}</td>
+                    </tr>
+                    <tr>
+                        <td class="no">7</td>
+                        <td class="label">Dimensi Mesin</td>
+                        <td class="value"></td>
+                    </tr>
+                    <tr>
+                        <td class="no"></td>
+                        <td class="label">Diameter</td>
+                        <td class="value">{{ $laporan->dataTeknis->diameter_mm }} mm</td>
+                    </tr>
+                    <tr>
+                        <td class="no"></td>
+                        <td class="label">Panjang</td>
+                        <td class="value">{{ $laporan->dataTeknis->panjang_mm }} mm</td>
+                    </tr>
+                    <tr>
+                        <td class="no"></td>
+                        <td class="label">Tinggi</td>
+                        <td class="value">{{ $laporan->dataTeknis->tinggi_mm }} mm</td>
+                    </tr>
+                    <tr>
+                        <td class="no">8</td>
+                        <td class="label">Power</td>
+                        <td class="value">{{ $laporan->dataTeknis->power }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
         {{-- ================= III–V CHECKLIST ================= --}}
-        <h3>HASIL PEMERIKSAAN & PENGUJIAN</h3>
+        {{-- <h3>HASIL PEMERIKSAAN & PENGUJIAN</h3>
 
         @php
             $currentKategori = null;
@@ -523,7 +680,91 @@
                     <td>{{ $result->keterangan }}</td>
                 </tr>
             @endforeach
-        </table>
+        </table> --}}
+
+        <h3>======================== INI CHECKLIST =======================</h3>
+
+        <div class="container_checklist">
+            @php
+                $kategoriMap = [
+                    'Konstruksi Dasar' => 'A. Konstruksi Dasar',
+                    'Struktur Konstruksi' => 'B. Struktur Konstruksi',
+                    'Safety Device' => 'C. Safety Device',
+                    'Transmisi dan Bagian-Bagian Unit Mesin' => 'D. Transmisi dan Bagian-Bagian Unit Mesin',
+                ];
+
+                $allowedKategori = array_keys($kategoriMap);
+                $currentKategori = null;
+                $no = 1;
+            @endphp
+
+            <table>
+                {{-- HEADER BARIS 1 --}}
+                <tr>
+                    <th rowspan="2" width="5%">No</th>
+                    <th rowspan="2">Komponen</th>
+                    <th colspan="2">Kondisi</th>
+                    <th rowspan="2">Keterangan</th>
+                </tr>
+
+                {{-- HEADER BARIS 2 --}}
+                <tr>
+                    <th width="8%">Baik</th>
+                    <th width="8%">Buruk</th>
+                </tr>
+
+                @foreach ($laporan->checklistResults as $result)
+                    {{-- FILTER HANYA 4 BAGIAN --}}
+                    @if (!in_array($result->checklistItem->kategori, $allowedKategori))
+                        @continue
+                    @endif
+
+                    {{-- JUDUL KATEGORI --}}
+                    @if ($currentKategori !== $result->checklistItem->kategori)
+                        <tr>
+                            <td colspan="5">
+                                <strong>{{ $kategoriMap[$result->checklistItem->kategori] }}</strong>
+                            </td>
+                        </tr>
+                        @php
+                            $currentKategori = $result->checklistItem->kategori;
+                            $no = 1;
+                        @endphp
+                    @endif
+
+                    <tr>
+                        <td align="center">{{ $no++ }}</td>
+                        <td>{{ $result->checklistItem->nama_item }}</td>
+
+                        {{-- KOLOM BAIK --}}
+                        <td align="center">
+                            @if ($result->hasil === 'Baik')
+                                V
+                            @elseif ($result->hasil === '-')
+                                -
+                            @elseif ($result->hasil === 'Buruk')
+                                -
+                            @endif
+                        </td>
+
+                        {{-- KOLOM BURUK --}}
+                        <td align="center">
+                            @if ($result->hasil === 'Buruk')
+                                V
+                            @elseif ($result->hasil === '-')
+                                -
+                            @elseif ($result->hasil === 'Baik')
+                                -
+                            @endif
+                        </td>
+
+                        {{-- KETERANGAN --}}
+                        <td>{{ $result->keterangan ?? '-' }}</td>
+                    </tr>
+                @endforeach
+            </table>
+        </div>
+        <h3>======================== INI CHECKLIST =======================</h3>
 
         {{-- ================= DOKUMENTASI ================= --}}
         <h3>DOKUMENTASI FOTO</h3>
@@ -607,7 +848,6 @@
         </div>
 
     </main>
-
 </body>
 
 </html>

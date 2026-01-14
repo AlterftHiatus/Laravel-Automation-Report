@@ -93,10 +93,10 @@
         <input type="text" name="sertifikat_juru_las"><br><br>
 
         <label>No. SKP / Bidang PJK3</label><br>
-        <input type="text" name="no_skp_pjk3"><br><br>
+        <input type="text" name="no_skp_pjk3" value="5/521/AS.01.02/IV/2025" readonly><br><br>
 
         <label>No. SKP / Bidang AK3</label><br>
-        <input type="text" name="no_skp_ak3"><br><br>
+        <input type="text" name="no_skp_ak3" value="5/24797/AS.01.04/XII/2024" readonly><br><br>
 
         <label>Sertifikasi Standar</label><br>
         <input type="text" name="sertifikasi_standar"><br><br>
