@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="{{ public_path('css/concrete_mixer.css') }}">
 </head>
 
-<body style="border: 1px solid red; margin-top: 55px; margin-right: 10px;">
+<body style="border: 1px solid red; margin-top: 55px; margin-right: 10px; margin-bottom: 0px; padding-bottom: 0px;">
     <header>
         <div>
             <img src="{{ public_path('storage/images/header.jpeg') }}" style="width: 595pt;">
@@ -284,13 +284,12 @@
         <div style="page-break-after: always;"></div>
 
         {{-- ================= BAB 2 ================= --}}
-        <h3 style="text-align:center; margin-top: 0px;">
+        <h3 style="text-align:center; margin-top: 0px; margin-bottom: 20px;">
             BAB II<br>LAPORAN HASIL PEMERIKSAAN DAN PENGUJIAN
-            <br><br>
+            <br>
         </h3>
 
-
-        <table class="data-table">
+        <table class="data-table" style="margin-bottom: 20px">
             <thead>
                 <tr>
                     <th colspan="3">PEMERIKSAAN DAN PENGUJIAN MOTOR DIESEL</th>
@@ -334,7 +333,7 @@
 
         {{-- ================= I. DATA UMUM ================= --}}
         <div class="container_data_umum">
-            <table class="table_data_umum">
+            <table class="table_data_umum" style="margin-top: 20px">
                 <thead>
                     <tr>
                         <th colspan="3" class="th1">FORMULIR/CHECHLIST PEMERIKSAAN DAN PENGUJUAN MOTOR DIESEL
@@ -523,40 +522,10 @@
                 </tbody>
             </table>
         </div>
-        
-        {{-- ================= III–V CHECKLIST ================= --}}
-        {{-- <h3>HASIL PEMERIKSAAN & PENGUJIAN</h3>
 
-        @php
-            $currentKategori = null;
-        @endphp
+        {{-- ================= III CHECKLIST ================= --}}
 
-        <table>
-            <tr>
-                <th width="5%">No</th>
-                <th>Komponen</th>
-                <th width="15%">Hasil</th>
-                <th width="25%">Keterangan</th>
-            </tr>
-
-            @foreach ($laporan->checklistResults as $index => $result)
-                @if ($currentKategori !== $result->checklistItem->kategori)
-                    <tr>
-                        <td colspan="4"><strong>{{ $result->checklistItem->kategori }}</strong></td>
-                    </tr>
-                    @php $currentKategori = $result->checklistItem->kategori; @endphp
-                @endif
-
-                <tr>
-                    <td>{{ $index + 1 }}</td>
-                    <td>{{ $result->checklistItem->nama_item }}</td>
-                    <td>{{ $result->hasil }}</td>
-                    <td>{{ $result->keterangan }}</td>
-                </tr>
-            @endforeach
-        </table> --}}
-
-        <h3>======================== INI CHECKLIST =======================</h3>
+        <div style="page-break-after: always;"></div>
 
         <div class="container_checklist">
             @php
@@ -572,19 +541,22 @@
                 $no = 1;
             @endphp
 
-            <table>
+            <table class="table_checklist">
                 {{-- HEADER BARIS 1 --}}
-                <tr>
-                    <th rowspan="2" width="5%">No</th>
+                <tr class="tr1">
+                    <th colspan="5">III. PEMERIKSAAN VISUAL</th>
+                </tr>
+                <tr class="tr2">
+                    <th rowspan="2" width="25px">No</th>
                     <th rowspan="2">Komponen</th>
                     <th colspan="2">Kondisi</th>
                     <th rowspan="2">Keterangan</th>
                 </tr>
 
                 {{-- HEADER BARIS 2 --}}
-                <tr>
-                    <th width="8%">Baik</th>
-                    <th width="8%">Buruk</th>
+                <tr class="tr2">
+                    <th width="9%">Baik</th>
+                    <th width="9%">Buruk</th>
                 </tr>
 
                 @foreach ($laporan->checklistResults as $result)
@@ -597,7 +569,7 @@
                     @if ($currentKategori !== $result->checklistItem->kategori)
                         <tr>
                             <td colspan="5">
-                                <strong>{{ $kategoriMap[$result->checklistItem->kategori] }}</strong>
+                                <strong style="padding-left: 10px;">{{ $kategoriMap[$result->checklistItem->kategori] }}</strong>
                             </td>
                         </tr>
                         @php
@@ -608,7 +580,7 @@
 
                     <tr>
                         <td align="center">{{ $no++ }}</td>
-                        <td>{{ $result->checklistItem->nama_item }}</td>
+                        <td style="padding-left: 10px;">{{ $result->checklistItem->nama_item }}</td>
 
                         {{-- KOLOM BAIK --}}
                         <td align="center">
@@ -633,12 +605,75 @@
                         </td>
 
                         {{-- KETERANGAN --}}
-                        <td>{{ $result->keterangan ?? '-' }}</td>
+                        <td style="text-align: center">{{ $result->keterangan ?? '-' }}</td>
                     </tr>
                 @endforeach
             </table>
         </div>
-        <h3>======================== INI CHECKLIST =======================</h3>
+
+        {{-- ================= IV. PENGUJIAN NDT ================= --}}
+        @php
+            $kategoriNDT = 'Pengujian NDT';
+            $no = 1;
+        @endphp
+
+        <table class="table_pengujian_ndt" style="margin-bottom: 35px">
+            <tr>
+                <th colspan="4" style="text-align: left; padding-left: 10px;">IV. PENGUJIAN NDT</th>
+            </tr>
+            <tr>
+                <th width="25px">No</th>
+                <th>Komponen yang diuji</th>
+                <th width="20%">Hasil</th>
+                <th width="35%">Keterangan</th>
+            </tr>
+
+            @foreach ($laporan->checklistResults as $result)
+                @if ($result->checklistItem->kategori !== $kategoriNDT)
+                    @continue
+                @endif
+
+                <tr>
+                    <td align="center">{{ $no++ }}</td>
+                    <td style="padding-left: 10px">{{ $result->checklistItem->nama_item }}</td>
+                    <td align="center">{{ $result->hasil ?? '-' }}</td>
+                    <td align="center">{{ $result->keterangan ?? '-' }}</td>
+                </tr>
+            @endforeach
+        </table>
+
+        {{-- ================= V. PENGUKURAN DAN PENGUJIAN SAFETY DEVICE ================= --}}
+
+        @php
+            $kategoriSafetyPengujian = 'Pengukuran dan Pengujian Safety Device';
+            $no = 1;
+        @endphp
+
+        <table>
+            <tr>
+                <th colspan="4" style="text-align: left; padding-left: 10px;">V. PENGUKURAN DAN PENGUJIAN SAFETY DEVICE</th>
+            </tr>
+            <tr>
+                <th width="5%">No</th>
+                <th>Komponen</th>
+                <th width="20%">Hasil</th>
+                <th width="35%">Keterangan</th>
+            </tr>
+
+            @foreach ($laporan->checklistResults as $result)
+                @if ($result->checklistItem->kategori !== $kategoriSafetyPengujian)
+                    @continue
+                @endif
+
+                <tr>
+                    <td align="center">{{ $no++ }}</td>
+                    <td style="padding-left: 10px">{{ $result->checklistItem->nama_item }}</td>
+                    <td align="center">{{ $result->hasil }}</td>
+                    <td align="center">{{ $result->keterangan ?? '-' }}</td>
+                </tr>
+            @endforeach
+        </table>
+
 
         {{-- ================= DOKUMENTASI ================= --}}
         <h3>DOKUMENTASI FOTO</h3>

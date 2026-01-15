@@ -1,6 +1,6 @@
 /* ===== PAGE MARGIN (sesuai template PDF) ===== */
 @page {
-    margin: 120px 40px 100px 40px;
+    margin: 120px 40px 80px 40px;
 }
 
 /* ===== GLOBAL FONT ===== */
@@ -32,7 +32,7 @@ header {
 /* ===== FOOTER ===== */
 footer {
     position: fixed;
-    bottom: -100px;
+    bottom: -80px;
     left: -40px;
 }
 
@@ -183,10 +183,10 @@ h4 {
 }
 
 /* Mengatur cell */
-.data-table th, 
+.data-table th,
 .data-table td {
     /* Menghilangkan semua border bawaan cell */
-    border: none; 
+    border: none;
     padding: 0px 12px;
     vertical-align: middle;
     font-weight: normal;
@@ -225,8 +225,16 @@ h4 {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 40px;
-    margin-top: 20px;
+    /* margin-top: 20px; */
     border: 1px solid black;
+}
+
+.container_data_umum table th,
+.container_data_umum table td {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    line-height: 1.4;
+    font-size: 11pt;
 }
 
 .table_data_umum thead {
@@ -256,3 +264,35 @@ h4 {
     padding-left: 10px;
 }
 
+/* ===== III. Checklist ===== */
+
+.container_checklist table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    /* Memberikan border luar pada seluruh tabel */
+    border: 1px solid black;
+}
+
+.container_checklist table th,
+.container_checklist table td {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    line-height: 1.4;
+    font-size: 11pt;
+}
+
+.container_checklist table .tr1 th {
+    font-weight: bold;
+    text-align: left;
+    padding: 8px 10px;
+}
+
+.container_checklist table .tr2 {
+    background-color: #d3d3d3;
+}
+
+.container_checklist table .tr2 th {
+    text-align: center;
+    vertical-align: middle;
+}
