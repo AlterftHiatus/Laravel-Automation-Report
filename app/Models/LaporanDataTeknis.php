@@ -17,6 +17,7 @@ class LaporanDataTeknis extends Model
         'klasifikasi',
         'nomor_seri',
         'kapasitas',
+        'digunakan_untuk',
 
         // DIMENSI
         'diameter_mm',
