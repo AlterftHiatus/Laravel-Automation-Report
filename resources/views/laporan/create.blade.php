@@ -71,20 +71,20 @@
         <label>Jenis Pesawat / Tipe</label><br>
         <input type="text" name="jenis_pesawat" value="Concrete Mixer" readonly><br><br>
 
-        <label>Merk / Tipe</label><br>
-        <input type="text" name="merk_tipe"><br><br>
+        {{-- <label>Merk / Tipe</label><br>
+        <input type="text" name="merk_tipe"><br><br> --}}
 
-        <label>No. Seri / No. Unit</label><br>
-        <input type="text" name="nomor_seri"><br><br>
+        {{-- <label>No. Seri / No. Unit</label><br>
+        <input type="text" name="nomor_seri"><br><br> --}}
 
         {{-- <label>Perusahaan Pembuat / Pemasang</label><br>
         <input type="text" name="pembuat_pemasang"><br><br> --}}
-
+{{-- 
         <label>Tahun Pembuatan</label><br>
-        <input type="number" name="tahun_pembuatan"><br><br>
+        <input type="number" name="tahun_pembuatan"><br><br> --}}
 
-        <label>Kapasitas</label><br>
-        <input type="text" name="kapasitas" placeholder="contoh: 350 Liter"><br><br>
+        {{-- <label>Kapasitas</label><br>
+        <input type="text" name="kapasitas" placeholder="contoh: 350 Liter"><br><br> --}}
 
         <label>Digunakan Untuk</label><br>
         <input type="text" name="digunakan_untuk"><br><br>
@@ -101,8 +101,8 @@
         <label>Sertifikasi Standar</label><br>
         <input type="text" name="sertifikasi_standar"><br><br>
 
-        <label>Klasifikasi</label><br>
-        <input type="text" name="klasifikasi"><br><br>
+        {{-- <label>Klasifikasi</label><br>
+        <input type="text" name="klasifikasi"><br><br> --}}
 
         <label>Nomor Izin Pemakai</label><br>
         <input type="text" name="nomor_izin_pemakai"><br><br>

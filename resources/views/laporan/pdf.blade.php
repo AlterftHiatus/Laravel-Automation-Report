@@ -569,7 +569,8 @@
                     @if ($currentKategori !== $result->checklistItem->kategori)
                         <tr>
                             <td colspan="5">
-                                <strong style="padding-left: 10px;">{{ $kategoriMap[$result->checklistItem->kategori] }}</strong>
+                                <strong
+                                    style="padding-left: 10px;">{{ $kategoriMap[$result->checklistItem->kategori] }}</strong>
                             </td>
                         </tr>
                         @php
@@ -583,9 +584,10 @@
                         <td style="padding-left: 10px;">{{ $result->checklistItem->nama_item }}</td>
 
                         {{-- KOLOM BAIK --}}
-                        <td align="center">
+                        <td style="text-align: center; vertical-align: middle;">
                             @if ($result->hasil === 'Baik')
-                                X
+                                <img src="{{ public_path('storage/images/checklist.png') }}"
+                                    style="width: 20px; height: 20px;">
                             @elseif ($result->hasil === '-')
                                 -
                             @elseif ($result->hasil === 'Buruk')
@@ -651,7 +653,8 @@
 
         <table>
             <tr>
-                <th colspan="4" style="text-align: left; padding-left: 10px;">V. PENGUKURAN DAN PENGUJIAN SAFETY DEVICE</th>
+                <th colspan="4" style="text-align: left; padding-left: 10px;">V. PENGUKURAN DAN PENGUJIAN SAFETY
+                    DEVICE</th>
             </tr>
             <tr>
                 <th width="5%">No</th>
@@ -675,13 +678,6 @@
         </table>
 
 
-        {{-- ================= DOKUMENTASI ================= --}}
-        <h3>DOKUMENTASI FOTO</h3>
-
-        @foreach ($laporan->fotos as $foto)
-            <p>{{ $foto->keterangan }}</p>
-            <img src="{{ storage_path('app/public/' . $foto->file_path) }}" width="300">
-        @endforeach
         <div style="page-break-after: always;"></div>
 
         {{-- ================= BAB 3 ================= --}}
@@ -691,10 +687,16 @@
                 HASIL DAN KESIMPULAN
             </h3>
 
+            @php
+                $kebisingan = $laporan->checklistResults->firstWhere('checklistItem.nama_item', 'Kebisingan');
+            @endphp
+
             <p><strong>3.1 Temuan</strong></p>
 
             <ol style="margin-left: 40px;">
-                <li>Hasil pengukuran kebisingan suara genset didalam ruang genset adalah ... db</li>
+                <li>Hasil pengukuran kebisingan suara genset di dalam ruang genset adalah
+                    <strong>{{ $kebisingan->hasil ?? '-' }}</strong>
+                </li>
             </ol>
 
             <p style="margin-top:15px;"><strong>3.2 Rekomendasi</strong></p>
@@ -755,6 +757,52 @@
                 No. SKP :
             </p>
         </div>
+        <div style="page-break-after: always;"></div>
+
+        {{-- ================= DOKUMENTASI ================= --}}
+        <h3 style="text-align:center;">DOKUMENTASI</h3>
+
+        <table width="100%" cellpadding="5" cellspacing="0">
+            @php
+                // pastikan urutan sesuai database
+                $fotos = $laporan->fotos->sortBy('urutan')->values();
+            @endphp
+
+            @for ($i = 0; $i < $fotos->count(); $i += 2)
+                {{-- BARIS FOTO --}}
+                <tr>
+                    {{-- FOTO KIRI --}}
+                    <td width="50%" align="center">
+                        @if (isset($fotos[$i]))
+                            <img src="{{ storage_path('app/public/' . $fotos[$i]->file_path) }}"
+                                style="width:90%; height:auto;">
+                        @endif
+                    </td>
+
+                    {{-- FOTO KANAN --}}
+                    <td width="50%" align="center">
+                        @if (isset($fotos[$i + 1]))
+                            <img src="{{ storage_path('app/public/' . $fotos[$i + 1]->file_path) }}"
+                                style="width:90%; height:auto;">
+                        @endif
+                    </td>
+                </tr>
+
+                {{-- BARIS KETERANGAN --}}
+                <tr>
+                    <td align="center">
+                        {{ $fotos[$i]->keterangan ?? '' }}
+                    </td>
+                    <td align="center">
+                        {{ $fotos[$i + 1]->keterangan ?? '' }}
+                    </td>
+                </tr>
+            @endfor
+        </table>
+
+
+        {{-- <img src="{{ storage_path('app/public/' . $foto->file_path) }}" width="300">
+<p>{{ $foto->keterangan }}</p> --}}
 
     </main>
 </body>
