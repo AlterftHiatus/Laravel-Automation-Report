@@ -224,7 +224,7 @@ h4 {
 .table_data_umum {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 40px;
+    margin-bottom: 0px;
     /* margin-top: 20px; */
     border: 1px solid black;
 }
@@ -295,4 +295,46 @@ h4 {
 .container_checklist table .tr2 th {
     text-align: center;
     vertical-align: middle;
+}
+
+/* ===== BAB 3 ===== */
+
+.bab3_container {
+    padding-left: 70px;
+    padding-right: 20px;
+    /* border: 1px solid blue; */
+}
+
+.bab3_container p,
+.bab3_container li {
+    text-align: justify;
+    line-height: 2;
+}
+
+.bab3_container .p_kesimpulan {
+    margin-left: 25px;
+}
+
+/* ===== TTD Kesimpulan ===== */
+.ttd_container_bab3 {
+    /* border: 1px solid green; */
+}
+
+.ttd_container_bab3 .ttd_bab3 {
+    width: 300px;
+    margin-left: auto;     /* posisi di kanan */
+    margin-right: 0;
+    /* border: 1px solid orange; */
+}
+
+/* OVERRIDE justify dari bab3_container */
+.ttd_bab3 p {
+    text-align: center !important;
+    line-height: 0 !important;
+    margin: 0 !important;
+}
+
+/* Jarak tanda tangan */
+.ttd_bab3 p:last-child {
+    margin-top: 80px !important;
 }

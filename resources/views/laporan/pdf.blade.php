@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="{{ public_path('css/concrete_mixer.css') }}">
 </head>
 
-<body style="border: 1px solid red; margin-top: 55px; margin-right: 10px; margin-bottom: 0px; padding-bottom: 0px;">
+<body style="margin-top: 55px; margin-right: 10px; margin-bottom: 0px; padding-bottom: 0px;">
     <header>
         <div>
             <img src="{{ public_path('storage/images/header.jpeg') }}" style="width: 595pt;">
@@ -455,6 +455,8 @@
         </div>
 
         {{-- ================= II. DATA TEKNIK ================= --}}
+        <br>
+        <br>
 
         <div class="container_data_umum">
             <table class="table_data_umum">
@@ -598,7 +600,8 @@
                         {{-- KOLOM BURUK --}}
                         <td align="center">
                             @if ($result->hasil === 'Buruk')
-                                X
+                                <img src="{{ public_path('storage/images/checklist.png') }}"
+                                    style="width: 20px; height: 20px;">
                             @elseif ($result->hasil === '-')
                                 -
                             @elseif ($result->hasil === 'Baik')
@@ -681,8 +684,8 @@
         <div style="page-break-after: always;"></div>
 
         {{-- ================= BAB 3 ================= --}}
-        <div>
-            <h3 style="text-align:center; margin-bottom:20px; ">
+        <div class="bab3_container" style="margin-bottom:0px; margin-top:0px; pqadding-top:0px;">
+            <h3 style="text-align:center; margin-top: 0px; padding-top: 0px;">
                 BAB III<br>
                 HASIL DAN KESIMPULAN
             </h3>
@@ -691,17 +694,17 @@
                 $kebisingan = $laporan->checklistResults->firstWhere('checklistItem.nama_item', 'Kebisingan');
             @endphp
 
-            <p><strong>3.1 Temuan</strong></p>
+            <p><strong>I. TEMUAN</strong></p>
 
-            <ol style="margin-left: 40px;">
+            <ol>
                 <li>Hasil pengukuran kebisingan suara genset di dalam ruang genset adalah
                     <strong>{{ $kebisingan->hasil ?? '-' }}</strong>
                 </li>
             </ol>
 
-            <p style="margin-top:15px;"><strong>3.2 Rekomendasi</strong></p>
+            <p><strong>II. REKOMENDASI</strong></p>
 
-            <ol style="margin-left: 40px;">
+            <ol>
                 <li>Area kerja Concreate Mixer harus dalam keadaan bersih</li>
                 <li>Petugas Operator Concreate Mixer harus memenuhi syarat Keselamatan dan Kesehatan Kerja, dan memiliki
                     kemampuan teknis yang diperlukan</li>
@@ -710,17 +713,17 @@
                 <li>Menambahkan Apar di dekat ruang Concreate Mixer.</li>
             </ol>
 
-            <p style="margin-top:15px;"><strong>3.3 Kesimpulan</strong></p>
+            <p><strong>III. KESIMPULAN</strong></p>
 
-            <p style="text-align:justify; margin-left:40px;">
+            <p class="p_kesimpulan">
                 Dari hasil pemeriksaan dan pengujian tersebut diatas dinyatakan bahwa <b>CONREATE MIXER MEMENUHI
                     PERSYARATAN KESELAMATAN DAN KESEHATAN KERJA</b>. Genset boleh dioperasikan sebagaimana fungsinya dan
                 harus dilaksanakan perbaikan-perbaikan yang direkomendasikan.
             </p>
 
-            <p style="margin-top:15px;"><strong>3.4 Syarat-syarat dan Ketentuan</strong></p>
+            <p><strong>IV. SYARAT-SYARAT DAN KETENTUAN</strong></p>
 
-            <ol style="margin-left: 40px;">
+            <ol>
                 <li>Sebelum concreate mixer ini dioperasikan, semua perlengkapan pengamanan dan peralatannya harus
                     diperiksa/dichek terlebih dahulu oleh operator</li>
                 <li>Prosedur perawatan dan pengoperasian aman harus sesuai dengan <i>Manual Book</i> (Buku Petunjuk
@@ -740,23 +743,34 @@
                 <li>Concreate mixer dilaksanakan pemeriksaan berkala dilaksanakan <b>1 (satu) tahun sekali</b>.
                     Pemeriksaan dan pengujian selanjutnya dilaksanakan paling lambat 27 Agustus 2026</li>
             </ol>
+            <br>
+            <div class="ttd_container_bab3">
+                <div class="ttd_bab3">
+                    <p>
+                        Semarang, {{ \Carbon\Carbon::parse($laporan->tanggal_pemeriksaan)->translatedFormat('d F Y') }}
+                        <br>
+                        PT CAKRA TEKNIKA SOLUSI<br>
+                        Yang Memeriksa dan Menguji<br>
+                        <strong>
+                            Ahli K3 Bidang<br>
+                            Pesawat Tenaga dan Produksi
+                        </strong>
+                    </p>
 
-            <p style="margin-top:30px; text-align:right; margin-right:80px;">
-                Semarang, ....................................
-            </p>
+                    <p>
+                        <strong style="text-transform: capitalize; text-decoration: underline;">
+                            {{ $laporan->nama_pemeriksa ?? 'Belum diisi' }}
+                        </strong><br>
+                        <strong style="text-decoration: underline;">
+                            No. SKP. <br>
+                            5/24797/AS.01.04/XII/2024
+                        </strong>
+                    </p>
+                </div>
+            </div>
 
-            <p style="margin-top:40px; text-align:right; margin-right:80px;">
-                PT. Cakra Teknika Solusi<br>
-                Yang Memeriksa dan Menguji<br>
-                <strong>Ahli K3 Bidang<br>
-                    Pesawat Tenaga dan Produksi</strong>
-            </p>
-
-            <p style="margin-top:60px; text-align:right; margin-right:80px;">
-                <strong>( ........................................ )</strong><br>
-                No. SKP :
-            </p>
         </div>
+
         <div style="page-break-after: always;"></div>
 
         {{-- ================= DOKUMENTASI ================= --}}
@@ -772,7 +786,7 @@
                 {{-- BARIS FOTO --}}
                 <tr>
                     {{-- FOTO KIRI --}}
-                    <td width="50%" align="center">
+                    <td style="width: 50%; text-align: center; vertical-align: middle;">
                         @if (isset($fotos[$i]))
                             <img src="{{ storage_path('app/public/' . $fotos[$i]->file_path) }}"
                                 style="width:90%; height:auto;">
@@ -780,7 +794,7 @@
                     </td>
 
                     {{-- FOTO KANAN --}}
-                    <td width="50%" align="center">
+                    <td style="width: 50%; text-align: center; vertical-align: middle;">
                         @if (isset($fotos[$i + 1]))
                             <img src="{{ storage_path('app/public/' . $fotos[$i + 1]->file_path) }}"
                                 style="width:90%; height:auto;">
@@ -799,11 +813,6 @@
                 </tr>
             @endfor
         </table>
-
-
-        {{-- <img src="{{ storage_path('app/public/' . $foto->file_path) }}" width="300">
-<p>{{ $foto->keterangan }}</p> --}}
-
     </main>
 </body>
 

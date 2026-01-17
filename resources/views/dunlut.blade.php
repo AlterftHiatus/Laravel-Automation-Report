@@ -9,7 +9,7 @@
 
 <body>
     <div>
-        <a href="/laporan/10/pdf">iki dunlut let</a>
+        <a href="/laporan/12/pdf">iki dunlut let</a>
     </div>
 
 </body>
