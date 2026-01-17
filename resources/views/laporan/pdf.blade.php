@@ -585,7 +585,7 @@
                         {{-- KOLOM BAIK --}}
                         <td align="center">
                             @if ($result->hasil === 'Baik')
-                                V
+                                X
                             @elseif ($result->hasil === '-')
                                 -
                             @elseif ($result->hasil === 'Buruk')
@@ -596,7 +596,7 @@
                         {{-- KOLOM BURUK --}}
                         <td align="center">
                             @if ($result->hasil === 'Buruk')
-                                V
+                                X
                             @elseif ($result->hasil === '-')
                                 -
                             @elseif ($result->hasil === 'Baik')
