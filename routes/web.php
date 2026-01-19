@@ -19,13 +19,16 @@ Route::get('/laporan/{id}/pdf', [LaporanController::class, 'generatePdf']);
 
 
 Route::get('/laporan/template_konveyor', [KonveyorController::class, 'downloadPdf']);
-
+Route::get('/laporan/konveyor/create', [KonveyorController::class, 'create'])
+    ->name('laporan.konveyor.create');
 
 // ini front end  
 Route::get('/input_laporan', function () {
     return view('input-laporan');
 });
 
+Route::post('/laporan/konveyor', [KonveyorController::class, 'store'])
+    ->name('laporan.konveyor.store');
 
 Route::get('/profile_perusahaan', function () {
     return view('profile-perusahaan');

@@ -224,7 +224,7 @@
                     { label: 'Excavator', href: '#' },
                     { label: 'Forklift', href: '#' },
                     { label: 'Gondola', href: '#' },
-                    { label: 'Konveyor', href: '#' },
+                    { label: 'Konveyor', href: 'laporan/konveyor/create' },
                     { label: 'Loader', href: '#' },
                     { label: 'Overhead Crane', href: '#' }
                 ]
