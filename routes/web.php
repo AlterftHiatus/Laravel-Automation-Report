@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\KonveyorController;
-
+use App\Http\Controllers\PenggerakMulaController;
 
 
 // Route::get('/tes', function () {
@@ -21,6 +21,14 @@ Route::get('/laporan/{id}/pdf', [LaporanController::class, 'generatePdf']);
 Route::get('/laporan/template_konveyor', [KonveyorController::class, 'downloadPdf']);
 Route::get('/laporan/konveyor/create', [KonveyorController::class, 'create'])
     ->name('laporan.konveyor.create');
+
+Route::get('/laporan/penggerak-mula/create', 
+    [PenggerakMulaController::class, 'create']
+)->name('laporan.penggerak-mula.create');
+
+Route::post('/laporan/penggerak-mula', 
+    [PenggerakMulaController::class, 'store']
+)->name('laporan.penggerak-mula.store');
 
 // ini front end  
 Route::get('/input_laporan', function () {

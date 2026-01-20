@@ -237,7 +237,7 @@
                 bg: 'bg-orange-50',
                 links: [
                     { label: 'Mesin Produksi (Concrete Mixer)', href: 'laporan/create' },
-                    { label: 'Penggerak Mula', href: '#' }
+                    { label: 'Penggerak Mula', href: '/laporan/penggerak-mula/create' }
                 ]
             },
 
