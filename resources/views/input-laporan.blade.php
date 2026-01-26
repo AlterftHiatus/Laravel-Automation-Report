@@ -224,7 +224,7 @@
                     { label: 'Excavator', href: '#' },
                     { label: 'Forklift', href: '#' },
                     { label: 'Gondola', href: '#' },
-                    { label: 'Konveyor', href: '#' },
+                    { label: 'Konveyor', href: 'laporan/konveyor/create' },
                     { label: 'Loader', href: '#' },
                     { label: 'Overhead Crane', href: '#' }
                 ]
@@ -237,7 +237,7 @@
                 bg: 'bg-orange-50',
                 links: [
                     { label: 'Mesin Produksi (Concrete Mixer)', href: 'laporan/create' },
-                    { label: 'Penggerak Mula', href: '#' }
+                    { label: 'Penggerak Mula', href: '/laporan/penggerak-mula/create' }
                 ]
             },
 
