@@ -266,7 +266,7 @@
                 <h4>Dokumentasi #1</h4>
 
                 <label>Foto</label><br>
-                <input type="file" name="dokumentasi[0][foto]" accept="image/*" required><br><br>
+                <input type="file" name="dokumentasi[0][foto]" accept="image/*" capture="environment" required><br><br>
 
                 <label>Keterangan</label><br>
                 <input type="text" name="dokumentasi[0][keterangan]" placeholder="contoh: Kondisi mesin"><br><br>
