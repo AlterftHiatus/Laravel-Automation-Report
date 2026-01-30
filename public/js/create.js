@@ -1,71 +1,103 @@
-/* =========================================================
-   CREATE LAPORAN - UI SCRIPT (PROFESSIONAL VERSION)
-   ========================================================= */
-
 document.addEventListener("DOMContentLoaded", function () {
-    const headers = document.querySelectorAll("h3");
+    const form = document.getElementById("reportForm");
+    const headers = document.querySelectorAll("form h3");
+    const sections = [];
+    let currentSlide = 0;
+
+    const slideContainer = document.createElement("div");
+    slideContainer.classList.add("slide-container");
 
     headers.forEach((header, index) => {
-        // 1. Buat container untuk isi section
+        const slide = document.createElement("div");
+        slide.classList.add("slide");
+        if (index === 0) slide.classList.add("active");
+
         const content = document.createElement("div");
         content.classList.add("section-content");
 
-        // 2. Bungkus elemen-elemen di bawah h3 ke dalam div.section-content
+        // Ambil elemen antara H3 ini dan H3 berikutnya
         let next = header.nextElementSibling;
+        slide.appendChild(header); // Masukkan header ke dalam slide
+
         while (next && next.tagName !== "H3") {
             const temp = next;
             next = next.nextElementSibling;
             content.appendChild(temp);
         }
 
-        // 3. Sisipkan content tepat setelah h3
-        header.after(content);
-
-        // 4. Buka section pertama secara default (biar user tahu itu accordion)
-        if (index === 0) {
-            header.classList.add("active");
-            content.classList.add("active");
-        }
-
-        // 5. Toggle accordion saat klik
-        header.addEventListener("click", function () {
-            // Opsional: Tutup section lain saat satu dibuka (Mode Solo)
-            /*
-            headers.forEach(h => {
-                if(h !== header) {
-                    h.classList.remove("active");
-                    h.nextElementSibling.classList.remove("active");
-                }
-            });
-            */
-
-            header.classList.toggle("active");
-            content.classList.toggle("active");
-        });
+        slide.appendChild(content);
+        sections.push(slide);
+        slideContainer.appendChild(slide);
     });
+
+    form.prepend(slideContainer);
+
+    const nav = document.createElement("div");
+    nav.classList.add("slide-nav");
+    nav.innerHTML = `
+        <button type="button" id="prev-btn">← Sebelumnya</button>
+        <span id="slide-indicator">1 / ${sections.length}</span>
+        <button type="button" id="next-btn">Selanjutnya →</button>
+    `;
+    form.appendChild(nav);
+
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
+    const indicator = document.getElementById("slide-indicator");
+
+    function updateSlide() {
+        sections.forEach((slide, index) => {
+            slide.classList.toggle("active", index === currentSlide);
+        });
+
+        indicator.textContent = `${currentSlide + 1} / ${sections.length}`;
+        prevBtn.style.visibility = currentSlide === 0 ? "hidden" : "visible";
+        nextBtn.textContent = currentSlide === sections.length - 1 ? "Simpan Laporan" : "Selanjutnya →";
+        
+        // Scroll ke atas form saat ganti slide
+        form.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    prevBtn.onclick = () => {
+        if (currentSlide > 0) {
+            currentSlide--;
+            updateSlide();
+        }
+    };
+
+    nextBtn.onclick = () => {
+        if (currentSlide < sections.length - 1) {
+            currentSlide++;
+            updateSlide();
+        } else {
+            if(form.checkValidity()) {
+                form.submit();
+            } else {
+                form.reportValidity();
+            }
+        }
+    };
 });
 
-/* ------------------------------
-   TAMBAH DOKUMENTASI FOTO
--------------------------------- */
-let docIndex = 1; // Mulai dari 1 karena index 0 sudah ada di blade
-
+// Fungsi tambah dokumentasi tetap sama, hanya layouting-nya diperbaiki via CSS
+let docIndex = 1;
 window.tambahDokumentasi = function () {
     const wrapper = document.getElementById("dokumentasi-wrapper");
-    if (!wrapper) return;
-
     const div = document.createElement("div");
     div.classList.add("dokumentasi-item");
     div.innerHTML = `
         <h4>Dokumentasi #${docIndex + 1}</h4>
-        <label>Foto</label>
-        <input type="file" name="dokumentasi[${docIndex}][foto]" accept="image/*">
-        
-        <label>Keterangan</label>
-        <input type="text" name="dokumentasi[${docIndex}][keterangan]" placeholder="contoh: Detail bagian mesin">
-        <hr>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Foto</label>
+                <input type="file" name="dokumentasi[${docIndex}][foto]" accept="image/*">
+            </div>
+            <div class="form-group">
+                <label>Keterangan</label>
+                <input type="text" name="dokumentasi[${docIndex}][keterangan]">
+            </div>
+        </div>
     `;
-
     wrapper.appendChild(div);
     docIndex++;
 };
