@@ -193,7 +193,7 @@
     
     <section class="relative w-full h-[65vh] md:h-[75vh] lg:h-[85vh] overflow-hidden">
 
-        <img src="{{ asset('storage/images/gemini_generated_image_81arxr81arxr81ar.png') }}" alt="Banner K3" class="absolute inset-0 w-full h-full object-cover" />
+        <img src="{{ asset('storage/images/banner.png') }}" alt="Banner K3" class="absolute inset-0 w-full h-full object-cover" />
 
         <div class="absolute inset-0 bg-[#1f8f55]/80"></div>
 

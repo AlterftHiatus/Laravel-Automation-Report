@@ -1,10 +1,16 @@
 /* ===== GLOBAL RESET & FONTS ===== */
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     background-color: #f4f7f9;
     color: #334155;
     margin: 0;
     padding: 40px 20px;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 .container {
@@ -19,9 +25,10 @@ h2 {
     margin-bottom: 40px;
 }
 
+/* ===== FORM ===== */
 form {
     background: #fff;
-    padding: 0; /* Padding akan diatur di dalam slide */
+    padding: 0;
     border-radius: 16px;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -81,6 +88,7 @@ textarea {
     color: #1e293b;
     transition: all 0.2s;
     background: #f8fafc;
+    width: 100%;
 }
 
 input:focus, select:focus, textarea:focus {
@@ -97,7 +105,6 @@ h3 {
     background: #1e293b;
     color: #fff;
     margin: 0;
-    margin-bottom: 20px;
     padding: 20px 30px;
     font-size: 1.1rem;
     letter-spacing: 0.5px;
@@ -111,7 +118,7 @@ h3 {
     font-size: 1rem;
 }
 
-/* ===== CHECKLIST CARDS ===== */
+/* ===== CHECKLIST ===== */
 .checklist-card {
     background: #fcfcfc;
     border: 1px solid #f1f5f9;
@@ -162,4 +169,113 @@ h3 {
     border-radius: 8px;
     margin-bottom: 20px;
     border: 1px solid #fee2e2;
+}
+
+/* ================================================= */
+/* =============== FULL MOBILE MODE ================= */
+/* ================================================= */
+@media (max-width: 768px) {
+
+    html, body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    body {
+        padding: 0 !important;
+    }
+
+    .container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+        margin: 10px 0;
+        padding: 0 10px;
+    }
+
+    form {
+        width: 100% !important;
+        min-height: 100vh;
+        border-radius: 0 !important;
+        box-shadow: none;
+    }
+
+    .slide-container {
+        min-height: 100vh;
+    }
+
+    .slide {
+        padding: 12px !important;
+        width: 100%;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    label {
+        font-size: 0.65rem;
+    }
+
+    input,
+    select,
+    textarea {
+        padding: 8px 10px;
+        font-size: 0.85rem;
+    }
+
+    h3 {
+        padding: 10px 15px;
+        font-size: 0.95rem;
+    }
+
+    .category-title {
+        margin: 15px 0 10px 0;
+        font-size: 0.85rem;
+        padding: 0 5px;
+    }
+
+    .checklist-card {
+        padding: 10px;
+        margin-bottom: 8px;
+    }
+
+    .checklist-header {
+        font-size: 0.85rem;
+    }
+
+    .slide-nav {
+        padding: 10px;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .slide-nav button {
+        width: 100%;
+        padding: 10px;
+        font-size: 0.85rem;
+    }
+
+    #slide-indicator {
+        order: -1;
+        font-size: 0.85rem;
+    }
+
+    .alert-danger {
+        padding: 10px;
+        font-size: 0.85rem;
+    }
+
+    .app-wrapper {
+    width: 100%;
+    min-height: 100vh;
+}
+
 }

@@ -90,7 +90,7 @@ window.tambahDokumentasi = function () {
         <div class="form-row">
             <div class="form-group">
                 <label>Foto</label>
-                <input type="file" name="dokumentasi[${docIndex}][foto]" accept="image/*">
+                <input type="file" name="dokumentasi[${docIndex}][foto]" accept="image/*" capture="environment">
             </div>
             <div class="form-group">
                 <label>Keterangan</label>

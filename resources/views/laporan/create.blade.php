@@ -3,12 +3,16 @@
 
 <head>
     <title>Buat Laporan Concrete Mixer</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
     <link rel="stylesheet" href="{{ asset('css/create.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-
+<div class="app-wrapper">
     <div class="container">
         <h2>Buat Laporan Concrete Mixer</h2>
 
@@ -56,8 +60,15 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>Nama Pemeriksa</label>
-                    <input type="text" name="nama_pemeriksa" placeholder="Nama pemeriksa">
+                    <select name="nama_pemeriksa" required>
+                        <option value="">-- pilih nama pemeriksa --</option>
+
+                        <!-- isi opsi di sini -->
+                        <option value="NAUFAL ARYA PRIHANDIKO">NAUFAL ARYA PRIHANDIKO</option>
+                        {{-- <option value="Pemeriksa B">Pemeriksa B</option> --}}
+                    </select>
                 </div>
+
             </div>
 
             <h3>I. Data Umum</h3>
@@ -342,7 +353,8 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label>Foto</label>
-                            <input type="file" name="dokumentasi[0][foto]" accept="image/*" required>
+                            <input type="file" name="dokumentasi[0][foto]" accept="image/*" capture="environment"
+                                required>
                         </div>
                         <div class="form-group">
                             <label>Keterangan</label>
@@ -360,6 +372,7 @@
 
         </form>
     </div>
+</div>
 
     <script src="{{ asset('js/create.js') }}" defer></script>
 </body>
