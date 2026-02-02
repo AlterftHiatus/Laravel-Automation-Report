@@ -4,7 +4,7 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     background-color: #f4f7f9;
     color: #334155;
     margin: 0;
@@ -50,8 +50,14 @@ form {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* ===== FORM LAYOUT ===== */
@@ -91,20 +97,26 @@ textarea {
     width: 100%;
 }
 
-input:focus, select:focus, textarea:focus {
+input:focus,
+select:focus,
+textarea:focus {
     outline: none;
     border-color: #3b82f6;
     background: #fff;
     box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
 }
 
-textarea { min-height: 100px; resize: vertical; }
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
 
 /* ===== HEADERS ===== */
 h3 {
     background: #1e293b;
     color: #fff;
     margin: 0;
+    margin-bottom: 20px;
     padding: 20px 30px;
     font-size: 1.1rem;
     letter-spacing: 0.5px;
@@ -144,7 +156,8 @@ h3 {
     border-top: 1px solid #e2e8f0;
 }
 
-.slide-nav button, .btn-secondary {
+.slide-nav button,
+.btn-secondary {
     padding: 12px 24px;
     border-radius: 8px;
     font-weight: 600;
@@ -153,14 +166,31 @@ h3 {
     border: none;
 }
 
-#prev-btn { background: #e2e8f0; color: #475569; }
-#next-btn { background: #3b82f6; color: #fff; }
-#next-btn:hover { background: #2563eb; }
+#prev-btn {
+    background: #e2e8f0;
+    color: #475569;
+}
+#next-btn {
+    background: #3b82f6;
+    color: #fff;
+}
+#next-btn:hover {
+    background: #2563eb;
+}
 
-#slide-indicator { font-weight: 700; color: #64748b; }
+#slide-indicator {
+    font-weight: 700;
+    color: #64748b;
+}
 
-.action-buttons { margin: 20px 0; }
-.btn-secondary { background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; }
+.action-buttons {
+    margin: 20px 0;
+}
+.btn-secondary {
+    background: #f1f5f9;
+    color: #475569;
+    border: 1px solid #e2e8f0;
+}
 
 .alert-danger {
     background: #fef2f2;
@@ -175,8 +205,8 @@ h3 {
 /* =============== FULL MOBILE MODE ================= */
 /* ================================================= */
 @media (max-width: 768px) {
-
-    html, body {
+    html,
+    body {
         width: 100%;
         max-width: 100%;
         overflow-x: hidden;
@@ -274,8 +304,7 @@ h3 {
     }
 
     .app-wrapper {
-    width: 100%;
-    min-height: 100vh;
-}
-
+        width: 100%;
+        min-height: 100vh;
+    }
 }

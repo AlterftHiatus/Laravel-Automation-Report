@@ -813,6 +813,24 @@
                 </tr>
             @endfor
         </table>
+
+        {{-- ================= Sertifikat 1 ================= --}}
+        <div style="page-break-before: always;"></div>
+
+        <div>
+            <img src="{{ public_path('storage/images/sertifikat_naufal_521.jpeg') }}"
+                style="width:100%; height:100%;">
+        </div>
+
+
+        {{-- ================= Sertifikat 2 ================= --}}
+        <div style="page-break-before: always;"></div>
+
+        <div>
+            <img src="{{ public_path('storage/images/sertifikat_naufal_24797.jpeg') }}"
+                style="width:100%; height:100%;">
+        </div>
+
     </main>
 </body>
 
