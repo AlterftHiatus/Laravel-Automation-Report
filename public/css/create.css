@@ -308,3 +308,38 @@ h3 {
         min-height: 100vh;
     }
 }
+
+/* ===== Custom File Input ===== */
+
+.file-input-hidden {
+    display: none;
+}
+
+.btn-file {
+    padding: 10px 16px;
+    background-color: #3b82f6;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    width: fit-content;
+}
+
+.btn-file:hover {
+    background-color: #2563eb;
+}
+
+.btn-file:active {
+    transform: scale(0.97);
+}
+
+.file-name {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 0.8rem;
+    color: #64748b;
+    font-style: italic;
+}

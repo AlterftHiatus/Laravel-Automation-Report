@@ -52,10 +52,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
         indicator.textContent = `${currentSlide + 1} / ${sections.length}`;
         prevBtn.style.visibility = currentSlide === 0 ? "hidden" : "visible";
-        nextBtn.textContent = currentSlide === sections.length - 1 ? "Simpan Laporan" : "Selanjutnya →";
-        
+        nextBtn.textContent =
+            currentSlide === sections.length - 1
+                ? "Simpan Laporan"
+                : "Selanjutnya →";
+
         // Scroll ke atas form saat ganti slide
-        form.scrollIntoView({ behavior: 'smooth' });
+        form.scrollIntoView({ behavior: "smooth" });
     }
 
     prevBtn.onclick = () => {
@@ -70,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
             currentSlide++;
             updateSlide();
         } else {
-            if(form.checkValidity()) {
+            if (form.checkValidity()) {
                 form.submit();
             } else {
                 form.reportValidity();
@@ -90,14 +93,50 @@ window.tambahDokumentasi = function () {
         <div class="form-row">
             <div class="form-group">
                 <label>Foto</label>
-                <input type="file" name="dokumentasi[${docIndex}][foto]" accept="image/*" capture="environment">
+
+                <input
+                    type="file"
+                    name="dokumentasi[${docIndex}][foto]"
+                    accept="image/*"
+                    capture="environment"
+                    class="file-input-hidden"
+                >
+
+                <button type="button" class="btn-file">
+                    📷 Ambil Gambar
+                </button>
+
+                <span class="file-name">Belum ada gambar</span>
             </div>
+
             <div class="form-group">
                 <label>Keterangan</label>
-                <input type="text" name="dokumentasi[${docIndex}][keterangan]">
+                <input type="text" name="dokumentasi[${docIndex}][keterangan]" placeholder="contoh: Kondisi mesin">
             </div>
         </div>
-    `;
+`;
+
     wrapper.appendChild(div);
     docIndex++;
 };
+
+document.addEventListener("click", function (e) {
+    if (e.target.classList.contains("btn-file")) {
+        const group = e.target.closest(".form-group");
+        const input = group.querySelector('input[type="file"]');
+        input.click();
+    }
+});
+
+document.addEventListener("change", function (e) {
+    if (e.target.type === "file") {
+        const group = e.target.closest(".form-group");
+        const fileName = group.querySelector(".file-name");
+
+        if (fileName) {
+            fileName.textContent = e.target.files.length
+                ? e.target.files[0].name
+                : "Belum ada gambar";
+        }
+    }
+});
