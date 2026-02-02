@@ -84,38 +84,45 @@
 
 </head>
 
-<body class="bg-gray-50 font-[Inter]" style="margin: 0px; border: 1px solid blue; padding: 0px;">
+<body class="bg-gray-50 font-[Inter]" style="margin: 0px; padding: 0px;">
 
-       <header x-data="{ openMenu: false, scrolled: false }"
-        x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 30 })" :class="scrolled
-        ? 'bg-white/70 backdrop-blur-xl shadow-md py-2'
-        : 'bg-white py-4'" class="sticky top-0 z-50 transition-all duration-300 border-b border-[#27ae60]/40">
+    <header x-data="{ openMenu: false, scrolled: false }" x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 30 })"
+        :class="scrolled
+            ?
+            'bg-white/70 backdrop-blur-xl shadow-md py-2' :
+            'bg-white py-4'"
+        class="sticky top-0 z-50 transition-all duration-300 border-b border-[#27ae60]/40">
 
         <!-- ===== Top Bar ===== -->
         <div class="max-w-7xl mx-auto px-3 sm:px-4 flex items-center justify-between">
 
             <!-- Logo + Title -->
             <div class="flex flex-col items-center transition-all duration-300">
-                <img src="{{ asset('storage/images/image.png') }}" alt="Logo" class="transition-all duration-300 object-contain"
-                    :class="scrolled ? 'h-9' : 'h-14 md:h-16'">
+                <img src="{{ asset('storage/images/image.png') }}" alt="Logo"
+                    class="transition-all duration-300 object-contain" :class="scrolled ? 'h-9' : 'h-14 md:h-16'">
             </div>
 
-            
+
             <nav class="hidden lg:flex items-center space-x-8">
                 <a href="/" class="text-gray-700 hover:text-green-600 font-medium transition">Beranda</a>
-                <a href="/input_laporan" class="text-gray-700 hover:text-green-600 font-medium transition">Input LHPP</a>
+                <a href="/input_laporan" class="text-gray-700 hover:text-green-600 font-medium transition">Input
+                    LHPP</a>
                 <a href="/riwayat" class="text-gray-700 hover:text-green-600 font-medium transition">Riwayat Laporan</a>
-                <a href="/profile_perusahaan" class="text-gray-700 hover:text-green-600 font-medium transition">Profile Perusahaan</a>
+                <a href="/profile_perusahaan" class="text-gray-700 hover:text-green-600 font-medium transition">Profile
+                    Perusahaan</a>
                 <a href="/tentang" class="text-gray-700 hover:text-green-600 font-medium transition">Tentang Sistem</a>
-                <a href="/contact" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition">Hubungi Kami</a>
+                <a href="/contact"
+                    class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition">Hubungi Kami</a>
             </nav>
 
-            
-            <button x-show="!openMenu" x-transition.opacity @click="openMenu = true" class="lg:hidden z-[80]
-            text-black rounded-xl 
-           transition-all duration-300" :class="scrolled
-        ? 'p-2 scale-90'
-        : 'p-3 scale-100'">
+
+            <button x-show="!openMenu" x-transition.opacity @click="openMenu = true"
+                class="lg:hidden z-[80]
+            text-black rounded-xl transition-all duration-300"
+                :class="scrolled
+                    ?
+                    'p-2 scale-90' :
+                    'p-3 scale-100'">
                 <i class="fas fa-bars text-lg"></i>
             </button>
 
@@ -138,37 +145,42 @@
                     </button>
                 </div>
 
-            
+
                 <nav class="flex-1 p-4 space-y-2 overflow-y-auto">
-                    <a href="/" class="flex items-center gap-4 px-4 py-3 rounded-xl
+                    <a href="/"
+                        class="flex items-center gap-4 px-4 py-3 rounded-xl
                       hover:bg-green-50 hover:text-green-600
                       transition font-medium text-slate-700">
                         <i class="fas fa-home text-lg w-5"></i>
                         Beranda
                     </a>
 
-                    <a href="/input_laporan" class="flex items-center gap-4 px-4 py-3 rounded-xl
+                    <a href="/input_laporan"
+                        class="flex items-center gap-4 px-4 py-3 rounded-xl
                       hover:bg-green-50 hover:text-green-600
                       transition font-medium text-slate-700">
                         <i class="bi bi-file-earmark-plus text-lg"></i>
                         Input LHPP
                     </a>
 
-                    <a href="/riwayat" class="flex items-center gap-4 px-4 py-3 rounded-xl
+                    <a href="/riwayat"
+                        class="flex items-center gap-4 px-4 py-3 rounded-xl
                       hover:bg-green-50 hover:text-green-600
                       transition font-medium text-slate-700">
                         <i class="fas fa-history text-lg w-5"></i>
                         Riwayat Laporan
                     </a>
 
-                    <a href="/profile_perusahaan" class="flex items-center gap-4 px-4 py-3 rounded-xl
+                    <a href="/profile_perusahaan"
+                        class="flex items-center gap-4 px-4 py-3 rounded-xl
                       hover:bg-green-50 hover:text-green-600
                       transition font-medium text-slate-700">
                         <i class="fas fa-building text-lg w-5"></i>
                         Profile Perusahaan
                     </a>
 
-                    <a href="/tentang" class="flex items-center gap-4 px-4 py-3 rounded-xl
+                    <a href="/tentang"
+                        class="flex items-center gap-4 px-4 py-3 rounded-xl
                       hover:bg-green-50 hover:text-green-600
                       transition font-medium text-slate-700">
                         <i class="fas fa-info-circle text-lg w-5"></i>
@@ -179,7 +191,8 @@
 
                 <!-- Footer -->
                 <div class="p-6 border-t">
-                    <a href="/contact" class="w-full flex items-center justify-center gap-2
+                    <a href="/contact"
+                        class="w-full flex items-center justify-center gap-2
                       py-3.5 bg-[#27ae60] text-white rounded-xl
                       font-bold hover:bg-[#219150]
                       shadow-lg shadow-green-100 transition">
@@ -202,7 +215,8 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-            <template x-for="(item, index) in [
+            <template
+                x-for="(item, index) in [
 
             {
                 icon: 'bi-lightning-charge-fill',
@@ -267,7 +281,8 @@
                 ]
             }
 
-        ]" :key="index">
+        ]"
+                :key="index">
 
                 <!-- CARD -->
                 <div x-data="{ open: false }" x-show="show" x-transition:enter="transition ease-out duration-500"
@@ -280,7 +295,8 @@
                     <button @click="open = !open"
                         class="w-full flex justify-between items-center px-6 py-5 rounded-2xl">
                         <span class="flex items-center gap-4">
-                            <div :class="item.bg" class="w-12 h-12 flex items-center justify-center rounded-xl
+                            <div :class="item.bg"
+                                class="w-12 h-12 flex items-center justify-center rounded-xl
                                    transition-transform group-hover:scale-110">
                                 <i class="bi text-xl" :class="item.icon + ' ' + item.color"></i>
                             </div>
@@ -297,10 +313,12 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 p-2 gap-1">
 
                             <template x-for="link in item.links">
-                                <a :href="link.href" class="flex items-center px-4 py-3 text-sm text-slate-600
+                                <a :href="link.href"
+                                    class="flex items-center px-4 py-3 text-sm text-slate-600
                                        hover:bg-white hover:text-green-600 hover:shadow-sm
                                        rounded-lg transition-all group/link">
-                                    <i class="bi bi-arrow-right mr-2 opacity-0
+                                    <i
+                                        class="bi bi-arrow-right mr-2 opacity-0
                                           group-hover/link:opacity-100 transition-all"></i>
                                     <span x-text="link.label"></span>
                                 </a>
@@ -322,7 +340,8 @@
         <div class="container mx-auto px-4">
 
             <div class="flex flex-col items-center mb-10 text-center">
-                <img src="{{ asset('storage/images/image.png') }}" alt="Logo Perusahaan" class="h-24 md:h-20 lg:h-28 w-auto mb-4">
+                <img src="{{ asset('storage/images/image.png') }}" alt="Logo Perusahaan"
+                    class="h-24 md:h-20 lg:h-28 w-auto mb-4">
                 <p class="text-gray-400 text-sm italic">
                     "Keselamatan dan Kesehatan Kerja adalah Prioritas Utama"
                 </p>
