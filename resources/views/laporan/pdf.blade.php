@@ -35,7 +35,7 @@
                 <tr>
                     <td class="col-label" style="padding-left: 150px; padding-right: 50px;">No Laporan</td>
                     <td class="col-colon">:</td>
-                    <td class="col-value"><span style="background-color: yellow">Diisi Manual Oleh Office</span></td>
+                    <td class="col-value"><span>{{ $laporan->nomor_laporan }}</span></td>
                 </tr>
                 <tr>
                     <td class="col-label" style="padding-left: 150px;">Tanggal Pemeriksaan</td>
