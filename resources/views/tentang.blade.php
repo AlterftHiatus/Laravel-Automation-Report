@@ -15,6 +15,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="icon" href="{{ asset('storage/images/favicon.png') }}">
 
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 </head>
@@ -39,7 +40,7 @@
             <nav class="hidden lg:flex items-center space-x-8">
                 <a href="/" class="text-gray-700 hover:text-green-600 font-medium transition">Beranda</a>
                 <a href="/input_laporan" class="text-gray-700 hover:text-green-600 font-medium transition">Input LHPP</a>
-                <a href="/riwayat" class="text-gray-700 hover:text-green-600 font-medium transition">Riwayat Laporan</a>
+                <a href="/dashboard" class="text-gray-700 hover:text-green-600 font-medium transition">Dashboard Laporan</a>
                 <a href="/profile_perusahaan" class="text-gray-700 hover:text-green-600 font-medium transition">Profile Perusahaan</a>
                 <a href="/tentang" class="text-gray-700 hover:text-green-600 font-medium transition">Tentang Sistem</a>
                 <a href="/contact" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition">Hubungi Kami</a>
@@ -89,11 +90,11 @@
                         Input LHPP
                     </a>
 
-                    <a href="/riwayat" class="flex items-center gap-4 px-4 py-3 rounded-xl
+                    <a href="/dashboard" class="flex items-center gap-4 px-4 py-3 rounded-xl
                       hover:bg-green-50 hover:text-green-600
                       transition font-medium text-slate-700">
                         <i class="fas fa-history text-lg w-5"></i>
-                        Riwayat Laporan
+                        Dashboard Laporan
                     </a>
 
                     <a href="/profile_perusahaan" class="flex items-center gap-4 px-4 py-3 rounded-xl
@@ -125,6 +126,7 @@
 
             </aside>
     </header>
+
 
     <main class="container mx-auto max-w-6xl px-4 py-16 bg-gradient-to-br from-green-50 to-white min-h-screen">
 
@@ -288,9 +290,9 @@
                     <ul class="space-y-3 text-gray-400 text-sm">
                         <li class="flex items-start gap-3">
                             <i class="fas fa-map-marker-alt mt-1"></i>
-                            <h1 class="text-gray-400">Jl. Bukit Wato-Wato VII<br class="hidden md:block">
-                                Blok B2A/14, Permata Puri,<br class="hidden md:block">
-                                Beringin, Ngaliyan,<br class="hidden md:block">
+                            <h1 class="text-gray-400">Jl. Bukit Wato-Wato VII
+                                Blok B2A/14, Permata Puri
+                                Beringin, Ngaliyan
                                 Kota Semarang
                             </h1>
                         </li>

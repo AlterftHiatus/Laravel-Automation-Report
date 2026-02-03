@@ -11,6 +11,7 @@
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="{{ asset('storage/images/favicon.png') }}">
 
     <!-- Alpine JS -->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -103,7 +104,7 @@
             <nav class="hidden lg:flex items-center space-x-8">
                 <a href="/" class="text-gray-700 hover:text-green-600 font-medium transition">Beranda</a>
                 <a href="/input_laporan" class="text-gray-700 hover:text-green-600 font-medium transition">Input LHPP</a>
-                <a href="/riwayat" class="text-gray-700 hover:text-green-600 font-medium transition">Riwayat Laporan</a>
+                <a href="/dashboard" class="text-gray-700 hover:text-green-600 font-medium transition">Dashboard Laporan</a>
                 <a href="/profile_perusahaan" class="text-gray-700 hover:text-green-600 font-medium transition">Profile Perusahaan</a>
                 <a href="/tentang" class="text-gray-700 hover:text-green-600 font-medium transition">Tentang Sistem</a>
                 <a href="/contact" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition">Hubungi Kami</a>
@@ -153,11 +154,11 @@
                         Input LHPP
                     </a>
 
-                    <a href="/riwayat" class="flex items-center gap-4 px-4 py-3 rounded-xl
+                    <a href="/dashboard" class="flex items-center gap-4 px-4 py-3 rounded-xl
                       hover:bg-green-50 hover:text-green-600
                       transition font-medium text-slate-700">
                         <i class="fas fa-history text-lg w-5"></i>
-                        Riwayat Laporan
+                        Dashboard Laporan
                     </a>
 
                     <a href="/profile_perusahaan" class="flex items-center gap-4 px-4 py-3 rounded-xl

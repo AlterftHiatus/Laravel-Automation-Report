@@ -11,7 +11,7 @@
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
+    <link rel="icon" href="{{ asset('storage/images/favicon.png') }}">
     <!-- Alpine JS -->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
@@ -86,43 +86,36 @@
 
 <body class="bg-gray-50 font-[Inter]" style="margin: 0px; padding: 0px;">
 
-    <header x-data="{ openMenu: false, scrolled: false }" x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 30 })"
-        :class="scrolled
-            ?
-            'bg-white/70 backdrop-blur-xl shadow-md py-2' :
-            'bg-white py-4'"
-        class="sticky top-0 z-50 transition-all duration-300 border-b border-[#27ae60]/40">
+    <header x-data="{ openMenu: false, scrolled: false }"
+        x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 30 })" :class="scrolled
+        ? 'bg-white/70 backdrop-blur-xl shadow-md py-2'
+        : 'bg-white py-4'" class="sticky top-0 z-50 transition-all duration-300 border-b border-[#27ae60]/40">
 
         <!-- ===== Top Bar ===== -->
         <div class="max-w-7xl mx-auto px-3 sm:px-4 flex items-center justify-between">
 
             <!-- Logo + Title -->
             <div class="flex flex-col items-center transition-all duration-300">
-                <img src="{{ asset('storage/images/image.png') }}" alt="Logo"
-                    class="transition-all duration-300 object-contain" :class="scrolled ? 'h-9' : 'h-14 md:h-16'">
+                <img src="{{ asset('storage/images/image.png') }}" alt="Logo" class="transition-all duration-300 object-contain"
+                    :class="scrolled ? 'h-9' : 'h-14 md:h-16'">
             </div>
 
-
+            
             <nav class="hidden lg:flex items-center space-x-8">
                 <a href="/" class="text-gray-700 hover:text-green-600 font-medium transition">Beranda</a>
-                <a href="/input_laporan" class="text-gray-700 hover:text-green-600 font-medium transition">Input
-                    LHPP</a>
-                <a href="/riwayat" class="text-gray-700 hover:text-green-600 font-medium transition">Riwayat Laporan</a>
-                <a href="/profile_perusahaan" class="text-gray-700 hover:text-green-600 font-medium transition">Profile
-                    Perusahaan</a>
+                <a href="/input_laporan" class="text-gray-700 hover:text-green-600 font-medium transition">Input LHPP</a>
+                <a href="/dashboard" class="text-gray-700 hover:text-green-600 font-medium transition">Dashboard Laporan</a>
+                <a href="/profile_perusahaan" class="text-gray-700 hover:text-green-600 font-medium transition">Profile Perusahaan</a>
                 <a href="/tentang" class="text-gray-700 hover:text-green-600 font-medium transition">Tentang Sistem</a>
-                <a href="/contact"
-                    class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition">Hubungi Kami</a>
+                <a href="/contact" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition">Hubungi Kami</a>
             </nav>
 
-
-            <button x-show="!openMenu" x-transition.opacity @click="openMenu = true"
-                class="lg:hidden z-[80]
-            text-black rounded-xl transition-all duration-300"
-                :class="scrolled
-                    ?
-                    'p-2 scale-90' :
-                    'p-3 scale-100'">
+            
+            <button x-show="!openMenu" x-transition.opacity @click="openMenu = true" class="lg:hidden z-[80]
+            text-black rounded-xl 
+           transition-all duration-300" :class="scrolled
+        ? 'p-2 scale-90'
+        : 'p-3 scale-100'">
                 <i class="fas fa-bars text-lg"></i>
             </button>
 
@@ -145,42 +138,37 @@
                     </button>
                 </div>
 
-
+            
                 <nav class="flex-1 p-4 space-y-2 overflow-y-auto">
-                    <a href="/"
-                        class="flex items-center gap-4 px-4 py-3 rounded-xl
+                    <a href="/" class="flex items-center gap-4 px-4 py-3 rounded-xl
                       hover:bg-green-50 hover:text-green-600
                       transition font-medium text-slate-700">
                         <i class="fas fa-home text-lg w-5"></i>
                         Beranda
                     </a>
 
-                    <a href="/input_laporan"
-                        class="flex items-center gap-4 px-4 py-3 rounded-xl
+                    <a href="/input_laporan" class="flex items-center gap-4 px-4 py-3 rounded-xl
                       hover:bg-green-50 hover:text-green-600
                       transition font-medium text-slate-700">
                         <i class="bi bi-file-earmark-plus text-lg"></i>
                         Input LHPP
                     </a>
 
-                    <a href="/riwayat"
-                        class="flex items-center gap-4 px-4 py-3 rounded-xl
+                    <a href="/dashboard" class="flex items-center gap-4 px-4 py-3 rounded-xl
                       hover:bg-green-50 hover:text-green-600
                       transition font-medium text-slate-700">
                         <i class="fas fa-history text-lg w-5"></i>
-                        Riwayat Laporan
+                        Dashboard Laporan
                     </a>
 
-                    <a href="/profile_perusahaan"
-                        class="flex items-center gap-4 px-4 py-3 rounded-xl
+                    <a href="/profile_perusahaan" class="flex items-center gap-4 px-4 py-3 rounded-xl
                       hover:bg-green-50 hover:text-green-600
                       transition font-medium text-slate-700">
                         <i class="fas fa-building text-lg w-5"></i>
                         Profile Perusahaan
                     </a>
 
-                    <a href="/tentang"
-                        class="flex items-center gap-4 px-4 py-3 rounded-xl
+                    <a href="/tentang" class="flex items-center gap-4 px-4 py-3 rounded-xl
                       hover:bg-green-50 hover:text-green-600
                       transition font-medium text-slate-700">
                         <i class="fas fa-info-circle text-lg w-5"></i>
@@ -191,8 +179,7 @@
 
                 <!-- Footer -->
                 <div class="p-6 border-t">
-                    <a href="/contact"
-                        class="w-full flex items-center justify-center gap-2
+                    <a href="/contact" class="w-full flex items-center justify-center gap-2
                       py-3.5 bg-[#27ae60] text-white rounded-xl
                       font-bold hover:bg-[#219150]
                       shadow-lg shadow-green-100 transition">
@@ -203,6 +190,7 @@
 
             </aside>
     </header>
+
 
     <main x-data="{ show: true }" class="menu-container max-w-6xl mx-auto px-4 lg:px-8 py-10">
 
@@ -356,9 +344,9 @@
                     <ul class="space-y-3 text-gray-400 text-sm">
                         <li class="flex items-start gap-3">
                             <i class="fas fa-map-marker-alt mt-1"></i>
-                            <h1 class="text-gray-400">Jl. Bukit Wato-Wato VII<br class="hidden md:block">
-                                Blok B2A/14, Permata Puri,<br class="hidden md:block">
-                                Beringin, Ngaliyan,<br class="hidden md:block">
+                            <h1 class="text-gray-400">Jl. Bukit Wato-Wato VII
+                                Blok B2A/14, Permata Puri
+                                Beringin, Ngaliyan
                                 Kota Semarang
                             </h1>
                         </li>

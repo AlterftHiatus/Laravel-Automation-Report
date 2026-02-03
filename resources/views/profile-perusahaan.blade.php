@@ -15,6 +15,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="icon" href="{{ asset('storage/images/favicon.png') }}">
 
     <link rel="stylesheet" href="{{ asset('css/profil_perusahaan.css') }}">
 </head>
@@ -38,7 +39,7 @@
             <nav class="hidden lg:flex items-center space-x-8">
                 <a href="/" class="text-gray-700 hover:text-green-600 font-medium transition">Beranda</a>
                 <a href="/input_laporan" class="text-gray-700 hover:text-green-600 font-medium transition">Input LHPP</a>
-                <a href="/riwayat" class="text-gray-700 hover:text-green-600 font-medium transition">Riwayat Laporan</a>
+                <a href="/dashboard" class="text-gray-700 hover:text-green-600 font-medium transition">Dashboard Laporan</a>
                 <a href="/profile_perusahaan" class="text-gray-700 hover:text-green-600 font-medium transition">Profile Perusahaan</a>
                 <a href="/tentang" class="text-gray-700 hover:text-green-600 font-medium transition">Tentang Sistem</a>
                 <a href="/contact" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition">Hubungi Kami</a>
@@ -88,11 +89,11 @@
                         Input LHPP
                     </a>
 
-                    <a href="/riwayat" class="flex items-center gap-4 px-4 py-3 rounded-xl
+                    <a href="/dashboard" class="flex items-center gap-4 px-4 py-3 rounded-xl
                       hover:bg-green-50 hover:text-green-600
                       transition font-medium text-slate-700">
                         <i class="fas fa-history text-lg w-5"></i>
-                        Riwayat Laporan
+                        Dashboard Laporan
                     </a>
 
                     <a href="/profile_perusahaan" class="flex items-center gap-4 px-4 py-3 rounded-xl
@@ -124,6 +125,7 @@
 
             </aside>
     </header>
+
 
     <!-- Main Content -->
     <main class="container mx-auto max-w-6xl px-4 py-16" x-data="{ visible: false }" x-init="setTimeout(() => visible = true, 100)">
@@ -245,7 +247,7 @@
 
             <!-- Logo Tengah -->
             <div class="flex flex-col items-center mb-10 text-center">
-                <img src="../img/logo-cakra.png" alt="Logo Perusahaan" class="h-24 md:h-20 lg:h-28 w-auto mb-4">
+                <img src="{{ asset('storage/images/image.png') }}" alt="Logo Perusahaan" class="h-24 md:h-20 lg:h-28 w-auto mb-4">
                 <p class="text-gray-400 text-sm italic">
                     "Keselamatan dan Kesehatan Kerja adalah Prioritas Utama"
                 </p>
