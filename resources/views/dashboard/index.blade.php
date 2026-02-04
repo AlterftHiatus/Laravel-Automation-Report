@@ -109,18 +109,6 @@
                     </a>
 
                 </nav>
-
-                <!-- Footer -->
-                <div class="p-6 border-t">
-                    <a href="/contact" class="w-full flex items-center justify-center gap-2
-                      py-3.5 bg-[#27ae60] text-white rounded-xl
-                      font-bold hover:bg-[#219150]
-                      shadow-lg shadow-green-100 transition">
-                        <i class="fas fa-envelope text-lg"></i>
-                        Hubungi Kami
-                    </a>
-                </div>
-
             </aside>
     </header>
 
@@ -128,7 +116,7 @@
     <main class="container mx-auto max-w-7xl px-4 py-12" x-data="{ visible: false, searchQuery: '' }"
         x-init="setTimeout(() => visible = true, 100)">
 
-        <div class="mb-10 text-center md:text-left" x-show="visible" x-transition:enter="transition ease-out duration-500">
+        <div class="mb-0 mt-0 text-center md:text-left" x-show="visible" x-transition:enter="transition ease-out duration-500">
             <h2 class="text-3xl font-bold text-[#2c3e50] mb-2 flex items-center justify-center md:justify-start gap-3">
                 <i class="fas fa-database text-green-600"></i>
                 Dashboard Laporan
@@ -140,16 +128,8 @@
             x-transition:enter="transition ease-out duration-500 delay-100">
             <div class="relative w-full md:w-96">
                 <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
-                    <i class="fas fa-search"></i>
                 </span>
-                <input type="text" x-model="searchQuery" placeholder="Cari laporan..."
-                    class="w-full pl-10 pr-4 py-3 rounded-2xl border border-gray-200 focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition shadow-sm">
             </div>
-
-            <a href="/laporan/create"
-                class="w-full md:w-auto bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-2xl font-bold transition flex items-center justify-center gap-2 shadow-lg shadow-green-100">
-                <i class="fas fa-plus"></i> Buat Laporan Baru
-            </a>
         </div>
 
         <div class="hidden md:block bg-white rounded-[2rem] shadow-xl shadow-slate-200/60 overflow-hidden border border-gray-100"
@@ -230,82 +210,7 @@
             </div>
             @endforeach
         </div>
-
     </main>
-
-    <footer class="bg-gray-800 text-white pt-14 pb-6 mt-0">
-
-        <div class="container mx-auto px-4">
-
-            <div class="flex flex-col items-center mb-10 text-center">
-                <img src="{{ asset('storage/images/image.png') }}" alt="Logo Perusahaan" class="h-24 md:h-20 lg:h-28 w-auto mb-4">
-                <p class="text-gray-400 text-sm italic">
-                    "Keselamatan dan Kesehatan Kerja adalah Prioritas Utama"
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-10">
-
-                <div>
-                    <h4 class="text-lg font-semibold mb-4 border-b border-gray-600 pb-2">
-                        Kontak Kami
-                    </h4>
-                    <ul class="space-y-3 text-gray-400 text-sm">
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-map-marker-alt mt-1"></i>
-                            <h1 class="text-gray-400">Jl. Bukit Wato-Wato VII
-                                Blok B2A/14, Permata Puri
-                                Beringin, Ngaliyan
-                                Kota Semarang
-                            </h1>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-envelope mt-1"></i>
-                            <span>info@cakrateknika.com</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-phone-alt mt-1"></i>
-                            <span>+62 856-4042-4888</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-lg font-semibold mb-4 border-b border-gray-600 pb-2">
-                        Ikuti Kami
-                    </h4>
-                    <div class="flex gap-4 mt-4" style=" display: flex; justify-content: center;">
-
-                        <a href="#" target="_blank"
-                            class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-700 hover:bg-blue-600 transition">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-
-                        <a href="https://www.instagram.com/cakrateknika?igsh=MWlhYWtydTBjazNjNA==" target="_blank"
-                            class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-700 hover:bg-pink-600 transition">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-
-                        <a href="#" target="_blank"
-                            class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-700 hover:bg-blue-500 transition">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="border-t border-gray-700 pt-6 text-center">
-                <small class="text-gray-400">
-                    © 2026 Sistem Otomasi Laporan Cakra Teknika Solusi
-                </small>
-            </div>
-
-        </div>
-    </footer>
-
     <script src="{{ asset('js/home.js') }}"></script>
 </body>
-
 </html>
