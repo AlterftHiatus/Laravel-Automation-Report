@@ -10,10 +10,16 @@ class DokumentasiFoto extends Model
 
     protected $fillable = [
         'laporan_id',
+        'checklist_item_id',
         'file_path',
         'keterangan',
         'urutan',
     ];
+
+    public function checklistItem()
+    {
+        return $this->belongsTo(ChecklistItem::class);
+    }
 
     public function laporan()
     {

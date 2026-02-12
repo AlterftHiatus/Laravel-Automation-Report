@@ -294,6 +294,7 @@
 
                     @php
                         $oldChecklist = $laporan->checklistResults->firstWhere('checklist_item_id', $item->id);
+                        $existingFoto = $laporan->fotos->firstWhere('checklist_item_id', $item->id);
                     @endphp
 
                     @if ($currentKategori !== $item->kategori)
@@ -304,6 +305,7 @@
                     <div class="checklist-card">
                         <div class="checklist-header">{{ $item->nama_item }}</div>
 
+                        {{-- HASIL & KETERANGAN --}}
                         <div class="form-row">
                             <div class="form-group">
                                 <label>Kondisi</label>
@@ -338,6 +340,23 @@
                                 </select>
                             </div>
                         </div>
+
+                        {{-- FOTO READONLY --}}
+                        @if ($existingFoto)
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Dokumentasi (Readonly)</label><br>
+
+                                    <img src="{{ asset('storage/' . $existingFoto->file_path) }}"
+                                        style="max-width:200px; height:auto; border:1px solid #ccc; padding:5px;">
+
+                                    <div style="font-size:12px; margin-top:5px;">
+                                        {{ $existingFoto->keterangan ?? $item->nama_item }}
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+
                     </div>
                 @endforeach
 
@@ -346,11 +365,13 @@
                     @if ($item->kategori === 'Pengujian NDT')
                         @php
                             $oldChecklist = $laporan->checklistResults->firstWhere('checklist_item_id', $item->id);
+                            $existingFoto = $laporan->fotos->firstWhere('checklist_item_id', $item->id);
                         @endphp
 
                         <div class="checklist-card">
                             <div class="checklist-header">{{ $item->nama_item }}</div>
 
+                            {{-- HASIL & KETERANGAN --}}
                             <div class="form-row">
                                 <div class="form-group">
                                     <label>Hasil</label>
@@ -365,6 +386,23 @@
                                         placeholder="Contoh: Memenuhi">
                                 </div>
                             </div>
+
+                            {{-- FOTO READONLY --}}
+                            @if ($existingFoto)
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Dokumentasi (Readonly)</label><br>
+
+                                        <img src="{{ asset('storage/' . $existingFoto->file_path) }}"
+                                            style="max-width:200px; height:auto; border:1px solid #ccc; padding:5px;">
+
+                                        <div style="font-size:12px; margin-top:5px;">
+                                            {{ $existingFoto->keterangan ?? $item->nama_item }}
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+
                         </div>
                     @endif
                 @endforeach
@@ -374,11 +412,13 @@
                     @if ($item->kategori === 'Pengukuran dan Pengujian Safety Device')
                         @php
                             $oldChecklist = $laporan->checklistResults->firstWhere('checklist_item_id', $item->id);
+                            $existingFoto = $laporan->fotos->firstWhere('checklist_item_id', $item->id);
                         @endphp
 
                         <div class="checklist-card">
                             <div class="checklist-header">{{ $item->nama_item }}</div>
 
+                            {{-- HASIL & KETERANGAN --}}
                             <div class="form-row">
                                 <div class="form-group">
                                     <label>Hasil</label>
@@ -405,33 +445,26 @@
                                         value="{{ old("checklist.$item->id.keterangan", $oldChecklist->keterangan ?? '') }}">
                                 </div>
                             </div>
+
+                            {{-- FOTO READONLY --}}
+                            @if ($existingFoto)
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Dokumentasi (Readonly)</label><br>
+
+                                        <img src="{{ asset('storage/' . $existingFoto->file_path) }}"
+                                            style="max-width:200px; height:auto; border:1px solid #ccc; padding:5px;">
+
+                                        <div style="font-size:12px; margin-top:5px;">
+                                            {{ $existingFoto->keterangan ?? $item->nama_item }}
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+
                         </div>
                     @endif
                 @endforeach
-
-                <h3>Dokumentasi Foto</h3>
-
-                <div id="dokumentasi-wrapper">
-                    @foreach ($laporan->fotos as $index => $foto)
-                        <div class="dokumentasi-item">
-                            <h4>Dokumentasi #{{ $index + 1 }}</h4>
-
-                            <div style="text-align:center; margin-bottom:10px;">
-                                <img src="{{ asset('storage/' . $foto->file_path) }}"
-                                    style="max-width: 250px; border:1px solid #ccc;">
-                            </div>
-
-                            <p style="text-align:center; font-style:italic;">
-                                {{ $foto->keterangan ?? '-' }}
-                            </p>
-                        </div>
-                    @endforeach
-                </div>
-
-                <p style="font-size: 13px; color:#666; margin-top:10px;">
-                    * Dokumentasi foto tidak dapat diubah untuk menjaga keaslian data lapangan.
-                </p>
-
 
             </form>
         </div>

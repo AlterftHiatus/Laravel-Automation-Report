@@ -153,8 +153,8 @@ class LaporanController extends Controller
             // CHECKLIST
             'checklist' => 'required|array',
 
-            // DOKUMENTASI (minimal 1 foto)
-            'dokumentasi.0.foto' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+            // DOKUMENTASI
+            'checklist.*.foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
 
@@ -221,18 +221,24 @@ class LaporanController extends Controller
         }
 
         /* ===============================
-        4. SIMPAN DOKUMENTASI FOTO
-       =============================== */
-        if ($request->has('dokumentasi')) {
-            foreach ($request->dokumentasi as $index => $item) {
-                if (isset($item['foto'])) {
-                    $path = $item['foto']->store('laporan_foto', 'public');
+        4. SIMPAN DOKUMENTASI PER CHECKLIST
+        =============================== */
+
+        $urutan = 1;
+
+        if ($request->has('checklist')) {
+            foreach ($request->checklist as $checklistItemId => $data) {
+
+                if (isset($data['foto']) && $data['foto']) {
+
+                    $path = $data['foto']->store('laporan_foto', 'public');
 
                     DokumentasiFoto::create([
-                        'laporan_id' => $laporan->id,
-                        'file_path'  => $path,
-                        'keterangan' => $item['keterangan'] ?? null,
-                        'urutan'     => $index + 1,
+                        'laporan_id'        => $laporan->id,
+                        'checklist_item_id' => $checklistItemId,
+                        'file_path'         => $path,
+                        'keterangan'        => $data['foto_keterangan'] ?? null,
+                        'urutan'            => $urutan++,
                     ]);
                 }
             }
@@ -247,7 +253,7 @@ class LaporanController extends Controller
         $laporan = Laporan::with([
             'dataTeknis',
             'checklistResults.checklistItem',
-            'fotos'
+            'fotos.checklistItem'
         ])->findOrFail($id);
 
         // ubah jenis laporan jadi slug (spasi -> strip, lowercase)

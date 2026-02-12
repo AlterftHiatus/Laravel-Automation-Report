@@ -778,14 +778,11 @@
 
         <table width="100%" cellpadding="5" cellspacing="0">
             @php
-                // pastikan urutan sesuai database
                 $fotos = $laporan->fotos->sortBy('urutan')->values();
             @endphp
 
             @for ($i = 0; $i < $fotos->count(); $i += 2)
-                {{-- BARIS FOTO --}}
                 <tr>
-                    {{-- FOTO KIRI --}}
                     <td style="width: 50%; text-align: center; vertical-align: middle;">
                         @if (isset($fotos[$i]))
                             <img src="{{ storage_path('app/public/' . $fotos[$i]->file_path) }}"
@@ -793,7 +790,6 @@
                         @endif
                     </td>
 
-                    {{-- FOTO KANAN --}}
                     <td style="width: 50%; text-align: center; vertical-align: middle;">
                         @if (isset($fotos[$i + 1]))
                             <img src="{{ storage_path('app/public/' . $fotos[$i + 1]->file_path) }}"
@@ -802,13 +798,17 @@
                     </td>
                 </tr>
 
-                {{-- BARIS KETERANGAN --}}
                 <tr>
                     <td align="center">
-                        {{ $fotos[$i]->keterangan ?? '' }}
+                        @if (isset($fotos[$i]))
+                            {{ $fotos[$i]->keterangan ?? (optional($fotos[$i]->checklistItem)->nama_item ?? '') }}
+                        @endif
                     </td>
+
                     <td align="center">
-                        {{ $fotos[$i + 1]->keterangan ?? '' }}
+                        @if (isset($fotos[$i + 1]))
+                            {{ $fotos[$i + 1]->keterangan ?? (optional($fotos[$i + 1]->checklistItem)->nama_item ?? '') }}
+                        @endif
                     </td>
                 </tr>
             @endfor

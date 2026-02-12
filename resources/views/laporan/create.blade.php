@@ -275,6 +275,8 @@
 
                     <div class="checklist-card">
                         <div class="checklist-header">{{ $item->nama_item }}</div>
+
+                        {{-- HASIL & KETERANGAN --}}
                         <div class="form-row">
                             <div class="form-group">
                                 <label>Kondisi</label>
@@ -285,6 +287,7 @@
                                     <option value="-">-</option>
                                 </select>
                             </div>
+
                             <div class="form-group">
                                 <label>Keterangan</label>
                                 <select name="checklist[{{ $item->id }}][keterangan]">
@@ -299,34 +302,71 @@
                                 </select>
                             </div>
                         </div>
+
+                        {{-- DOKUMENTASI OPSIONAL --}}
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Dokumentasi (Opsional)</label>
+
+                                <input type="file" name="checklist[{{ $item->id }}][foto]" accept="image/*"
+                                    capture="environment">
+
+                                {{-- otomatis isi nama item sebagai keterangan --}}
+                                <input type="hidden" name="checklist[{{ $item->id }}][foto_keterangan]"
+                                    value="{{ $item->nama_item }}">
+                            </div>
+                        </div>
+
                     </div>
                 @endforeach
 
+
                 <h3>IV. PENGUJIAN NDT</h3>
+
                 @foreach ($checklists as $item)
                     @if ($item->kategori === 'Pengujian NDT')
                         <div class="checklist-card">
                             <div class="checklist-header">{{ $item->nama_item }}</div>
+
+                            {{-- HASIL & KETERANGAN --}}
                             <div class="form-row">
                                 <div class="form-group">
                                     <label>Hasil</label>
                                     <input type="text" name="checklist[{{ $item->id }}][hasil]">
                                 </div>
+
                                 <div class="form-group">
                                     <label>Keterangan</label>
                                     <input type="text" name="checklist[{{ $item->id }}][keterangan]"
                                         placeholder="Contoh: Memenuhi">
                                 </div>
                             </div>
+
+                            {{-- DOKUMENTASI OPSIONAL --}}
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Dokumentasi (Opsional)</label>
+
+                                    <input type="file" name="checklist[{{ $item->id }}][foto]"
+                                        accept="image/*" capture="environment">
+
+                                    <input type="hidden" name="checklist[{{ $item->id }}][foto_keterangan]"
+                                        value="{{ $item->nama_item }}">
+                                </div>
+                            </div>
+
                         </div>
                     @endif
                 @endforeach
 
                 <h3>V. PENGUKURAN DAN PENGUJIAN SAFETY DEVICE</h3>
+
                 @foreach ($checklists as $item)
                     @if ($item->kategori === 'Pengukuran dan Pengujian Safety Device')
                         <div class="checklist-card">
                             <div class="checklist-header">{{ $item->nama_item }}</div>
+
+                            {{-- HASIL & KETERANGAN --}}
                             <div class="form-row">
                                 <div class="form-group">
                                     <label>Hasil</label>
@@ -337,45 +377,29 @@
                                         <option value="N/A">N/A</option>
                                     </select>
                                 </div>
+
                                 <div class="form-group">
                                     <label>Keterangan</label>
                                     <input type="text" name="checklist[{{ $item->id }}][keterangan]">
                                 </div>
                             </div>
+
+                            {{-- DOKUMENTASI OPSIONAL --}}
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Dokumentasi (Opsional)</label>
+
+                                    <input type="file" name="checklist[{{ $item->id }}][foto]"
+                                        accept="image/*" capture="environment">
+
+                                    <input type="hidden" name="checklist[{{ $item->id }}][foto_keterangan]"
+                                        value="{{ $item->nama_item }}">
+                                </div>
+                            </div>
+
                         </div>
                     @endif
                 @endforeach
-
-                <h3>Dokumentasi Foto</h3>
-                <div id="dokumentasi-wrapper">
-                    <div class="dokumentasi-item">
-                        <h4>Dokumentasi #1</h4>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label>Foto</label>
-                                <input type="file" name="dokumentasi[0][foto]" accept="image/*"
-                                    capture="environment" required class="file-input-hidden">
-
-                                <button type="button" class="btn-file">
-                                    📷 Ambil Gambar
-                                </button>
-
-                                <span class="file-name">Belum ada gambar</span>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label>Keterangan</label>
-                                <input type="text" name="dokumentasi[0][keterangan]"
-                                    placeholder="contoh: Kondisi mesin">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="action-buttons">
-                    <button type="button" class="btn-secondary" onclick="tambahDokumentasi()">+ Tambah
-                        Dokumentasi</button>
-                </div>
 
             </form>
         </div>
