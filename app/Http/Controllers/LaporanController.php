@@ -154,7 +154,7 @@ class LaporanController extends Controller
             'checklist' => 'required|array',
 
             // DOKUMENTASI
-            'checklist.*.foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'checklist.*.foto' => 'nullable|image|mimes:jpg,jpeg,png|max:5120',
         ]);
 
 
