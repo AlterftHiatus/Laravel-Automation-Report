@@ -308,15 +308,25 @@
                             <div class="form-group">
                                 <label>Dokumentasi (Opsional)</label>
 
+                                {{-- input file disembunyikan via CSS --}}
                                 <input type="file" name="checklist[{{ $item->id }}][foto]" accept="image/*"
-                                    capture="environment">
+                                    capture="environment" class="file-input-hidden">
 
-                                {{-- otomatis isi nama item sebagai keterangan --}}
+                                {{-- tombol custom --}}
+                                <button type="button" class="btn-file">
+                                    📷 Ambil Foto
+                                </button>
+
+                                {{-- nama file --}}
+                                <span class="file-name">
+                                    Belum ada file
+                                </span>
+
+                                {{-- keterangan otomatis --}}
                                 <input type="hidden" name="checklist[{{ $item->id }}][foto_keterangan]"
                                     value="{{ $item->nama_item }}">
                             </div>
                         </div>
-
                     </div>
                 @endforeach
 
@@ -347,14 +357,25 @@
                                 <div class="form-group">
                                     <label>Dokumentasi (Opsional)</label>
 
+                                    {{-- input file disembunyikan via CSS --}}
                                     <input type="file" name="checklist[{{ $item->id }}][foto]"
-                                        accept="image/*" capture="environment">
+                                        accept="image/*" capture="environment" class="file-input-hidden">
 
+                                    {{-- tombol custom --}}
+                                    <button type="button" class="btn-file">
+                                        📷 Ambil Foto
+                                    </button>
+
+                                    {{-- nama file --}}
+                                    <span class="file-name">
+                                        Belum ada file
+                                    </span>
+
+                                    {{-- keterangan otomatis --}}
                                     <input type="hidden" name="checklist[{{ $item->id }}][foto_keterangan]"
                                         value="{{ $item->nama_item }}">
                                 </div>
                             </div>
-
                         </div>
                     @endif
                 @endforeach
@@ -389,9 +410,21 @@
                                 <div class="form-group">
                                     <label>Dokumentasi (Opsional)</label>
 
+                                    {{-- input file disembunyikan via CSS --}}
                                     <input type="file" name="checklist[{{ $item->id }}][foto]"
-                                        accept="image/*" capture="environment">
+                                        accept="image/*" capture="environment" class="file-input-hidden">
 
+                                    {{-- tombol custom --}}
+                                    <button type="button" class="btn-file">
+                                        📷 Ambil Foto
+                                    </button>
+
+                                    {{-- nama file --}}
+                                    <span class="file-name">
+                                        Belum ada file
+                                    </span>
+
+                                    {{-- keterangan otomatis --}}
                                     <input type="hidden" name="checklist[{{ $item->id }}][foto_keterangan]"
                                         value="{{ $item->nama_item }}">
                                 </div>

@@ -82,61 +82,32 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 });
 
-// Fungsi tambah dokumentasi tetap sama, hanya layouting-nya diperbaiki via CSS
-let docIndex = 1;
-window.tambahDokumentasi = function () {
-    const wrapper = document.getElementById("dokumentasi-wrapper");
-    const div = document.createElement("div");
-    div.classList.add("dokumentasi-item");
-    div.innerHTML = `
-        <h4>Dokumentasi #${docIndex + 1}</h4>
-        <div class="form-row">
-            <div class="form-group">
-                <label>Foto</label>
+/* ===============================
+   CUSTOM FILE BUTTON HANDLER
+=============================== */
 
-                <input
-                    type="file"
-                    name="dokumentasi[${docIndex}][foto]"
-                    accept="image/*"
-                    capture="environment"
-                    class="file-input-hidden"
-                >
-
-                <button type="button" class="btn-file">
-                    📷 Ambil Gambar
-                </button>
-
-                <span class="file-name">Belum ada gambar</span>
-            </div>
-
-            <div class="form-group">
-                <label>Keterangan</label>
-                <input type="text" name="dokumentasi[${docIndex}][keterangan]" placeholder="contoh: Kondisi mesin">
-            </div>
-        </div>
-`;
-
-    wrapper.appendChild(div);
-    docIndex++;
-};
-
+// Klik tombol -> trigger input file
 document.addEventListener("click", function (e) {
     if (e.target.classList.contains("btn-file")) {
         const group = e.target.closest(".form-group");
         const input = group.querySelector('input[type="file"]');
-        input.click();
+
+        if (input) {
+            input.click();
+        }
     }
 });
 
+// Tampilkan nama file setelah dipilih
 document.addEventListener("change", function (e) {
     if (e.target.type === "file") {
         const group = e.target.closest(".form-group");
-        const fileName = group.querySelector(".file-name");
+        const fileNameSpan = group.querySelector(".file-name");
 
-        if (fileName) {
-            fileName.textContent = e.target.files.length
+        if (fileNameSpan) {
+            fileNameSpan.textContent = e.target.files.length
                 ? e.target.files[0].name
-                : "Belum ada gambar";
+                : "Belum ada file";
         }
     }
 });
