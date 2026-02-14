@@ -65,7 +65,7 @@
 
             <!-- Button -->
             <button type="submit"
-                class="w-full bg-blue-600 text-white py-2.5 rounded-lg hover:bg-blue-700 transition text-base font-medium">
+                class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition text-base font-medium">
                 Login
             </button>
         </form>
